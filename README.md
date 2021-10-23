@@ -56,3 +56,6 @@ Richard Scharf
 - Level 1: Ziel auf der Karte erreichen (Tutorial)
 - Level 2: Gegner Ausschalten und Ziel auf der Karte erreichen	
 - Level 3: Gegner Ausschalten und Ziel auf Karte erreichen (möglicherweise Schatz finden, Trittschalter aktivieren oder ähnliches)
+
+
+![image](pictures/Gameplay_Elements.png)
