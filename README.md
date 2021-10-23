@@ -38,6 +38,8 @@ Richard Scharf
 # Spielidee: 
 **2D-Schooter**
 
+![image](pictures/Gameplay_Elements.png)
+
 ## Spielfigur:
 - Männchen bewegt sich über 2d Spielfeld (wie eine Schachfigur)
 - Kann mit Tastendruck Schüsse in Sichtrichtung abgeben
@@ -57,5 +59,3 @@ Richard Scharf
 - Level 2: Gegner Ausschalten und Ziel auf der Karte erreichen	
 - Level 3: Gegner Ausschalten und Ziel auf Karte erreichen (möglicherweise Schatz finden, Trittschalter aktivieren oder ähnliches)
 
-
-![image](pictures/Gameplay_Elements.png)
