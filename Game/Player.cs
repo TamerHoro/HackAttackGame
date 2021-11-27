@@ -13,26 +13,90 @@ namespace Game
 {
     class Player 
     {
-        public PictureBox player = new PictureBox();
-        public ProgressBar healthbar = new ProgressBar();
-        private int hp = 3;
-        private int speed = 10;
-        //healthbar.Location = player.Location;
-        //    healthbar.Location = new Point(player.Location.X, player.Location.Y + -20);
-        public int HP
+        public bool goLeft, goRight, goUp, goDown;
+        int speed = 5;
+        public PictureBox picture = new PictureBox();
+        Image playerimage = Image.FromFile(@"C:\Users\henke\Downloads\mooict.com-zombie-shooter-assets\up.png");
+        public int health = 3;
+        public Player()
         {
-            get { return hp; }
-            set { }
+            picture.Image = playerimage;
+            picture.Location = new Point(100, 100);
+            picture.SizeMode = PictureBoxSizeMode.AutoSize;
         }
 
-        public void DamageTaken()
+        public void KeyIsUp(object sender, KeyEventArgs e)
         {
+            goLeft = false;
+            goDown = false;
+            goUp = false;
+            goRight = false;
+            if (e.KeyCode == Keys.Left)
+            {
+                goLeft = true;
+                picture.Image = Image.FromFile(@"C:\Users\henke\Downloads\mooict.com-zombie-shooter-assets\left.png");
+            }
 
+            if (e.KeyCode == Keys.Right)
+            {
+                goRight = true;
+                picture.Image = Image.FromFile(@"C:\Users\henke\Downloads\mooict.com-zombie-shooter-assets\right.png");
+            }
+
+            if (e.KeyCode == Keys.Up)
+            {
+                goUp = true;
+                picture.Image = Image.FromFile(@"C:\Users\henke\Downloads\mooict.com-zombie-shooter-assets\up.png");
+            }
+
+            if (e.KeyCode == Keys.Down)
+            {
+                goDown = true;
+                picture.Image = Image.FromFile(@"C:\Users\henke\Downloads\mooict.com-zombie-shooter-assets\down.png");
+            }
         }
 
-        Player()
+        public void KeyIsDown(object sender, KeyEventArgs e)
         {
+            if (e.KeyCode == Keys.Left)
+            {
+                goLeft = false;
+            }
 
+            if (e.KeyCode == Keys.Right)
+            {
+                goRight = false;
+            }
+
+            if (e.KeyCode == Keys.Up)
+            {
+                goUp = false;
+            }
+
+            if (e.KeyCode == Keys.Down)
+            {
+                goDown = false;
+            }
+        }
+
+        public void Move(object sender, EventArgs e)
+        {
+            if (goLeft == true)
+            {
+                picture.Left -= speed;
+            }
+            if (goRight == true)
+            {
+                picture.Left += speed;
+            }
+            if (goUp == true)
+            {
+                picture.Top -= speed;
+            }
+            if (goDown == true)
+            {
+                picture.Top += speed;
+            }
         }
         
     }
