@@ -21,10 +21,14 @@ namespace Game
         string facing = "up";
         //int playerhealth = 100;
         //int speed = 10;
-       
 
-        
         private void KeyIsDown(object sender, KeyEventArgs e)
+        {
+            
+        }
+
+
+        private void KeyIsDownAlt(object sender, KeyEventArgs e)
         {
             if (gameover) return; // if game over is true then do nothing in this event
 
@@ -95,6 +99,7 @@ namespace Game
             
             InitializeComponent();
             this.Controls.AddRange(level.walling);
+            this.Controls.Add(level.PlayerOne);
             RestartGame();
         }
 
@@ -102,6 +107,7 @@ namespace Game
         private void MainTimerEvent(object sender, EventArgs e)
         {
             MainTimerEvent MainTimeEvent = new MainTimerEvent();
+
             //MainTimeEvent.Update();
 
 
