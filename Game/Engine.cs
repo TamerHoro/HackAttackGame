@@ -91,13 +91,13 @@ namespace Game
 
         //}//Goes to Engine
 
-        Render level = new Render();
+        Render levelOne = new Render(1);
 
         public Engine()
         {           
             InitializeComponent();
-            this.Controls.AddRange(level.walling);
-            this.Controls.Add(level.PlayerOne);
+            this.Controls.AddRange(levelOne.walling);
+            this.Controls.Add(levelOne.PlayerOne);
             //this.Controls.Add(level.PlayerControl);
             RestartGame();
         }
@@ -106,7 +106,7 @@ namespace Game
         private void MainTimerEvent(object sender, EventArgs e)
         {
             MainTimerEvent MainTimeEvent = new MainTimerEvent();
-            level.PlayerOne.Move(sender,e);
+            levelOne.PlayerOne.Move(sender,e);
             //MainTimeEvent.Update();
 
 

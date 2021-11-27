@@ -22,7 +22,7 @@ namespace Game
         static private int[,] ReadMapFile()
         {
             int[,] maparray = new int[18, 18];
-            var lines = File.ReadAllText(@"C:\Users\jonat\source\repos\Test Game (2)\Test Game\Test Game\map array.txt").Split(new string[] { "\n" },
+            var lines = File.ReadAllText(@"..\..\map array.txt").Split(new string[] { "\n" },
                                                                                                            StringSplitOptions.None);
             for (int i = 0; i < 18; i++)
             {
@@ -34,8 +34,9 @@ namespace Game
             }
             return maparray;
         }
-        public void CreateWalls()            //creates a list with Walls
+        public void LevelBuilder()            //creates a list with Walls
         {
+            Player PlayerOne = new Player();
             int l=-10,h=-15,k = 0;
             for (int i = 0; i < 18; i++)
             {
@@ -74,16 +75,11 @@ namespace Game
         //    return null;
         //}
 
-        public Render()
+        public Render(int level)
         {
-            CreateWalls();
-            CreatePlayer();
-        }
 
-        public void CreatePlayer()
-        {
-            Player PlayerOne = new Player();
-
+            LevelBuilder();
+            
         }
 
         private void InitializeComponent()

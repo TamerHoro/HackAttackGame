@@ -18,16 +18,40 @@ namespace Game
         //public PictureBox picture = new PictureBox();       
         Image playerimage = Image.FromFile(@"..\..\Resources\player.png");
         public int health = 3;
+
         public Player()
         {
             this.Image = playerimage;
             this.Location = new Point(135, 135);
             this.SizeMode = PictureBoxSizeMode.AutoSize;
-            PlayerControl playercontrol = new PlayerControl();
+            PlayerControl playercontrol = new PlayerControl();            
             this.BringToFront();
+
+        }
+        public void KeyIsUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Left)
+            {
+                goLeft = false;
+            }
+
+            if (e.KeyCode == Keys.Right)
+            {
+                goRight = false;
+            }
+
+            if (e.KeyCode == Keys.Up)
+            {
+                goUp = false;
+            }
+
+            if (e.KeyCode == Keys.Down)
+            {
+                goDown = false;
+            }
         }
 
-        public void KeyIsUp(object sender, KeyEventArgs e)
+        public void KeyIsDown(object sender, KeyEventArgs e)
         {
             goLeft = false;
             goDown = false;
@@ -58,29 +82,7 @@ namespace Game
             }
         }
 
-        public void KeyIsDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Left)
-            {
-                goLeft = false;
-            }
-
-            if (e.KeyCode == Keys.Right)
-            {
-                goRight = false;
-            }
-
-            if (e.KeyCode == Keys.Up)
-            {
-                goUp = false;
-            }
-
-            if (e.KeyCode == Keys.Down)
-            {
-                goDown = false;
-            }
-        }
-
+       
         public void Move(object sender, EventArgs e)
         {
             if (goLeft == true)
