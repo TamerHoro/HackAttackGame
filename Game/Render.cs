@@ -22,7 +22,7 @@ namespace Game
         static private int[,] ReadMapFile()
         {
             int[,] maparray = new int[18, 18];
-            var lines = File.ReadAllText(@"C:\Users\jonat\source\repos\Test Game (2)\Test Game\Test Game\map array.txt").Split(new string[] { "\n" },
+            var lines = File.ReadAllText(@"..\..\map array.txt").Split(new string[] { "\n" },
                                                                                                            StringSplitOptions.None);
             for (int i = 0; i < 18; i++)
             {

@@ -30,10 +30,13 @@ namespace Game
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Engine));
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.healthbar = new System.Windows.Forms.ProgressBar();
             this.player = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.player)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // timer1
@@ -46,9 +49,10 @@ namespace Game
             // 
             this.healthbar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.healthbar.ForeColor = System.Drawing.Color.Lime;
-            this.healthbar.Location = new System.Drawing.Point(171, 517);
+            this.healthbar.Location = new System.Drawing.Point(228, 636);
+            this.healthbar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.healthbar.Name = "healthbar";
-            this.healthbar.Size = new System.Drawing.Size(50, 12);
+            this.healthbar.Size = new System.Drawing.Size(67, 15);
             this.healthbar.TabIndex = 1;
             this.healthbar.Click += new System.EventHandler(this.progressBar1_Click_1);
             // 
@@ -56,27 +60,40 @@ namespace Game
             // 
             this.player.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.player.Image = global::Game.Properties.Resources.playeright;
-            this.player.Location = new System.Drawing.Point(171, 440);
+            this.player.Location = new System.Drawing.Point(228, 542);
+            this.player.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.player.Name = "player";
-            this.player.Size = new System.Drawing.Size(50, 50);
+            this.player.Size = new System.Drawing.Size(67, 62);
             this.player.TabIndex = 0;
             this.player.TabStop = false;
             this.player.Click += new System.EventHandler(this.player_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(658, 238);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(136, 142);
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
             // Engine
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
-            this.ClientSize = new System.Drawing.Size(704, 681);
+            this.ClientSize = new System.Drawing.Size(939, 838);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.healthbar);
             this.Controls.Add(this.player);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Engine";
             this.Text = "Engine";
             this.Load += new System.EventHandler(this.Engine_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyIsDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.KeyIsUp);
             ((System.ComponentModel.ISupportInitialize)(this.player)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -85,6 +102,7 @@ namespace Game
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.PictureBox player;
         private System.Windows.Forms.ProgressBar healthbar;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
