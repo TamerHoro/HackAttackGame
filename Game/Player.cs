@@ -11,18 +11,19 @@ using System.IO;
 
 namespace Game
 {
-    class Player 
+    public class Player : PictureBox
     {
         public bool goLeft, goRight, goUp, goDown;
         int speed = 5;
-        public PictureBox picture = new PictureBox();
-        Image playerimage = Image.FromFile(@"C:\Users\henke\Downloads\mooict.com-zombie-shooter-assets\up.png");
+        //public PictureBox picture = new PictureBox();       
+        Image playerimage = Image.FromFile(@"..\..\Resources\player.png");
         public int health = 3;
         public Player()
         {
-            picture.Image = playerimage;
-            picture.Location = new Point(100, 100);
-            picture.SizeMode = PictureBoxSizeMode.AutoSize;
+            this.Image = playerimage;
+            this.Location = new Point(135, 135);
+            this.SizeMode = PictureBoxSizeMode.AutoSize;
+            this.BringToFront();
         }
 
         public void KeyIsUp(object sender, KeyEventArgs e)
@@ -34,25 +35,25 @@ namespace Game
             if (e.KeyCode == Keys.Left)
             {
                 goLeft = true;
-                picture.Image = Image.FromFile(@"C:\Users\henke\Downloads\mooict.com-zombie-shooter-assets\left.png");
+                this.Image = Image.FromFile(@"C:\Users\jonat\source\repos\software-engineering5\Game\Resources\playerleft.png");
             }
 
             if (e.KeyCode == Keys.Right)
             {
                 goRight = true;
-                picture.Image = Image.FromFile(@"C:\Users\henke\Downloads\mooict.com-zombie-shooter-assets\right.png");
+                this.Image = Image.FromFile(@"C:\Users\jonat\source\repos\software-engineering5\Game\Resources\playerright.png");
             }
 
             if (e.KeyCode == Keys.Up)
             {
                 goUp = true;
-                picture.Image = Image.FromFile(@"C:\Users\henke\Downloads\mooict.com-zombie-shooter-assets\up.png");
+                this.Image = Image.FromFile(@"C:\Users\jonat\source\repos\software - engineering5\Game\Resources\playerup.png");
             }
 
             if (e.KeyCode == Keys.Down)
             {
                 goDown = true;
-                picture.Image = Image.FromFile(@"C:\Users\henke\Downloads\mooict.com-zombie-shooter-assets\down.png");
+                this.Image = Image.FromFile(@"..\Resources\playerdown.png");
             }
         }
 
@@ -83,19 +84,19 @@ namespace Game
         {
             if (goLeft == true)
             {
-                picture.Left -= speed;
+                this.Left -= speed;
             }
             if (goRight == true)
             {
-                picture.Left += speed;
+                this.Left += speed;
             }
             if (goUp == true)
             {
-                picture.Top -= speed;
+                this.Top -= speed;
             }
             if (goDown == true)
             {
-                picture.Top += speed;
+                this.Top += speed;
             }
         }
         
