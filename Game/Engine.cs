@@ -22,84 +22,83 @@ namespace Game
         //int playerhealth = 100;
         //int speed = 10;
 
-        private void KeyIsDown(object sender, KeyEventArgs e)
-        {
+        //private void KeyIsDown(object sender, KeyEventArgs e)
+        //{
             
-        }
+        //}
 
 
-        private void KeyIsDownAlt(object sender, KeyEventArgs e)
-        {
-            if (gameover) return; // if game over is true then do nothing in this event
+        //private void KeyIsDownAlt(object sender, KeyEventArgs e)
+        //{
+        //    if (gameover) return; // if game over is true then do nothing in this event
 
-            // if the left key is pressed then do the following
-            if (e.KeyCode == Keys.Left)
-            {
-                goleft = true; // change go left to true                                    Goes to PlayerClass
-                facing = "left"; //change facing to left                                    Goes to PlayerClass
-                player.Image = Properties.Resources.playerleft; // change the player image to LEFT image
-            }
+        //    // if the left key is pressed then do the following
+        //    if (e.KeyCode == Keys.Left)
+        //    {
+        //        goleft = true; // change go left to true                                    Goes to PlayerClass
+        //        facing = "left"; //change facing to left                                    Goes to PlayerClass
+        //        player.Image = Properties.Resources.playerleft; // change the player image to LEFT image
+        //    }
 
-            // end of left key selection
+        //    // end of left key selection
 
-            // if the right key is pressed then do the following
-            if (e.KeyCode == Keys.Right)
-            {
-                goright = true; // change go right to true                                   Goes to PlayerClass
-                facing = "right"; // change facing to right                                   Goes to PlayerClass
-                player.Image = Properties.Resources.playeright; // change the player image to right
-            }
-            // end of right key selection
+        //    // if the right key is pressed then do the following
+        //    if (e.KeyCode == Keys.Right)
+        //    {
+        //        goright = true; // change go right to true                                   Goes to PlayerClass
+        //        facing = "right"; // change facing to right                                   Goes to PlayerClass
+        //        player.Image = Properties.Resources.playeright; // change the player image to right
+        //    }
+        //    // end of right key selection
 
-            // if the up key is pressed then do the following
-            if (e.KeyCode == Keys.Up)
-            {
-                facing = "up"; // change facing to up                                   Goes to PlayerClass
-                goup = true; // change go up to true                                   Goes to PlayerClass
-                player.Image = Properties.Resources.playerup; // change the player image to up
-            }
+        //    // if the up key is pressed then do the following
+        //    if (e.KeyCode == Keys.Up)
+        //    {
+        //        facing = "up"; // change facing to up                                   Goes to PlayerClass
+        //        goup = true; // change go up to true                                   Goes to PlayerClass
+        //        player.Image = Properties.Resources.playerup; // change the player image to up
+        //    }
 
-            // end of up key selection
+        //    // end of up key selection
 
-            // if the down key is pressed then do the following
-            if (e.KeyCode == Keys.Down)
-            {
-                facing = "down"; // change facing to down                                   Goes to PlayerClass
-                godown = true; // change go down to true                                   Goes to PlayerClass
-                player.Image = Properties.Resources.playerdown; //change the player image to down
-            }
-        }//Goes to Engine
+        //    // if the down key is pressed then do the following
+        //    if (e.KeyCode == Keys.Down)
+        //    {
+        //        facing = "down"; // change facing to down                                   Goes to PlayerClass
+        //        godown = true; // change go down to true                                   Goes to PlayerClass
+        //        player.Image = Properties.Resources.playerdown; //change the player image to down
+        //    }
+        //}//Goes to Engine
 
-        private void KeyIsUp(object sender, KeyEventArgs e) // Goes to PlayerClass or Engine
-        {
-            if (e.KeyCode == Keys.Left)     
-            {
-                goleft = false;
-            }
-            if (e.KeyCode == Keys.Right)
-            {
-                goright = false;
-            }
-            if (e.KeyCode == Keys.Up)
-            {
-                goup = false;
-            }
-            if (e.KeyCode == Keys.Down)
-            {
-                godown = false;
-            }
+        //private void KeyIsUp(object sender, KeyEventArgs e) // Goes to PlayerClass or Engine
+        //{
+        //    if (e.KeyCode == Keys.Left)     
+        //    {
+        //        goleft = false;
+        //    }
+        //    if (e.KeyCode == Keys.Right)
+        //    {
+        //        goright = false;
+        //    }
+        //    if (e.KeyCode == Keys.Up)
+        //    {
+        //        goup = false;
+        //    }
+        //    if (e.KeyCode == Keys.Down)
+        //    {
+        //        godown = false;
+        //    }
 
-        }//Goes to Engine
+        //}//Goes to Engine
 
-
+        Render level = new Render();
 
         public Engine()
-        {
-            Render level = new Render();
-            
+        {           
             InitializeComponent();
             this.Controls.AddRange(level.walling);
             this.Controls.Add(level.PlayerOne);
+            //this.Controls.Add(level.PlayerControl);
             RestartGame();
         }
 
@@ -107,7 +106,7 @@ namespace Game
         private void MainTimerEvent(object sender, EventArgs e)
         {
             MainTimerEvent MainTimeEvent = new MainTimerEvent();
-
+            level.PlayerOne.Move(sender,e);
             //MainTimeEvent.Update();
 
 

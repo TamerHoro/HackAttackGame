@@ -23,6 +23,7 @@ namespace Game
             this.Image = playerimage;
             this.Location = new Point(135, 135);
             this.SizeMode = PictureBoxSizeMode.AutoSize;
+            PlayerControl playercontrol = new PlayerControl();
             this.BringToFront();
         }
 
@@ -35,25 +36,25 @@ namespace Game
             if (e.KeyCode == Keys.Left)
             {
                 goLeft = true;
-                this.Image = Image.FromFile(@"C:\Users\jonat\source\repos\software-engineering5\Game\Resources\playerleft.png");
+                this.Image = Image.FromFile(@"..\..\Resources\playerleft.png");
             }
 
             if (e.KeyCode == Keys.Right)
             {
                 goRight = true;
-                this.Image = Image.FromFile(@"C:\Users\jonat\source\repos\software-engineering5\Game\Resources\playerright.png");
+                this.Image = Image.FromFile(@"..\..\Resources\playeright.png");
             }
 
             if (e.KeyCode == Keys.Up)
             {
                 goUp = true;
-                this.Image = Image.FromFile(@"C:\Users\jonat\source\repos\software - engineering5\Game\Resources\playerup.png");
+                this.Image = Image.FromFile(@"..\..\Resources\playerup.png");
             }
 
             if (e.KeyCode == Keys.Down)
             {
                 goDown = true;
-                this.Image = Image.FromFile(@"..\Resources\playerdown.png");
+                this.Image = Image.FromFile(@"..\..\Resources\playerdown.png");
             }
         }
 
