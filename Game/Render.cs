@@ -17,8 +17,8 @@ namespace Game
         List<PictureBox> levelwalling = new List<PictureBox>();
         public PictureBox[] walling = new PictureBox[325];
         List<PictureBox> enemies = new List<PictureBox>();
-        PictureBox goal;       
-        
+        PictureBox goal;
+        public Player PlayerOne = new Player();
         static private int[,] ReadMapFile()
         {
             int[,] maparray = new int[18, 18];
@@ -77,6 +77,13 @@ namespace Game
         public Render()
         {
             CreateWalls();
+            CreatePlayer();
+        }
+
+        public void CreatePlayer()
+        {
+            Player PlayerOne = new Player();
+
         }
 
         private void InitializeComponent()

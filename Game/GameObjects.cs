@@ -11,7 +11,7 @@ using System.IO;
 
 namespace Game
 {
-    class GameObjects
+    class GameObjects : PictureBox
     {
         //PictureBox gameObject = new PictureBox();
         int posx;
