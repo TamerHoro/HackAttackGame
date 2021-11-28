@@ -99,6 +99,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Render.resx">
       <DependentUpon>Render.cs</DependentUpon>
@@ -142,6 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="map array.txt" />
+    <None Include="Resources\floor.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

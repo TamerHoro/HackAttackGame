@@ -17,11 +17,12 @@ namespace Game
     
     public partial class Engine : Form
     {
-        bool goleft, goright, goup, godown, gameover;
-        string facing = "up";
-       
+        //bool goleft, goright, goup, godown, gameover;
+        //string facing = "up";
+        static int level = 0;
 
-        Render levelOne = new Render(1);
+
+        Render levelOne = new Render(0);
 
         public Engine()
         {           
@@ -48,62 +49,10 @@ namespace Game
 
         } // Goes to EngineClass
 
-
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void progressBar1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void progressBar1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void player_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void Engine_Load(object sender, EventArgs e)
         {
 
-        }
-
-        private void tableLayoutPanel1_Paint_1(object sender, PaintEventArgs e)
-        {
-
-        }      
-        
-        private void ShootBullet(string direction)
-        {
-
-        }
+        }       
         
         private void RestartGame()   //goes to MenueClass
         {
@@ -115,5 +64,6 @@ namespace Game
             //playerhealth = 100;
             //GameTimer.Start();
         }
+        
     }
 }
