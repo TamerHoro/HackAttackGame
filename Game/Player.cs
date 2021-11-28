@@ -16,7 +16,7 @@ namespace Game
         public bool goLeft, goRight, goUp, goDown;
         int speed = 5;
         //public PictureBox picture = new PictureBox();       
-        Image playerimage = Image.FromFile(@"..\..\Resources\player.png");
+        Image playerimage = Image.FromFile(@"..\..\Resources\playersmall.png");
         public int health = 3;
 
         public Player()
@@ -60,25 +60,25 @@ namespace Game
             if (e.KeyCode == Keys.Left)
             {
                 goLeft = true;
-                this.Image = Image.FromFile(@"..\..\Resources\playerleft.png");
+                this.Image = Image.FromFile(@"..\..\Resources\playerleftsmall.png");
             }
 
             if (e.KeyCode == Keys.Right)
             {
                 goRight = true;
-                this.Image = Image.FromFile(@"..\..\Resources\playeright.png");
+                this.Image = Image.FromFile(@"..\..\Resources\playerightsmall.png");
             }
 
             if (e.KeyCode == Keys.Up)
             {
                 goUp = true;
-                this.Image = Image.FromFile(@"..\..\Resources\playerup.png");
+                this.Image = Image.FromFile(@"..\..\Resources\playerupsmall.png");
             }
 
             if (e.KeyCode == Keys.Down)
             {
                 goDown = true;
-                this.Image = Image.FromFile(@"..\..\Resources\playerdown.png");
+                this.Image = Image.FromFile(@"..\..\Resources\playerdownsmall.png");
             }
         }
 
