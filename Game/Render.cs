@@ -13,16 +13,26 @@ namespace Game
 {
     class Render : Form
     {
-        int[,] maparray = ReadMapFile();
+        int stage = 0;
+        int[,] maparray;
         //List<PictureBox> levelwalling = new List<PictureBox>();
         public GameObjects[] walling = new GameObjects[325];
         //List<PictureBox> enemies = new List<PictureBox>();
         PictureBox goal;
         public Player PlayerOne = new Player();
-        static private int[,] ReadMapFile()
+        private int[,] ReadMapFile()
         {
+            string[] lines= new string[0];
             int[,] maparray = new int[18, 18];
-            var lines = File.ReadAllText(@"..\..\map array.txt").Split(new string[] { "\n" }, StringSplitOptions.None);
+            if (stage == 0)
+            {
+                 lines = File.ReadAllText(@"..\..\Level1.txt").Split(new string[] { "\n" }, StringSplitOptions.None);
+            }
+            if(stage == 1)
+            {
+                lines = File.ReadAllText(@"..\..\Level2.txt").Split(new string[] { "\n" }, StringSplitOptions.None);
+
+            }           
             for (int i = 0; i < 18; i++)
             {
                 var fields = lines[i].Split(' ');
@@ -33,8 +43,10 @@ namespace Game
             }
             return maparray;
         }
+        
         public void LevelBuilder()            //creates a lists with GameObjects
         {
+
             Player PlayerOne = new Player();
             int l = -10, h = -15, k = 0;
             for (int i = 0; i < 18; i++)
@@ -42,16 +54,12 @@ namespace Game
                 for (int j = 0; j < 18; j++)
                 {
                     if (maparray[i, j] == 1)
-                    {
-                        //PictureBox wall = new Wall();
-                        //wall.Tag = $"wall{i}{j}";
-                        //wall.Image = Properties.Resources.wall;
-                        //wall.Width = 40;
-                        //wall.Height = 40;
-                        //wall.Left = l;
-                        //wall.Top = h;
-                        //wall.BringToFront();
+                    {                       
                         walling[k++] = new Wall(l,h,i,j);
+                    }
+                    else if (maparray[i, j] == 9)
+                    {
+                        walling[k++] = new Gate(l, h, i, j);
                     }
                     l = l + 40;
                 }
@@ -60,9 +68,11 @@ namespace Game
             }
         }
 
-        public Render(int level)
+        public Render(int stage)
         {
 
+            this.stage = stage;
+            maparray = ReadMapFile();
             LevelBuilder();
             
         }

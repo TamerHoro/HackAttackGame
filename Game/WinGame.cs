@@ -6,15 +6,14 @@ using System.Threading.Tasks;
 
 namespace Game
 {
-    class MainTimerEvent
+    class WinGame
     {
-        public MainTimerEvent()
+        public WinGame(bool win )
         {
+            if (win == true)
+            {
 
-        }
-
-        public void update()
-        {
+            }
         }
     }
 }

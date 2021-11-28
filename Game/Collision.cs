@@ -11,6 +11,7 @@ namespace Game
     {
         public Player player;
         public GameObjects[] gameobjects;
+        bool win = false;
         public void CollsionCheck()
         {            
             for (int i = 0; i < gameobjects.Length; i++)
@@ -42,16 +43,25 @@ namespace Game
                                 player.Top = player.Top - 5;
                             }
                         }
+                        if (gameobjects[i] is Gate)
+                        {
+                            if (player.Bounds.IntersectsWith(gameobjects[i].Bounds))
+                            {
+                                win = true;
+                            }
+                            
+                        }
                 }
                 
             }
             
         }
-        public Collision(Player player, GameObjects[] gameobjects)
-        {
+        public Collision(Player player, GameObjects[] gameobjects, out bool winCondition)
+        {            
             this.player = player;
             this.gameobjects = gameobjects;
             CollsionCheck();
+            winCondition = win;
         }
     }
 }

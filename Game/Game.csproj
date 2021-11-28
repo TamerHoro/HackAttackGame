@@ -58,6 +58,9 @@
     <Compile Include="GameObjects.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Gate.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="InteractableObject.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -85,6 +88,7 @@
     <Compile Include="Wall.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="WinGame.cs" />
     <EmbeddedResource Include="Engine.resx">
       <DependentUpon>Engine.cs</DependentUpon>
     </EmbeddedResource>
@@ -143,6 +147,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="map array.txt" />
+    <None Include="Resources\gate.png" />
     <None Include="Resources\floor.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
