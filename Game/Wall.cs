@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Game
 {
-    class Wall : StaticObject
+    class Wall
     {
 
     }

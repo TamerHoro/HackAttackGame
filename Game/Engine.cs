@@ -98,7 +98,7 @@ namespace Game
             InitializeComponent();
             this.Controls.AddRange(levelOne.walling);
             this.Controls.Add(levelOne.PlayerOne);
-            //this.Controls.Add(level.PlayerControl);
+            this.Controls.Add(levelOne.PlayerHealth);
             RestartGame();
         }
 
@@ -106,13 +106,9 @@ namespace Game
         private void MainTimerEvent(object sender, EventArgs e)
         {
             MainTimerEvent MainTimeEvent = new MainTimerEvent();
-            levelOne.PlayerOne.Move(sender,e);
-            //MainTimeEvent.Update();
-
-
-
-
-        } // Goes to EngineClass
+            levelOne.PlayerOne.Move();
+            levelOne.PlayerHealth.update();
+        }
 
         
 
