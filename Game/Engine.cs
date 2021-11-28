@@ -41,7 +41,7 @@ namespace Game
         {
             if(windcondition == true)
             {
-                levelOne.Close();
+                levelOne.Dispose();
                 levelOne = new Render(1);
                 InitializeComponent();
                 this.Controls.AddRange(levelOne.walling);
