@@ -37,8 +37,9 @@ namespace Game
         private void MainTimerEvent(object sender, EventArgs e)
         {
             MainTimerEvent MainTimeEvent = new MainTimerEvent();
-            levelOne.PlayerOne.Move(sender,e);
             Collision collision = new Collision(levelOne.PlayerOne, levelOne.walling);
+            levelOne.PlayerOne.Move(sender,e);
+            
             //MainTimeEvent.Update();
 
 

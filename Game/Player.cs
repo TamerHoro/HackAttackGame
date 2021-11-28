@@ -22,7 +22,7 @@ namespace Game
         public Player()
         {
             this.Image = playerimage;
-            this.Location = new Point(135, 135);
+            this.Location = new Point(135, 155);
             this.SizeMode = PictureBoxSizeMode.AutoSize;
             PlayerControl playercontrol = new PlayerControl();            
             this.BringToFront();
