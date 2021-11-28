@@ -60,6 +60,9 @@
     <Compile Include="HealthLabel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="HealthLabelPlayer.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="InteractableObject.cs">
       <SubType>Component</SubType>
     </Compile>

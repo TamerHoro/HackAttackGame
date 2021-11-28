@@ -18,7 +18,7 @@ namespace Game
         public PictureBox[] walling = new PictureBox[325];
         List<PictureBox> enemies = new List<PictureBox>();
         public Player PlayerOne = new Player();
-        public HealthLabel PlayerHealth;
+        public HealthLabelPlayer PlayerHealth;
         static private int[,] ReadMapFile()
         {
             int[,] maparray = new int[18, 18];
@@ -37,7 +37,7 @@ namespace Game
         public void LevelBuilder()            //creates a list with Walls
         {
             Player PlayerOne = new Player();
-            PlayerHealth = new HealthLabel(PlayerOne);
+            PlayerHealth = new HealthLabelPlayer(PlayerOne);
             int l=-10,h=-15,k = 0;
             for (int i = 0; i < 18; i++)
             {

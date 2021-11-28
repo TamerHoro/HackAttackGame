@@ -107,7 +107,8 @@ namespace Game
         {
             MainTimerEvent MainTimeEvent = new MainTimerEvent();
             levelOne.PlayerOne.Move();
-            levelOne.PlayerHealth.update();
+            levelOne.PlayerHealth.update(levelOne.PlayerOne);
+            
         }
 
         
