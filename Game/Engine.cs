@@ -29,6 +29,10 @@ namespace Game
             MainTimerEvent MainTimeEvent = new MainTimerEvent();
             Collision collision = new Collision(levelOne.PlayerOne, levelOne.walling,out winCondition);
             levelOne.PlayerOne.Move(sender,e);
+            if (levelOne.PlayerOne.shoot == true)
+            {
+                this.ShootBullet(levelOne.PlayerOne.direction);
+            }
             NextLevel(winCondition);
             //MainTimeEvent.Update();
         }
@@ -66,6 +70,15 @@ namespace Game
             //playerhealth = 100;
             //GameTimer.Start();
         }
-        
+
+        private void ShootBullet(string direction)
+        {
+            Bullet shotBullet = new Bullet();
+            shotBullet.direction = direction;
+            shotBullet.bulletLeft = levelOne.PlayerOne.Left + (levelOne.PlayerOne.Width / 2);
+            shotBullet.bulletTop = levelOne.PlayerOne.Top + (levelOne.PlayerOne.Height / 2);
+            shotBullet.MakeBullet(this);
+        }
+
     }
 }
