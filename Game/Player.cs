@@ -83,7 +83,7 @@ namespace Game
         }
 
        
-        public void Move(object sender, EventArgs e)
+        public void Move()
         {
             if (goLeft == true)
             {
