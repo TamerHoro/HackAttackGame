@@ -85,6 +85,7 @@ namespace Game
        
         public void Move(object sender, EventArgs e)
         {
+
             if (goLeft == true)
             {
                 this.Left -= speed;
