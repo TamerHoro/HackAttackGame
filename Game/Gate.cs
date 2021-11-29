@@ -15,7 +15,7 @@ namespace Game
             this.Width = 40;
             this.Height = 40;
             this.Left = l;
-            this.Top = h-15;
+            this.Top = h;
             this.BringToFront();
 
         }

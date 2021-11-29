@@ -41,7 +41,8 @@ namespace Game
         {
             if(windcondition == true)
             {
-                levelOne.Dispose();    
+                levelOne.Dispose();
+                levelOne.Controls.Clear();
                 this.Controls.Clear();
                 
                 levelOne = new Render(1);
