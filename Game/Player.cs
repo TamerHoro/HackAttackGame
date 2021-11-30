@@ -1,63 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
 
 namespace Game
 {
-    public class Player : PictureBox
+    class Player : InteractableObject
     {
-        public bool goLeft, goRight, goUp, goDown;
-        int speed = 5;
-        //public PictureBox picture = new PictureBox();       
+        public bool goLeft, goRight, goUp, goDown;      
         Image playerimage = Image.FromFile(@"..\..\Resources\player.png");
-        public int health = 3;
+        int speed = 5;
+
         public Player()
+            :base(Image.FromFile(@"..\..\Resources\player.png"), 100, 100, 3)
         {
-            this.Image = playerimage;
-            this.Location = new Point(135, 135);
-            this.SizeMode = PictureBoxSizeMode.AutoSize;
-            this.BringToFront();
-        }
 
+        }
         public void KeyIsUp(object sender, KeyEventArgs e)
-        {
-            goLeft = false;
-            goDown = false;
-            goUp = false;
-            goRight = false;
-            if (e.KeyCode == Keys.Left)
-            {
-                goLeft = true;
-                this.Image = Image.FromFile(@"C:\Users\jonat\source\repos\software-engineering5\Game\Resources\playerleft.png");
-            }
-
-            if (e.KeyCode == Keys.Right)
-            {
-                goRight = true;
-                this.Image = Image.FromFile(@"C:\Users\jonat\source\repos\software-engineering5\Game\Resources\playerright.png");
-            }
-
-            if (e.KeyCode == Keys.Up)
-            {
-                goUp = true;
-                this.Image = Image.FromFile(@"C:\Users\jonat\source\repos\software - engineering5\Game\Resources\playerup.png");
-            }
-
-            if (e.KeyCode == Keys.Down)
-            {
-                goDown = true;
-                this.Image = Image.FromFile(@"..\Resources\playerdown.png");
-            }
-        }
-
-        public void KeyIsDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Left)
             {
@@ -80,23 +38,55 @@ namespace Game
             }
         }
 
-        public void Move(object sender, EventArgs e)
+        public void KeyIsDown(object sender, KeyEventArgs e)
+        {
+            goLeft = false;
+            goDown = false;
+            goUp = false;
+            goRight = false;
+            if (e.KeyCode == Keys.Left)
+            {
+                goLeft = true;
+                Image = Image.FromFile(@"..\..\Resources\playerleft.png");
+            }
+
+            if (e.KeyCode == Keys.Right)
+            {
+                goRight = true;
+                Image = Image.FromFile(@"..\..\Resources\playeright.png");
+            }
+
+            if (e.KeyCode == Keys.Up)
+            {
+                goUp = true;
+                Image = Image.FromFile(@"..\..\Resources\playerup.png");
+            }
+
+            if (e.KeyCode == Keys.Down)
+            {
+                goDown = true;
+                Image = Image.FromFile(@"..\..\Resources\playerdown.png");
+            }
+        }
+
+       
+        public void Move()
         {
             if (goLeft == true)
             {
-                this.Left -= speed;
+                Left -= speed;
             }
             if (goRight == true)
             {
-                this.Left += speed;
+                Left += speed;
             }
             if (goUp == true)
             {
-                this.Top -= speed;
+                Top -= speed;
             }
             if (goDown == true)
             {
-                this.Top += speed;
+                Top += speed;
             }
         }
         
