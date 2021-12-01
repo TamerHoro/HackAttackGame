@@ -1,17 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
 
 namespace Game
 {
-    public class Player : PictureBox
+    class Player : InteractableObject
     {
         public bool goLeft, goRight, goUp, goDown;
         int speed = 5;
@@ -20,6 +13,7 @@ namespace Game
         public int health = 3;
 
         public Player()
+            :base(Image.FromFile(@"..\..\Resources\player.png"), 100, 100, 3)
         {
             this.Image = playerimage;
             this.Location = new Point(135, 155);
@@ -87,19 +81,19 @@ namespace Game
         {
             if (goLeft == true)
             {
-                this.Left -= speed;
+                Left -= speed;
             }
             if (goRight == true)
             {
-                this.Left += speed;
+                Left += speed;
             }
             if (goUp == true)
             {
-                this.Top -= speed;
+                Top -= speed;
             }
             if (goDown == true)
             {
-                this.Top += speed;
+                Top += speed;
             }
         }
         

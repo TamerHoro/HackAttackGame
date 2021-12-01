@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace Game
 {
-    class Wall : StaticObject
+    class Wall
     {
 
 
