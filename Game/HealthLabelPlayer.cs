@@ -22,7 +22,7 @@ namespace Game
             }
             else if (player.goLeft)
             {
-                Location = new Point(player.Left + 60, player.Top + 20);
+                Location = new Point(player.Left + 90, player.Top + 20);
             }
             else if (player.goRight)
             {

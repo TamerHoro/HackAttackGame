@@ -11,7 +11,7 @@ namespace Game
         int speed = 5;
 
         public Player()
-            :base(Image.FromFile(@"..\..\Resources\player.png"), 100, 100, 3)
+            :base(100, 100, 3, Image.FromFile(@"..\..\Resources\player.png"))
         {
 
         }
@@ -47,7 +47,7 @@ namespace Game
             if (e.KeyCode == Keys.Left)
             {
                 goLeft = true;
-                Image = Image.FromFile(@"..\..\Resources\playerleft.png");
+                Image = Image.FromFile(@"..\..\Resources\pleft.png");
             }
 
             if (e.KeyCode == Keys.Right)
