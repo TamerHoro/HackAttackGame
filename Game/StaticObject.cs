@@ -5,8 +5,8 @@ namespace Game
 {
     class StaticObject : GameObjects
     {
-        public StaticObject(Image image, int left, int top)
-            :base(image, left, top)
+        public StaticObject(int left, int top)
+            :base(left, top)
         {
 
         }

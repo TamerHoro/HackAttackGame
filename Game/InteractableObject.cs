@@ -7,10 +7,11 @@ namespace Game
     class InteractableObject : GameObjects
     {
         public int Health;
-        public InteractableObject(Image image, int left, int top, int health)
-            :base(image, left, top)
+        public InteractableObject(int left, int top, int health, Image image)
+            :base(left, top)
         {
             Health = health;
+            this.Image = image;
         }
     }
 }

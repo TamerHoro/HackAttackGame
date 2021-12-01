@@ -13,7 +13,7 @@ namespace Game
         public int health = 3;
 
         public Player()
-            :base(Image.FromFile(@"..\..\Resources\player.png"), 100, 100, 3)
+            :base(100, 100, 3, Image.FromFile(@"..\..\Resources\player.png"))
         {
             this.Image = playerimage;
             this.Location = new Point(135, 155);
