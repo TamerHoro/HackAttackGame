@@ -41,18 +41,15 @@ namespace Game
             // 
             // Engine
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
             this.BackgroundImage = global::Game.Properties.Resources.floor;
-            this.ClientSize = new System.Drawing.Size(704, 681);
-            this.Controls.Add(levelOne.PlayerOne);
+            this.ClientSize = new System.Drawing.Size(939, 838);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Engine";
             this.Text = "Engine";
-            this.Load += new System.EventHandler(this.Engine_Load);            
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(levelOne.PlayerOne.KeyIsDown);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(levelOne.PlayerOne.KeyIsUp);
-            ((System.ComponentModel.ISupportInitialize)(levelOne.PlayerOne)).EndInit();
+            this.Load += new System.EventHandler(this.Engine_Load);
             this.ResumeLayout(false);
 
         }

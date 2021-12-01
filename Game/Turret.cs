@@ -4,23 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace Game
 {
-    class Gate :StaticObject
+    class Turret : Enemy
     {
-        public Gate(int l,int h, int i, int j)
+        public Turret(int l, int h, int i, int j)
         {
-            this.Tag = $"Gate{i}{j}";
-            this.Image = Properties.Resources.gate;
+            this.Tag = $"Turret{i}{j}";
+            this.Image = Properties.Resources.TurretShootSmallN;
+            this.SizeMode = PictureBoxSizeMode.AutoSize;
             this.BackColor = Color.Transparent;
-            this.Width = 40;
-            this.Height = 40;
             this.Left = l;
-            this.Top = h-15;
+            this.Top = h - 15;
             this.BringToFront();
 
         }
-            
+
     }
 }

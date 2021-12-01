@@ -24,7 +24,8 @@ namespace Game
             this.Image = playerimage;
             this.Location = new Point(135, 155);
             this.SizeMode = PictureBoxSizeMode.AutoSize;
-            PlayerControl playercontrol = new PlayerControl();            
+            PlayerControl playercontrol = new PlayerControl();
+            this.BackColor = Color.Transparent;
             this.BringToFront();
 
         }
