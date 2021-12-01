@@ -6,15 +6,11 @@ using System.Threading.Tasks;
 
 namespace Game
 {
-    class MainTimerEvent
+    public static class LevelManager
     {
-        public MainTimerEvent()
-        {
+        //public static int Level()
+        
+        
 
-        }
-
-        public void update()
-        {
-        }
     }
 }

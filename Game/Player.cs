@@ -6,13 +6,20 @@ namespace Game
 {
     class Player : InteractableObject
     {
-        public bool goLeft, goRight, goUp, goDown;      
-        Image playerimage = Image.FromFile(@"..\..\Resources\player.png");
+        public bool goLeft, goRight, goUp, goDown;
         int speed = 5;
+        //public PictureBox picture = new PictureBox();       
+        Image playerimage = Image.FromFile(@"..\..\Resources\playersmall.png");
+        public int health = 3;
 
         public Player()
             :base(Image.FromFile(@"..\..\Resources\player.png"), 100, 100, 3)
         {
+            this.Image = playerimage;
+            this.Location = new Point(135, 155);
+            this.SizeMode = PictureBoxSizeMode.AutoSize;
+            PlayerControl playercontrol = new PlayerControl();            
+            this.BringToFront();
 
         }
         public void KeyIsUp(object sender, KeyEventArgs e)
@@ -47,25 +54,25 @@ namespace Game
             if (e.KeyCode == Keys.Left)
             {
                 goLeft = true;
-                Image = Image.FromFile(@"..\..\Resources\playerleft.png");
+                this.Image = Image.FromFile(@"..\..\Resources\playerleftsmall.png");
             }
 
             if (e.KeyCode == Keys.Right)
             {
                 goRight = true;
-                Image = Image.FromFile(@"..\..\Resources\playeright.png");
+                this.Image = Image.FromFile(@"..\..\Resources\playerightsmall.png");
             }
 
             if (e.KeyCode == Keys.Up)
             {
                 goUp = true;
-                Image = Image.FromFile(@"..\..\Resources\playerup.png");
+                this.Image = Image.FromFile(@"..\..\Resources\playerupsmall.png");
             }
 
             if (e.KeyCode == Keys.Down)
             {
                 goDown = true;
-                Image = Image.FromFile(@"..\..\Resources\playerdown.png");
+                this.Image = Image.FromFile(@"..\..\Resources\playerdownsmall.png");
             }
         }
 

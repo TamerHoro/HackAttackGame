@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bullet.cs" />
+    <Compile Include="Collision.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="Engine.cs">
       <SubType>Form</SubType>
@@ -54,18 +55,17 @@
     <Compile Include="Engine.Designer.cs">
       <DependentUpon>Engine.cs</DependentUpon>
     </Compile>
+    <Compile Include="EscapeMenu.cs" />
     <Compile Include="GameObjects.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="HealthLabel.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="HealthLabelPlayer.cs">
+    <Compile Include="Gate.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="InteractableObject.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="LevelManager.cs" />
     <Compile Include="MainMenue.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,7 +75,9 @@
     <Compile Include="MainTImerEvent.cs" />
     <Compile Include="Menue.cs" />
     <Compile Include="MenueControl.cs" />
-    <Compile Include="Player.cs" />
+    <Compile Include="Player.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="PlayerControl.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -85,7 +87,10 @@
     <Compile Include="StaticObject.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Wall.cs" />
+    <Compile Include="Wall.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WinGame.cs" />
     <EmbeddedResource Include="Engine.resx">
       <DependentUpon>Engine.cs</DependentUpon>
     </EmbeddedResource>
@@ -100,6 +105,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Render.resx">
       <DependentUpon>Render.cs</DependentUpon>
@@ -142,7 +148,8 @@
     <None Include="Resources\Wallvertical.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="map array.txt" />
+    <None Include="Resources\gate.png" />
+    <None Include="Resources\floor.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
