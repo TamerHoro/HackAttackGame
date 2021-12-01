@@ -13,14 +13,9 @@ namespace Game
         public int health = 3;
 
         public Player()
-            :base(100, 100, 3, Image.FromFile(@"..\..\Resources\player.png"))
+            : base(100, 100, 3, Image.FromFile(@"..\..\Resources\playersmall.png"))
         {
-            this.Image = playerimage;
-            this.Location = new Point(135, 155);
             this.SizeMode = PictureBoxSizeMode.AutoSize;
-            PlayerControl playercontrol = new PlayerControl();            
-            this.BringToFront();
-
         }
         public void KeyIsUp(object sender, KeyEventArgs e)
         {
