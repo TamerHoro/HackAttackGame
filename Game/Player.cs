@@ -47,7 +47,7 @@ namespace Game
             if (e.KeyCode == Keys.Left)
             {
                 goLeft = true;
-                Image = Image.FromFile(@"..\..\Resources\pleft.png");
+                Image = Image.FromFile(@"..\..\Resources\playerleft.png");
             }
 
             if (e.KeyCode == Keys.Right)
