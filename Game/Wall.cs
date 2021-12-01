@@ -7,11 +7,11 @@ using System.Windows.Forms;
 
 namespace Game
 {
-    class Wall
+    class Wall : StaticObject
     {
 
 
-        public Wall(int l, int h, int i, int j)
+        public Wall(int l, int h, int i, int j) : base(l,h)
         {
             this.Tag = $"wall{i}{j}";
             this.Image = Properties.Resources.wall;

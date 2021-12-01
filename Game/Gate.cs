@@ -8,7 +8,7 @@ namespace Game
 {
     class Gate :StaticObject
     {
-        public Gate(int l,int h, int i, int j)
+        public Gate(int l,int h, int i, int j) :base(l,h)
         {
             this.Tag = $"Gate{i}{j}";
             this.Image = Properties.Resources.gate;
