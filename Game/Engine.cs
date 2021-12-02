@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -45,6 +45,10 @@ namespace Game
             {
                 RestartGame();
                 escapeMenu = new EscapeMenu();
+            };
+            if (levelOne.PlayerOne.shoot == true)
+            {
+                this.ShootBullet(levelOne.PlayerOne.direction);
             }
             NextLevel(winCondition);
             //MainTimeEvent.Update();
@@ -98,5 +102,18 @@ namespace Game
         {
 
         }
+<<<<<<< Game/Engine.cs
+
+        private void ShootBullet(string direction)
+        {
+            Bullet shotBullet = new Bullet();
+            shotBullet.direction = direction;
+            shotBullet.bulletLeft = levelOne.PlayerOne.Left + (levelOne.PlayerOne.Width / 2);
+            shotBullet.bulletTop = levelOne.PlayerOne.Top + (levelOne.PlayerOne.Height / 2);
+            shotBullet.MakeBullet(this);
+        }
+
+=======
+>>>>>>> Game/Engine.cs
     }
 }

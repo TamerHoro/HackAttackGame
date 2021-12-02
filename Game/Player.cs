@@ -6,11 +6,12 @@ namespace Game
 {
     class Player : InteractableObject
     {
-        public bool goLeft, goRight, goUp, goDown;
+        public bool goLeft, goRight, goUp, goDown, shoot;
         int speed = 5;
         //public PictureBox picture = new PictureBox();       
         Image playerimage = Image.FromFile(@"..\..\Resources\playersmall.png");
         public int health = 3;
+        public string direction;
 
         public Player()
             : base(100, 100, 3, Image.FromFile(@"..\..\Resources\playersmall.png"))
@@ -38,6 +39,10 @@ namespace Game
             {
                 goDown = false;
             }
+            if (e.KeyCode == Keys.Space)
+            {
+                shoot = false;
+            }
         }
 
         public void KeyIsDown(object sender, KeyEventArgs e)
@@ -46,34 +51,45 @@ namespace Game
             goDown = false;
             goUp = false;
             goRight = false;
+            shoot = false;
             if (e.KeyCode == Keys.Left)
             {
                 goLeft = true;
                 this.Image = Image.FromFile(@"..\..\Resources\playerleftsmall.png");
+                this.direction = "left";
             }
 
             if (e.KeyCode == Keys.Right)
             {
                 goRight = true;
                 this.Image = Image.FromFile(@"..\..\Resources\playerightsmall.png");
+                this.direction = "right";
             }
 
             if (e.KeyCode == Keys.Up)
             {
                 goUp = true;
                 this.Image = Image.FromFile(@"..\..\Resources\playerupsmall.png");
+                this.direction = "up";
             }
 
             if (e.KeyCode == Keys.Down)
             {
                 goDown = true;
                 this.Image = Image.FromFile(@"..\..\Resources\playerdownsmall.png");
+                this.direction = "down";
             }
+            if (e.KeyCode == Keys.Space)
+            {
+                shoot = true;
+            }
+
         }
 
        
         public void Move()
         {
+
             if (goLeft == true)
             {
                 Left -= speed;
@@ -91,6 +107,6 @@ namespace Game
                 Top += speed;
             }
         }
-        
+  
     }
 }
