@@ -102,7 +102,6 @@ namespace Game
         {
 
         }
-<<<<<<< Game/Engine.cs
 
         private void ShootBullet(string direction)
         {
@@ -113,7 +112,5 @@ namespace Game
             shotBullet.MakeBullet(this);
         }
 
-=======
->>>>>>> Game/Engine.cs
     }
 }
