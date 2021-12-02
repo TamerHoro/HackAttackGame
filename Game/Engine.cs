@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,24 +11,41 @@ using System.IO;
 
 
 namespace Game
-{ 
+{
+    enum Level { one, two, three }
+
     public partial class Engine : Form
-    {        
+    {
+        
         Render levelOne = new Render(0);
         bool winCondition = false;
+        public EscapeMenu escapeMenu = new EscapeMenu();     
+        
+
+
         public Engine()
         {           
             InitializeComponent();
             this.Controls.AddRange(levelOne.walling);
             this.Controls.Add(levelOne.PlayerOne);
+            this.Controls.Add(escapeMenu);
             //this.Controls.Add(levelOne.PlayerControl);
-            RestartGame();
+            
         }
         private void MainTimerEvent(object sender, EventArgs e)
         {
             MainTimerEvent MainTimeEvent = new MainTimerEvent();
             Collision collision = new Collision(levelOne.PlayerOne, levelOne.walling,out winCondition);
-            levelOne.PlayerOne.Move(sender,e);
+            levelOne.PlayerOne.Move();
+            if (escapeMenu.exitClicked == true) 
+            {
+                this.Close(); 
+            }
+            if(escapeMenu.restartClicked == true) 
+            {
+                RestartGame();
+                escapeMenu = new EscapeMenu();
+            };
             if (levelOne.PlayerOne.shoot == true)
             {
                 this.ShootBullet(levelOne.PlayerOne.direction);
@@ -36,22 +53,25 @@ namespace Game
             NextLevel(winCondition);
             //MainTimeEvent.Update();
         }
+       
         private void Engine_Load(object sender, EventArgs e)
         {
 
         }   
         
-        private void NextLevel(bool windcondition)
+        private void NextLevel(bool wincondition)
         {
-            if(windcondition == true)
+            if(wincondition == true)
             {
-                levelOne.Dispose();    
+                levelOne.Dispose();
+                levelOne.Controls.Clear();
                 this.Controls.Clear();
                 
                 levelOne = new Render(1);
                 InitializeComponent();
                 this.Controls.AddRange(levelOne.walling);
                 this.Controls.Add(levelOne.PlayerOne);
+                this.Controls.Add(escapeMenu);
             }
             else
             {
@@ -60,16 +80,29 @@ namespace Game
 
         }
         
+        
         private void RestartGame()   //goes to MenueClass
         {
-            //MakeLevel();
-            //goup = false;
-            //godown = false;
-            //goleft = false;
-            //goright = false;
-            //playerhealth = 100;
-            //GameTimer.Start();
+            levelOne.Controls.Clear();
+            levelOne.Dispose();            
+            this.Controls.Clear();
+            levelOne = new Render(0);
+            InitializeComponent();
+            this.Controls.AddRange(levelOne.walling);
+            this.Controls.Add(levelOne.PlayerOne);
+            this.Controls.Add(escapeMenu);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+<<<<<<< Game/Engine.cs
 
         private void ShootBullet(string direction)
         {
@@ -80,5 +113,7 @@ namespace Game
             shotBullet.MakeBullet(this);
         }
 
+=======
+>>>>>>> Game/Engine.cs
     }
 }

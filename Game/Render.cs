@@ -19,7 +19,7 @@ namespace Game
         public GameObjects[] walling = new GameObjects[325];
         //List<PictureBox> enemies = new List<PictureBox>();
         PictureBox goal;
-        public Player PlayerOne = new Player();
+        public Player PlayerOne = new Player();        
         private int[,] ReadMapFile()
         {
             string[] lines= new string[0];
