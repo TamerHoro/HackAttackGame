@@ -10,6 +10,7 @@ namespace Game
     class Collision
     {
         public Player player;
+        public Player futurePlayer = new Player();
         public GameObjects[] gameobjects;
         bool win = false;
         public void CollsionCheck()
@@ -19,6 +20,33 @@ namespace Game
                 if (gameobjects[i] == null) {  }
                 else
                 {
+                    for(int j = 0; j < 4; j++)
+                    {
+                        futurePlayer.Bounds = player.Bounds;
+                        if(j == 0)
+                            futurePlayer.Left = futurePlayer.Left + 5;
+                        if(j == 1)
+                            futurePlayer.Left = futurePlayer.Left - 5;
+                        if(j == 2)
+                            futurePlayer.Top = futurePlayer.Top + 5;
+                        if(j == 3)
+                            futurePlayer.Top = futurePlayer.Top - 5;
+
+                        if (futurePlayer.Bounds.IntersectsWith(gameobjects[i].Bounds))
+                        if (gameobjects[i] is Wall)
+                        {
+                            if(j == 0)
+                                player.goRight = false;
+                            if(j == 1)
+                                player.goLeft = false;
+                            if(j == 2)
+                                player.goDown = false;
+                            if(j == 3)
+                                player.goUp = false;
+                        }
+
+                    }
+
                     if (player.Bounds.IntersectsWith(gameobjects[i].Bounds))
                         if (gameobjects[i] is Wall)
                         {

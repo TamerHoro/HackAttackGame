@@ -1,23 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
 
 namespace Game
 {
-    class GameObjects : PictureBox
+    class GameObjects: PictureBox
     {
-        //PictureBox gameObject = new PictureBox();
-        int posx;
-        int posy;
-        int size;
-        //...
-       
+        public GameObjects(int left, int top)
+        {
+            Left = left;
+            Top = top;
+        }
     }
 }

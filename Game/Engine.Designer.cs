@@ -30,7 +30,7 @@ namespace Game
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);           
             this.SuspendLayout();
             // 
             // timer1
@@ -38,6 +38,7 @@ namespace Game
             this.timer1.Enabled = true;
             this.timer1.Interval = 20;
             this.timer1.Tick += new System.EventHandler(this.MainTimerEvent);
+            
             // 
             // Engine
             // 
@@ -50,18 +51,22 @@ namespace Game
             this.Name = "Engine";
             this.Text = "Engine";
             this.Load += new System.EventHandler(this.Engine_Load);
-            this.ResumeLayout(false);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(levelOne.PlayerOne.KeyIsDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(levelOne.PlayerOne.KeyIsUp);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(escapeMenu.KeyIsDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(escapeMenu.KeyIsUp);
             ((System.ComponentModel.ISupportInitialize)(levelOne.PlayerOne)).EndInit();
             this.ResumeLayout(false);
+
 
         }
 
         #endregion
         private System.Windows.Forms.Timer timer1;
+        
         //private System.Windows.Forms.PictureBox player;
-        private System.Windows.Forms.ProgressBar healthbar;
+        //private System.Windows.Forms.ProgressBar healthbar;
+
     }
 }
 
