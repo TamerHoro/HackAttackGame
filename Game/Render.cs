@@ -47,7 +47,8 @@ namespace Game
         enum Objects
         {
             Wall = 1,
-            Turret = 2,
+            Mine = 2,
+            Turret = 3,
             Gate = 9
         }
 
@@ -61,12 +62,16 @@ namespace Game
                 for (int j = 0; j < 18; j++)
                 {
                     if (maparray[i, j] == (int)Objects.Wall)
-                    {                       
-                        walling[k++] = new Wall(l,h,i,j);
+                    {
+                        walling[k++] = new Wall(l, h, i, j);
                     }
                     else if (maparray[i, j] == (int)Objects.Turret)
                     {
                         walling[k++] = new Turret(l, h, i, j);
+                    }
+                    else if (maparray[i, j] == (int)Objects.Mine)
+                    {
+                        walling[k++] = new Mine(l, h, i, j);
                     }
                     else if (maparray[i, j] == (int)Objects.Gate)
                     {

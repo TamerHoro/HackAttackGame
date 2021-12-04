@@ -47,6 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bullet.cs" />
+    <Compile Include="Mine.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Collision.cs" />
     <Compile Include="Enemy.cs">
       <SubType>Component</SubType>
@@ -153,6 +156,16 @@
   <ItemGroup>
     <Content Include="Level1.txt" />
     <Content Include="map array.txt" />
+    <None Include="Resources\TurretSmallShoot45.gif" />
+    <None Include="Resources\Bullet.png" />
+    <None Include="Resources\Bullet45.png" />
+    <None Include="Resources\MineExplode.gif" />
+    <None Include="Resources\MineIdle.png" />
+    <None Include="Resources\MineTriggered.png" />
+    <None Include="Resources\TurretIdle.png" />
+    <None Include="Resources\TurretIdle45.png" />
+    <None Include="Resources\TurretRot45Right.gif" />
+    <None Include="Resources\TurretRot90Right.gif" />
     <Content Include="Resources\TurretShootSmallN.gif" />
     <None Include="Resources\gate.png" />
     <None Include="Resources\floor.png" />

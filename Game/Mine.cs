@@ -8,19 +8,17 @@ using System.Windows.Forms;
 
 namespace Game
 {
-    class Turret : Enemy
+    class Mine : Enemy
     {
-        public Turret(int l, int h, int i, int j)
+        public Mine(int l, int h, int i, int j)
         {
-            this.Tag = $"Turret{i}{j}";
-            this.Image = Properties.Resources.TurretShootSmallN;
+            this.Tag = $"Mine{i}{j}";
+            this.Image = Properties.Resources.MineIdle;
             this.SizeMode = PictureBoxSizeMode.AutoSize;
             this.BackColor = Color.Transparent;
             this.Left = l;
             this.Top = h;
             this.BringToFront();
-
         }
-
     }
 }
