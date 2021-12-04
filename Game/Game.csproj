@@ -58,6 +58,7 @@
     <Compile Include="Engine.Designer.cs">
       <DependentUpon>Engine.cs</DependentUpon>
     </Compile>
+    <Compile Include="EscapeMenu.cs" />
     <Compile Include="GameObjects.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -67,6 +68,7 @@
     <Compile Include="InteractableObject.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="LevelManager.cs" />
     <Compile Include="MainMenue.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -149,7 +151,6 @@
     <None Include="Resources\Wallvertical.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="map array.txt" />
     <None Include="Resources\gate.png" />
     <None Include="Resources\floor.png" />
   </ItemGroup>
