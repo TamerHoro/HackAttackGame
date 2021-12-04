@@ -51,6 +51,10 @@ namespace Game
             this.Text = "Engine";
             this.Load += new System.EventHandler(this.Engine_Load);
             this.ResumeLayout(false);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(levelOne.PlayerOne.KeyIsDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(levelOne.PlayerOne.KeyIsUp);
+            ((System.ComponentModel.ISupportInitialize)(levelOne.PlayerOne)).EndInit();
+            this.ResumeLayout(false);
 
         }
 

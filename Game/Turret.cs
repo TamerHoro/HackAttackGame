@@ -17,7 +17,7 @@ namespace Game
             this.SizeMode = PictureBoxSizeMode.AutoSize;
             this.BackColor = Color.Transparent;
             this.Left = l;
-            this.Top = h - 15;
+            this.Top = h;
             this.BringToFront();
 
         }
