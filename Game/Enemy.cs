@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Game
 {
-    class Enemy
+    class Enemy : GameObjects
     {
     }
 }

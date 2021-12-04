@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -46,12 +46,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bullet.cs">
+    <Compile Include="Bullet.cs" />
+    <Compile Include="Mine.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="BulletCollision.cs" />
     <Compile Include="Collision.cs" />
-    <Compile Include="Enemy.cs" />
+    <Compile Include="Enemy.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Engine.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +91,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="StaticObject.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Turret.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Wall.cs">
@@ -151,6 +157,19 @@
     <None Include="Resources\Wallvertical.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Level1.txt" />
+    <Content Include="map array.txt" />
+    <None Include="Resources\TurretSmallShoot45.gif" />
+    <None Include="Resources\Bullet.png" />
+    <None Include="Resources\Bullet45.png" />
+    <None Include="Resources\MineExplode.gif" />
+    <None Include="Resources\MineIdle.png" />
+    <None Include="Resources\MineTriggered.png" />
+    <None Include="Resources\TurretIdle.png" />
+    <None Include="Resources\TurretIdle45.png" />
+    <None Include="Resources\TurretRot45Right.gif" />
+    <None Include="Resources\TurretRot90Right.gif" />
+    <Content Include="Resources\TurretShootSmallN.gif" />
     <None Include="Resources\gate.png" />
     <None Include="Resources\floor.png" />
   </ItemGroup>

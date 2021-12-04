@@ -43,7 +43,15 @@ namespace Game
             }
             return maparray;
         }
-        
+
+        enum Objects
+        {
+            Wall = 1,
+            Mine = 2,
+            Turret = 3,
+            Gate = 9
+        }
+
         public void LevelBuilder()            //creates a lists with GameObjects
         {
 
@@ -53,11 +61,19 @@ namespace Game
             {
                 for (int j = 0; j < 18; j++)
                 {
-                    if (maparray[i, j] == 1)
-                    {                       
-                        walling[k++] = new Wall(l,h,i,j);
+                    if (maparray[i, j] == (int)Objects.Wall)
+                    {
+                        walling[k++] = new Wall(l, h, i, j);
                     }
-                    else if (maparray[i, j] == 9)
+                    else if (maparray[i, j] == (int)Objects.Turret)
+                    {
+                        walling[k++] = new Turret(l, h, i, j);
+                    }
+                    else if (maparray[i, j] == (int)Objects.Mine)
+                    {
+                        walling[k++] = new Mine(l, h, i, j);
+                    }
+                    else if (maparray[i, j] == (int)Objects.Gate)
                     {
                         walling[k++] = new Gate(l, h, i, j);
                     }

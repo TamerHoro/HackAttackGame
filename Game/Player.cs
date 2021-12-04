@@ -17,6 +17,10 @@ namespace Game
             : base(100, 100, 3, Image.FromFile(@"..\..\Resources\playersmall.png"))
         {
             this.SizeMode = PictureBoxSizeMode.AutoSize;
+            PlayerControl playercontrol = new PlayerControl();
+            this.BackColor = Color.Transparent;
+            this.BringToFront();
+
         }
         public void KeyIsUp(object sender, KeyEventArgs e)
         {
