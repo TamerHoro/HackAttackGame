@@ -10,7 +10,7 @@ namespace Game
 {
     class Mine : Enemy
     {
-        public Mine(int l, int h, int i, int j)
+        public Mine(int l, int h, int i, int j) : base(l, h)
         {
             this.Tag = $"Mine{i}{j}";
             this.Image = Properties.Resources.MineIdle;
