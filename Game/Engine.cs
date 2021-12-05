@@ -33,7 +33,7 @@ namespace Game
         private void MainTimerEvent(object sender, EventArgs e)
         {
             MainTimerEvent MainTimeEvent = new MainTimerEvent();
-            Collision collision = new Collision(level.playerOne, level.walling,out winCondition);
+            Collision collision = new Collision(level.playerOne, level.objectArray,out winCondition);
             level.playerOne.Move();
             if (escapeMenu.exitClicked == true) 
             {
@@ -53,7 +53,7 @@ namespace Game
         }
         public void StartGame()
         {
-            this.Controls.AddRange(level.walling);
+            this.Controls.AddRange(level.objectArray);
             this.Controls.Add(level.playerOne);
             this.Controls.Add(escapeMenu);
         }
@@ -77,7 +77,7 @@ namespace Game
                 level = LevelManager.CreateLevel(stage);
                 escapeMenu = new EscapeMenu();
                 InitializeComponent();
-                this.Controls.AddRange(level.walling);
+                this.Controls.AddRange(level.objectArray);
                 this.Controls.Add(level.playerOne);                
                 this.Controls.Add(escapeMenu);
             }
@@ -98,7 +98,7 @@ namespace Game
             escapeMenu = new EscapeMenu();
             InitializeComponent();
             
-            this.Controls.AddRange(level.walling);
+            this.Controls.AddRange(level.objectArray);
             this.Controls.Add(level.playerOne);
             this.Controls.Add(escapeMenu);
            
