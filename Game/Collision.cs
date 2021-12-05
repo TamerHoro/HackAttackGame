@@ -48,7 +48,7 @@ namespace Game
                     }
 
                     if (player.Bounds.IntersectsWith(gameobjects[i].Bounds))
-                        if (gameobjects[i] is Wall)
+                        if (gameobjects[i] is Wall || gameobjects[i] is Turret)
                         {
                             if (player.Location.X > gameobjects[i].Location.X) //Object is leftside of player
                             {
@@ -78,6 +78,15 @@ namespace Game
                                 win = true;
                             }
                             
+                        }
+                        if (gameobjects[i] is Mine)
+                        {
+                        if (player.Bounds.IntersectsWith(gameobjects[i].Bounds))
+                            {
+                                var ActiveMine = gameobjects[i] as Mine;
+                                ActiveMine.Image = Properties.Resources.MineExplode;
+                                player.Die();
+                            }
                         }
                 }
                 

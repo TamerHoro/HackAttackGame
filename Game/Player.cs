@@ -111,6 +111,11 @@ namespace Game
                 Top += speed;
             }
         }
+
+        public void Die()
+        {
+            this.Location = new Point(100, 100);
+        }
   
     }
 }
