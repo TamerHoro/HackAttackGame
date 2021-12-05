@@ -72,6 +72,7 @@ namespace Game
                     else if (maparray[i, j] == (int)Objects.Mine)
                     {
                         walling[k++] = new Mine(l, h, i, j);
+                        
                     }
                     else if (maparray[i, j] == (int)Objects.Gate)
                     {

@@ -13,7 +13,7 @@ namespace Game
         public Turret(int l, int h, int i, int j) : base(l, h)
         {
             this.Tag = $"Turret{i}{j}";
-            this.Image = Properties.Resources.TurretIdle;
+            this.Image = Properties.Resources.TurretShootSmallN;
             this.SizeMode = PictureBoxSizeMode.AutoSize;
             this.BackColor = Color.Transparent;
             this.Left = l;
