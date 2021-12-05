@@ -17,22 +17,24 @@ namespace Game
         int[,] maparray;
         //List<PictureBox> levelwalling = new List<PictureBox>();
         public GameObjects[] walling = new GameObjects[325];
-        //List<PictureBox> enemies = new List<PictureBox>();
-        PictureBox goal;
-        public Player PlayerOne = new Player();        
+        //List<PictureBox> enemies = new List<PictureBox>();        
+        public Player playerOne = new Player();
         private int[,] ReadMapFile()
         {
             string[] lines= new string[0];
             int[,] maparray = new int[18, 18];
-            if (stage == 0)
+            if (stage == 0||stage == 1)
             {
-                 lines = File.ReadAllText(@"..\..\Level1.txt").Split(new string[] { "\n" }, StringSplitOptions.None);
+                 lines = File.ReadAllText(@"..\..\Level1.txt").Split(new string[] { "\n" }, StringSplitOptions.None);                
             }
-            if(stage == 1)
+            if(stage == 2)
             {
-                lines = File.ReadAllText(@"..\..\Level2.txt").Split(new string[] { "\n" }, StringSplitOptions.None);
-
-            }           
+                lines = File.ReadAllText(@"..\..\Level2.txt").Split(new string[] { "\n" }, StringSplitOptions.None);                
+            }
+            else
+            {
+                lines = File.ReadAllText(@"..\..\Level1.txt").Split(new string[] { "\n" }, StringSplitOptions.None);
+            }
             for (int i = 0; i < 18; i++)
             {
                 var fields = lines[i].Split(' ');
