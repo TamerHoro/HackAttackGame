@@ -122,7 +122,7 @@ namespace Game
 
         private void ShootBullet(string direction)
         {
-            Bullet shotBullet = new Bullet();
+            Bullet shotBullet = new Bullet(level.objectArray);
             shotBullet.direction = direction;
             shotBullet.bulletLeft = level.playerOne.Left + (level.playerOne.Width / 2);
             shotBullet.bulletTop = level.playerOne.Top + (level.playerOne.Height / 2);

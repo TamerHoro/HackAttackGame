@@ -8,7 +8,7 @@ namespace Game
 {
     class BulletCollision
     {
-        public Bullet bullet = new Bullet();
+        public Bullet bullet; 
         public GameObjects[] gameobjects;
         bool col = false;
         public void BulletCollsionCheck()
@@ -34,6 +34,7 @@ namespace Game
             this.gameobjects = gameobjects;
             BulletCollsionCheck();
             collided = col;
+            bullet = new Bullet(gameobjects);
         }
     }
 }
