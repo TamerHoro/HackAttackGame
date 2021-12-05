@@ -11,37 +11,34 @@ namespace Game
     {
         new Button exit = new Button();
         new Button restart = new Button();
-        bool escapepressed = false;
+        bool menueopen = false;
         bool _exitClicked = false;
         bool _restartClicked = false;
         
         public bool exitClicked  { get => _exitClicked; private set => _exitClicked = value; }
-        public bool restartClicked { get => _restartClicked; private set => _restartClicked = value; }
+        public bool restartClicked { get => _restartClicked; set => _restartClicked = value; }
 
         public void KeyIsUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Escape && escapepressed == false)
-            {
 
-                escapepressed = true;
-            }
-            else
-            {
-
-                escapepressed = false;
-            }
-
+            
         }
         public void KeyIsDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Escape && escapepressed == false)
-            {
-                this.BringToFront();
-                this.Show();                
-            }
-            else
+            if (e.KeyCode == Keys.Escape && menueopen == true)
             {
                 this.Hide();
+                menueopen = false;
+            }
+            else if (e.KeyCode == Keys.Escape && menueopen == false)
+            {
+                this.BringToFront();
+                this.Show();
+                menueopen = true;
+            }            
+            else
+            {
+                
                 
             }
         }
@@ -51,8 +48,9 @@ namespace Game
         }
         public void restart_Click(object sender, EventArgs e)
         {
-            restartClicked = true;
-            this.Hide();
+            restartClicked = true;            
+            menueopen = false;
+            this.Dispose();
         }
         public void OpenMenue()
         {

@@ -10,7 +10,7 @@ namespace Game
 {
     class Turret : Enemy
     {
-        public Turret(int l, int h, int i, int j)
+        public Turret(int l, int h, int i, int j) : base(l, h)
         {
             this.Tag = $"Turret{i}{j}";
             this.Image = Properties.Resources.TurretShootSmallN;

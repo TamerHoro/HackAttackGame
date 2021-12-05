@@ -19,7 +19,7 @@ namespace Game
             this.Left = l;
             this.Top = h;
             this.BringToFront();
-
+            
         }
             
     }
