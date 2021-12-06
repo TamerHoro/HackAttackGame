@@ -20,5 +20,13 @@ namespace Game
             this.Top = h;
             this.BringToFront();
         }
+
+        public async void Explode()
+        {
+            this.Image = Properties.Resources.MineExplode;
+            await Task.Delay(1500);
+            this.alive = false;
+            this.Dispose();
+        }
     }
 }

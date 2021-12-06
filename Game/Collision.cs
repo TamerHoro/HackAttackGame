@@ -13,7 +13,8 @@ namespace Game
         public Player futurePlayer = new Player();
         public GameObjects[] gameobjects;
         bool win = false;
-        public void CollsionCheck()
+        
+        public void CollsionCheck() 
         {            
             for (int i = 0; i < gameobjects.Length; i++)
             {
@@ -48,41 +49,68 @@ namespace Game
                     }
 
                     if (player.Bounds.IntersectsWith(gameobjects[i].Bounds))
-                        if (gameobjects[i] is Wall)
+                    if (gameobjects[i] is Wall)
+                    {
+                        if (player.Location.X > gameobjects[i].Location.X) //Object is leftside of player
                         {
-                            if (player.Location.X > gameobjects[i].Location.X) //Object is leftside of player
-                            {
-                                player.goLeft = false;
-                                player.Left = player.Left + 5;
-                            }
-                            if (player.Location.X < gameobjects[i].Location.X) //Object is rightside of player
-                            {
-                                player.goRight = false;
-                                player.Left = player.Left - 5;
-                            }
-                            if (player.Location.Y > gameobjects[i].Location.Y) //Object is below player
-                            {
-                                player.goDown = false;
-                                player.Top = player.Top + 5;
-                            }
-                            if (player.Location.Y < gameobjects[i].Location.Y) //Object is over player
-                            {
-                                player.goUp = false;
-                                player.Top = player.Top - 5;
-                            }
+                            player.goLeft = false;
+                            player.Left = player.Left + 5;
                         }
-                        if (gameobjects[i] is Gate)
+                        if (player.Location.X < gameobjects[i].Location.X) //Object is rightside of player
                         {
-                            if (player.Bounds.IntersectsWith(gameobjects[i].Bounds))
-                            {
-                                win = true;
-                            }
+                            player.goRight = false;
+                            player.Left = player.Left - 5;
+                        }
+                        if (player.Location.Y > gameobjects[i].Location.Y) //Object is below player
+                        {
+                            player.goDown = false;
+                            player.Top = player.Top + 5;
+                        }
+                        if (player.Location.Y < gameobjects[i].Location.Y) //Object is over player
+                        {
+                            player.goUp = false;
+                            player.Top = player.Top - 5;
+                        }
+                    }
+                    if (gameobjects[i] is Gate)
+                    {
+                        if (player.Bounds.IntersectsWith(gameobjects[i].Bounds))
+                        {
+                            win = true;
+                        }
                             
+                    }
+                    if (gameobjects[i] is Mine || gameobjects[i] is Turret)
+                    {
+                        if (player.Bounds.IntersectsWith(gameobjects[i].Bounds))
+                        {
+                            if (gameobjects[i] is Mine)
+                            {   
+                                var ActiveMine = gameobjects[i] as Mine;
+                                if (ActiveMine.IsAlive)
+                                {
+                                    ActiveMine.Explode();
+                                    player.Die();
+                                }
+                            } else
+                            {
+                                var ActiveTurret = gameobjects[i] as Turret;
+                                if (ActiveTurret.IsAlive)
+                                {
+                                    ActiveTurret.SelfDestruct();
+                                    player.Die();
+                                }
+                                
+                            }
                         }
+                    }
+
+
+                     
+                    
+                    
                 }
-                
             }
-            
         }
         public Collision(Player player, GameObjects[] gameobjects, out bool winCondition)
         {            
@@ -91,5 +119,6 @@ namespace Game
             CollsionCheck();
             winCondition = win;
         }
+       
     }
 }
