@@ -35,6 +35,7 @@ namespace Game
             MainTimerEvent MainTimeEvent = new MainTimerEvent();
             Collision collision = new Collision(level.playerOne, level.walling,out winCondition);
             level.playerOne.Move();
+            level.PlayerHealth.update(level.playerOne);
             if (escapeMenu.exitClicked == true) 
             {
                 this.Close(); 
@@ -56,6 +57,7 @@ namespace Game
             this.Controls.AddRange(level.walling);
             this.Controls.Add(level.playerOne);
             this.Controls.Add(escapeMenu);
+            this.Controls.Add(level.PlayerHealth);
         }
        
         private void Engine_Load(object sender, EventArgs e)
@@ -80,6 +82,7 @@ namespace Game
                 this.Controls.AddRange(level.walling);
                 this.Controls.Add(level.playerOne);                
                 this.Controls.Add(escapeMenu);
+                this.Controls.Add(level.PlayerHealth);
             }
             else
             {
@@ -101,7 +104,8 @@ namespace Game
             this.Controls.AddRange(level.walling);
             this.Controls.Add(level.playerOne);
             this.Controls.Add(escapeMenu);
-           
+            this.Controls.Add(level.PlayerHealth);
+
         }
 
         private void RestartGame()
