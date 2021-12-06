@@ -20,5 +20,10 @@ namespace Game
             this.Top = h;
             this.BringToFront();
         }
+
+        public void Explode()
+        {
+            this.Image = Properties.Resources.MineExplode;
+        }
     }
 }

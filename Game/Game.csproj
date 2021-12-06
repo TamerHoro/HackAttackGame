@@ -160,8 +160,8 @@
   <ItemGroup>
     <Content Include="Level1.txt" />
     <Content Include="Level2.txt" />
-    <Content Include="map array.txt" />
-    <None Include="Resources\TurretSmallShoot45.gif" />
+    <Content Include="Resources\TurretShootSW.gif" />
+    <Content Include="Resources\TurretShootW.gif" />
     <None Include="Resources\Bullet.png" />
     <None Include="Resources\Bullet45.png" />
     <None Include="Resources\MineExplode.gif" />
@@ -169,9 +169,28 @@
     <None Include="Resources\MineTriggered.png" />
     <None Include="Resources\TurretIdle.png" />
     <None Include="Resources\TurretIdle45.png" />
-    <None Include="Resources\TurretRot45Right.gif" />
-    <None Include="Resources\TurretRot90Right.gif" />
-    <Content Include="Resources\TurretShootSmallN.gif" />
+    <Content Include="Resources\CCWTurretRotE.gif" />
+    <Content Include="Resources\CCWTurretRotN.gif" />
+    <Content Include="Resources\CCWTurretRotNE.gif" />
+    <Content Include="Resources\CCWTurretRotNW.gif" />
+    <Content Include="Resources\CCWTurretRotS.gif" />
+    <Content Include="Resources\CCWTurretRotSE.gif" />
+    <Content Include="Resources\CCWTurretRotSW.gif" />
+    <Content Include="Resources\CCWTurretRotW.gif" />
+    <Content Include="Resources\CWTurretRotE.gif" />
+    <Content Include="Resources\CWTurretRotN.gif" />
+    <Content Include="Resources\CWTurretRotNE.gif" />
+    <Content Include="Resources\CWTurretRotNW.gif" />
+    <Content Include="Resources\CWTurretRotS.gif" />
+    <Content Include="Resources\CWTurretRotSE.gif" />
+    <Content Include="Resources\CWTurretRotSW.gif" />
+    <Content Include="Resources\CWTurretRotW.gif" />
+    <Content Include="Resources\TurretShootE.gif" />
+    <Content Include="Resources\TurretShootN.gif" />
+    <Content Include="Resources\TurretShootNE.gif" />
+    <Content Include="Resources\TurretShootNW.gif" />
+    <Content Include="Resources\TurretShootS.gif" />
+    <Content Include="Resources\TurretShootSE.gif" />
     <None Include="Resources\gate.png" />
     <None Include="Resources\floor.png" />
   </ItemGroup>
