@@ -44,9 +44,12 @@ namespace Game
             this.direction = direction;
         }
 
-        public void SelfDestruct()
+        public async void SelfDestruct()
         {
-            this.Image = Properties.Resources.CWTurretRotN;
+            this.Image = Properties.Resources.MineExplode;
+            await Task.Delay(1500);
+            this.alive = false;
+            this.Dispose();
         }
 
         public void Rotate(Direction direction)

@@ -21,9 +21,12 @@ namespace Game
             this.BringToFront();
         }
 
-        public void Explode()
+        public async void Explode()
         {
             this.Image = Properties.Resources.MineExplode;
+            await Task.Delay(1500);
+            this.alive = false;
+            this.Dispose();
         }
     }
 }

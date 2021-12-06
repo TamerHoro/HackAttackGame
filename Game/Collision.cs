@@ -87,13 +87,21 @@ namespace Game
                             if (gameobjects[i] is Mine)
                             {   
                                 var ActiveMine = gameobjects[i] as Mine;
-                                ActiveMine.Explode();
+                                if (ActiveMine.IsAlive)
+                                {
+                                    ActiveMine.Explode();
+                                    player.Die();
+                                }
                             } else
                             {
                                 var ActiveTurret = gameobjects[i] as Turret;
-                                ActiveTurret.SelfDestruct();
+                                if (ActiveTurret.IsAlive)
+                                {
+                                    ActiveTurret.SelfDestruct();
+                                    player.Die();
+                                }
+                                
                             }
-                            player.Die();
                         }
                     }
 
