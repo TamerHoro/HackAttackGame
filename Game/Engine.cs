@@ -17,41 +17,45 @@ namespace Game
     public partial class Engine : Form
     {
         
-        Render levelOne = new Render(0);
+        Render level = new Render(0);
         bool winCondition = false;
-        public EscapeMenu escapeMenu = new EscapeMenu();     
-        
+        public EscapeMenu escapeMenu = new EscapeMenu();
+        public bool restart = false;
+        int stage = 1;
 
 
         public Engine()
         {           
             InitializeComponent();
-            this.Controls.AddRange(levelOne.walling);
-            this.Controls.Add(levelOne.PlayerOne);
-            this.Controls.Add(escapeMenu);
             //this.Controls.Add(levelOne.PlayerControl);
-            
+            StartGame();
         }
         private void MainTimerEvent(object sender, EventArgs e)
         {
             MainTimerEvent MainTimeEvent = new MainTimerEvent();
-            Collision collision = new Collision(levelOne.PlayerOne, levelOne.walling,out winCondition);
-            levelOne.PlayerOne.Move();
+            Collision collision = new Collision(level.playerOne, level.objectArray,out winCondition);
+            level.playerOne.Move();
             if (escapeMenu.exitClicked == true) 
             {
                 this.Close(); 
             }
             if(escapeMenu.restartClicked == true) 
             {
-                RestartGame();
-                escapeMenu = new EscapeMenu();
+                RestartLevel();
+                escapeMenu.restartClicked = false;
             };
-            if (levelOne.PlayerOne.shoot == true)
+            if (level.playerOne.shoot == true)
             {
-                this.ShootBullet(levelOne.PlayerOne.direction);
+                this.ShootBullet(level.playerOne.direction);
             }
             NextLevel(winCondition);
             //MainTimeEvent.Update();
+        }
+        public void StartGame()
+        {
+            this.Controls.AddRange(level.objectArray);
+            this.Controls.Add(level.playerOne);
+            this.Controls.Add(escapeMenu);
         }
        
         private void Engine_Load(object sender, EventArgs e)
@@ -63,14 +67,18 @@ namespace Game
         {
             if(wincondition == true)
             {
-                levelOne.Dispose();
-                levelOne.Controls.Clear();
+                stage++;
+                level.Dispose();
+                level.Controls.Clear();
                 this.Controls.Clear();
-                
-                levelOne = new Render(1);
+                timer1.Dispose();
+                escapeMenu.Dispose();
+                //escapeMenu.Dispose();
+                level = LevelManager.CreateLevel(stage);
+                escapeMenu = new EscapeMenu();
                 InitializeComponent();
-                this.Controls.AddRange(levelOne.walling);
-                this.Controls.Add(levelOne.PlayerOne);
+                this.Controls.AddRange(level.objectArray);
+                this.Controls.Add(level.playerOne);                
                 this.Controls.Add(escapeMenu);
             }
             else
@@ -81,16 +89,25 @@ namespace Game
         }
         
         
-        private void RestartGame()   //goes to MenueClass
+        private void RestartLevel()
         {
-            levelOne.Controls.Clear();
-            levelOne.Dispose();            
+            level.Dispose();
+            level.Controls.Clear();
             this.Controls.Clear();
-            levelOne = new Render(0);
+            level = LevelManager.CreateLevel(stage);
+            escapeMenu = new EscapeMenu();
             InitializeComponent();
-            this.Controls.AddRange(levelOne.walling);
-            this.Controls.Add(levelOne.PlayerOne);
+            
+            this.Controls.AddRange(level.objectArray);
+            this.Controls.Add(level.playerOne);
             this.Controls.Add(escapeMenu);
+           
+        }
+
+        private void RestartGame()
+        {
+            restart = true;
+            this.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -105,10 +122,10 @@ namespace Game
 
         private void ShootBullet(string direction)
         {
-            Bullet shotBullet = new Bullet();
+            Bullet shotBullet = new Bullet(level.objectArray);
             shotBullet.direction = direction;
-            shotBullet.bulletLeft = levelOne.PlayerOne.Left + (levelOne.PlayerOne.Width / 2);
-            shotBullet.bulletTop = levelOne.PlayerOne.Top + (levelOne.PlayerOne.Height / 2);
+            shotBullet.bulletLeft = level.playerOne.Left + (level.playerOne.Width / 2);
+            shotBullet.bulletTop = level.playerOne.Top + (level.playerOne.Height / 2);
             shotBullet.MakeBullet(this);
         }
 

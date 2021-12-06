@@ -8,26 +8,31 @@ using System.Windows.Forms;
 
 namespace Game
 {
-    class Bullet
+    class Bullet : PictureBox
     {
         public string direction;
         public int bulletLeft;
         public int bulletTop;
+        public bool collided = false;
+
+        public GameObjects[] gameobjects;
 
         private int speed = 10;
-        private PictureBox bullet = new PictureBox();
         private Timer bulletTimer = new Timer();
-
+        public Bullet(GameObjects[] objects)
+        {
+            gameobjects = objects;
+        }
         public void MakeBullet(Engine engine)
         {
-            bullet.BackColor = Color.Black;
-            bullet.Size = new Size(5, 5);
-            bullet.Tag = "bullet";
-            bullet.Left = bulletLeft;
-            bullet.Top = bulletTop;
-            bullet.BringToFront();
+            this.BackColor = Color.Black;
+            this.Size = new Size(5, 5);
+            this.Tag = "bullet";
+            this.Left = bulletLeft;
+            this.Top = bulletTop;          
+            this.BringToFront();
 
-            engine.Controls.Add(bullet);
+            engine.Controls.Add(this);
 
             bulletTimer.Interval = speed;
             bulletTimer.Tick += new EventHandler(BulletTimerEvent);
@@ -37,24 +42,25 @@ namespace Game
         private void BulletTimerEvent(object sender, EventArgs e)
         {
             if (direction == "left")
-                bullet.Left -= speed;
+                this.Left -= speed;
 
             if (direction == "right")
-                bullet.Left += speed;
+                this.Left += speed;
 
             if (direction == "up")
-                bullet.Top -= speed;
+                this.Top -= speed;
 
             if (direction == "down")
-                bullet.Top += speed;
+               this.Top += speed;
 
-            if(bullet.Left < 10 || bullet.Left > 400 || bullet.Top < 10 || bullet.Top > 400)
+            BulletCollision bulCol = new BulletCollision(this, gameobjects, out collided);
+
+            if(collided == true)
             {
                 bulletTimer.Stop();
                 bulletTimer.Dispose();
-                bullet.Dispose();
-                bulletTimer = null;
-                bullet = null;
+                this.Dispose();
+                bulletTimer = null;         
             }
         }
     }

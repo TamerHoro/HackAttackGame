@@ -16,23 +16,25 @@ namespace Game
         int stage = 0;
         int[,] maparray;
         //List<PictureBox> levelwalling = new List<PictureBox>();
-        public GameObjects[] walling = new GameObjects[325];
-        //List<PictureBox> enemies = new List<PictureBox>();
-        PictureBox goal;
-        public Player PlayerOne = new Player();        
+        public GameObjects[] objectArray = new GameObjects[325];
+        //List<PictureBox> enemies = new List<PictureBox>();        
+        public Player playerOne = new Player();
         private int[,] ReadMapFile()
         {
             string[] lines= new string[0];
             int[,] maparray = new int[18, 18];
-            if (stage == 0)
+            if (stage == 0||stage == 1)
             {
-                 lines = File.ReadAllText(@"..\..\Level1.txt").Split(new string[] { "\n" }, StringSplitOptions.None);
+                 lines = File.ReadAllText(@"..\..\Level1.txt").Split(new string[] { "\n" }, StringSplitOptions.None);                
             }
-            if(stage == 1)
+            if(stage == 2)
             {
-                lines = File.ReadAllText(@"..\..\Level2.txt").Split(new string[] { "\n" }, StringSplitOptions.None);
-
-            }           
+                lines = File.ReadAllText(@"..\..\Level2.txt").Split(new string[] { "\n" }, StringSplitOptions.None);                
+            }
+            else
+            {
+                lines = File.ReadAllText(@"..\..\Level1.txt").Split(new string[] { "\n" }, StringSplitOptions.None);
+            }
             for (int i = 0; i < 18; i++)
             {
                 var fields = lines[i].Split(' ');
@@ -63,20 +65,20 @@ namespace Game
                 {
                     if (maparray[i, j] == (int)Objects.Wall)
                     {
-                        walling[k++] = new Wall(l, h, i, j);
+                        objectArray[k++] = new Wall(l, h, i, j);
                     }
                     else if (maparray[i, j] == (int)Objects.Turret)
                     {
-                        walling[k++] = new Turret(l, h, i, j);
+                        objectArray[k++] = new Turret(l, h, i, j);
                     }
                     else if (maparray[i, j] == (int)Objects.Mine)
                     {
-                        walling[k++] = new Mine(l, h, i, j);
+                        objectArray[k++] = new Mine(l, h, i, j);
                         
                     }
                     else if (maparray[i, j] == (int)Objects.Gate)
                     {
-                        walling[k++] = new Gate(l, h, i, j);
+                        objectArray[k++] = new Gate(l, h, i, j);
                     }
                     l = l + 40;
                 }

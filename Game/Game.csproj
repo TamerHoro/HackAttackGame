@@ -50,6 +50,7 @@
     <Compile Include="Mine.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="BulletCollision.cs" />
     <Compile Include="Collision.cs" />
     <Compile Include="Enemy.cs">
       <SubType>Component</SubType>
