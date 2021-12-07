@@ -28,6 +28,8 @@ namespace Game
             {
                 Location = new Point(player.Left - 20, player.Top + 5);
             }
+
+            Text = $"{player.Health}/{fullHealth}";
         }
 
     }

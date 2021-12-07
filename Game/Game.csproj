@@ -46,7 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bullet.cs" />
+    <Compile Include="Bullet.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DeathScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="HealthLabel.cs">
       <SubType>Component</SubType>
     </Compile>

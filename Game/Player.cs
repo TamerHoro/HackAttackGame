@@ -10,7 +10,6 @@ namespace Game
         int speed = 5;
         //public PictureBox picture = new PictureBox();       
         Image playerimage = Image.FromFile(@"..\..\Resources\playerupsmall.png");
-        public int health = 3;
         public string direction;
 
         public Player()
@@ -68,6 +67,7 @@ namespace Game
                 goRight = true;
                 this.Image = Image.FromFile(@"..\..\Resources\playerightsmall.png");
                 this.direction = "right";
+                Health -= 1;
             }
 
             if (e.KeyCode == Keys.Up)
