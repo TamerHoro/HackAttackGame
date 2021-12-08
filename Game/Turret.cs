@@ -50,6 +50,7 @@ namespace Game
             await Task.Delay(1500);
             this.alive = false;
             this.Dispose();
+
         }
 
         public void Rotate(Direction direction)

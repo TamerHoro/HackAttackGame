@@ -101,7 +101,7 @@
     <Compile Include="Wall.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="WinGame.cs" />
+    <Compile Include="WonGame.cs" />
     <EmbeddedResource Include="Engine.resx">
       <DependentUpon>Engine.cs</DependentUpon>
     </EmbeddedResource>
@@ -161,6 +161,7 @@
   <ItemGroup>
     <Content Include="Level1.txt" />
     <Content Include="Level2.txt" />
+    <Content Include="Level3.txt" />
     <Content Include="Resources\TurretShootSW.gif" />
     <Content Include="Resources\TurretShootW.gif" />
     <None Include="Resources\Bullet.png" />
