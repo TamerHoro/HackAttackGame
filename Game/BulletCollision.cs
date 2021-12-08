@@ -17,12 +17,24 @@ namespace Game
             {
                 if (gameobjects[i] == null) { }
                 else
-                {                                    
+                {
                     if (bullet.Bounds.IntersectsWith(gameobjects[i].Bounds))
                         if (gameobjects[i] is Wall)
                         {
                             col = true;
-                        }              
+                        } else if (gameobjects[i] is Turret)
+                        {
+                            col = true;
+                            var HitTurret = gameobjects[i] as Turret;
+                            HitTurret.TakeDamage();
+                        }
+                        else if (gameobjects[i] is Mine)
+                        {
+                            col = true;
+                            var HitMine = gameobjects[i] as Mine;
+                            HitMine.Explode();
+                        }
+
                 }
 
             }

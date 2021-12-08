@@ -43,6 +43,7 @@ namespace Game
             this.Top = h;
             this.BringToFront();
             this.direction = direction;
+            this.hitpoints = 3;
         }
 
         public async void SelfDestruct()
@@ -53,6 +54,12 @@ namespace Game
             this.Dispose();
         }
 
+        public void TakeDamage()
+        {
+            if (this.hitpoints > 0)
+                this.hitpoints--;
+            else { SelfDestruct(); }
+        }
 
 
         public async void Shoot()
