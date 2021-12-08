@@ -8,7 +8,15 @@ namespace Game
 {
     class BulletCollision
     {
-        public Bullet bullet; 
+        public BulletCollision(Bullet bullet, GameObjects[] gameobjects, out bool collided)
+        {
+            this.bullet = bullet;
+            this.gameobjects = gameobjects;
+            BulletCollsionCheck();
+            collided = col;
+            bullet = new Bullet(gameobjects);
+        }
+        public Bullet bullet;
         public GameObjects[] gameobjects;
         bool col = false;
         public void BulletCollsionCheck()
@@ -36,18 +44,13 @@ namespace Game
                             HitMine.Explode();
                         }
 
+                    }
+
                 }
 
             }
-
-        }
-        public BulletCollision(Bullet bullet, GameObjects[] gameobjects, out bool collided)
-        {
-            this.bullet = bullet;
-            this.gameobjects = gameobjects;
-            BulletCollsionCheck();
-            collided = col;
-            bullet = new Bullet(gameobjects);
+            
+           
         }
     }
 }
