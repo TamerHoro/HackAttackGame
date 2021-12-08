@@ -23,7 +23,8 @@ namespace Game
                         if (gameobjects[i] is Wall)
                         {
                             col = true;
-                        } else if (gameobjects[i] is Turret)
+                        }
+                        else if (gameobjects[i] is Turret)
                         {
                             col = true;
                             var HitTurret = gameobjects[i] as Turret;
@@ -40,7 +41,7 @@ namespace Game
                             var activePlayer = gameobjects[i] as Player;
                             activePlayer.Die();
                         }
-
+                    }
                 }
 
             }
