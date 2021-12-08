@@ -19,10 +19,20 @@ namespace Game
                 else
                 {                                    
                     if (bullet.Bounds.IntersectsWith(gameobjects[i].Bounds))
+                    {
                         if (gameobjects[i] is Wall)
                         {
                             col = true;
-                        }              
+
+
+                        }
+                        if (gameobjects[i] is Enemy)
+                        {
+                            gameobjects[i].Dispose();
+                            gameobjects[i] = null;
+                        }
+                    }                       
+                    
                 }
 
             }
