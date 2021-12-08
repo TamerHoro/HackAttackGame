@@ -90,6 +90,7 @@ namespace Game
                                 {
                                     ActiveMine.Explode();
                                     player.Die();
+                                    gameobjects[i] = null;
                                 }
                             }
                             else
@@ -99,6 +100,7 @@ namespace Game
                                 {
                                     ActiveTurret.SelfDestruct();
                                     player.Die();
+                                    gameobjects[i] = null;
                                 }
 
                             }                            
