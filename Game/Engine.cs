@@ -23,6 +23,7 @@ namespace Game
         public bool restart = false;
         int stage = 1;
         public DeathScreen deathScreen = new DeathScreen();
+        public WinningScreen winningScreen = new WinningScreen();
 
 
         public Engine()
@@ -37,18 +38,19 @@ namespace Game
             Collision collision = new Collision(level.playerOne, level.walling,out winCondition);
             level.playerOne.Move();
             level.PlayerHealth.update(level.playerOne);
-            if (level.playerOne.Health == 0)
+            if (level.playerOne.Health <= 0)
             {
                 Hide();
                 deathScreen.Visible = true;
                 level.playerOne.Health = 3;
             }
-            if (escapeMenu.exitClicked == true || deathScreen.exitClicked == true) 
+            if (escapeMenu.exitClicked == true || deathScreen.exitClicked == true || winningScreen.exitClicked == true) 
             {
                 this.Close(); 
             }
-            if (deathScreen.restartClicked == true)
+            if (deathScreen.restartClicked == true || winningScreen.restartClicked == true)
             {
+                winningScreen.restartClicked = false;
                 deathScreen.restartClicked = false;
                 stage = 1;
                 RestartLevel(stage);
@@ -83,6 +85,11 @@ namespace Game
         {
             if(wincondition == true)
             {
+                if (stage == 1)
+                {
+                    Hide();
+                    winningScreen.Visible = true;
+                }
                 stage++;
                 level.Dispose();
                 level.Controls.Clear();
