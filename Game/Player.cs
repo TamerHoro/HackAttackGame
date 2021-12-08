@@ -67,7 +67,6 @@ namespace Game
                 goRight = true;
                 this.Image = Image.FromFile(@"..\..\Resources\playerightsmall.png");
                 this.direction = "right";
-                Health -= 1;
             }
 
             if (e.KeyCode == Keys.Up)
