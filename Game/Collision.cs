@@ -12,6 +12,7 @@ namespace Game
         public Player player;
         public Player futurePlayer = new Player();
         public GameObjects[] gameobjects;
+        public Engine engine;
         bool win = false;
         
         public void CollsionCheck() 
@@ -98,13 +99,27 @@ namespace Game
                                 var ActiveTurret = gameobjects[i] as Turret;
                                 if (ActiveTurret.IsAlive)
                                 {
-                                    ActiveTurret.SelfDestruct();
-                                    player.Die();
-                                    gameobjects[i] = null;
+                                    //ActiveTurret.SelfDestruct();
+                                    //player.Die();
+                                    //gameobjects[i] = null;
+                                    ActiveTurret.Rotate(Turret.Direction.South);
+                                    ActiveTurret.StartShooting();
                                 }
                                 
                             }
                         }
+                        if (gameobjects[i] is Turret)
+                        {
+                            var TurretToCheck = gameobjects[i] as Turret;
+                            if (TurretToCheck.CurrentState == Turret.State.Shooting)
+                            {
+                                TurretToCheck.Shoot(engine, gameobjects);
+                            }
+                        }
+
+
+
+
                     }
 
 
@@ -114,10 +129,11 @@ namespace Game
                 }
             }
         }
-        public Collision(Player player, GameObjects[] gameobjects, out bool winCondition)
+        public Collision(Player player, GameObjects[] gameobjects, Engine engine, out bool winCondition)
         {            
             this.player = player;
             this.gameobjects = gameobjects;
+            this.engine = engine;
             CollsionCheck();
             winCondition = win;
         }

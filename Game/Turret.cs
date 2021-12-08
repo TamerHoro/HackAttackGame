@@ -31,6 +31,26 @@ namespace Game
         Direction direction;
         State state;
 
+        public State CurrentState{ get => this.state; }
+        public Direction CurrentDirection { get => this.direction; }
+        public string DirectionString
+        {
+            get { 
+                switch (direction)
+                {
+                    case Direction.North:
+                        return "up";
+                    case Direction.South:
+                        return "down";
+                    case Direction.West:
+                        return "left";
+                    case Direction.East:
+                        return "right";
+                    default: 
+                        return "";
+                }
+            }
+        }
 
         public Turret(int l, int h, int i, int j, Direction direction = Direction.North) : base(l, h)
         {
@@ -53,6 +73,13 @@ namespace Game
             this.alive = false;
             this.Dispose();
         }
+        public void StartShooting()
+        {
+            if (this.alive && this.state == State.Idle)
+            {
+                this.state = State.Shooting;
+            }
+        }
 
         public void TakeDamage()
         {
@@ -60,14 +87,46 @@ namespace Game
                 this.hitpoints--;
             else { SelfDestruct(); }
         }
+        public async void MakeBullets(Engine engine, GameObjects[] gameObjects)
+        {
+            int ShootDelay = 250;
+            Bullet SpawnBullet(short count)
+            {
+                if (count < 3) {
+                    Bullet bullet = new Bullet(gameObjects);
+                    bullet.direction = this.DirectionString;
+                    bullet.bulletLeft = this.Left + this.Width / 2 - 30 + 10 * count;
+                    bullet.bulletTop = this.Top + (this.Height / 2) + 10;
+                    return bullet;
+                } else
+                {
+                    Bullet bullet = new Bullet(gameObjects);
+                    bullet.direction = this.DirectionString;
+                    bullet.bulletLeft = this.Left + this.Width / 2 - 25 + 10 * count;
+                    bullet.bulletTop = this.Top + (this.Height / 2) + 10;
+                    return bullet;
+                }
+            }
+            if (alive)
+            { SpawnBullet(1).MakeBullet(engine); }
+            await Task.Delay(ShootDelay);
+            if (alive)
+            { SpawnBullet(2).MakeBullet(engine); }
+            await Task.Delay(ShootDelay + 100);
+            if (alive)
+            { SpawnBullet(3).MakeBullet(engine); }
+            await Task.Delay(ShootDelay + 200);
+            if (alive)
+            { SpawnBullet(4).MakeBullet(engine); }
+            await Task.Delay(ShootDelay + 400);
+        }
 
-
-        public async void Shoot()
+        public async void Shoot(Engine engine, GameObjects[] gameObjects)
         {
             int AnimationTime = 2000;
-            if (state == State.Idle)
+            if (state == State.Shooting)
             {
-                state = State.Shooting;
+                state = State.Rotating;
                 switch (this.direction)
                 {
                     case Direction.North:
@@ -98,6 +157,7 @@ namespace Game
                         break;
                     case Direction.South:
                         this.Image = Properties.Resources.TurretShootS;
+                        MakeBullets(engine, gameObjects);
                         await Task.Delay(AnimationTime);
                         this.Image = Properties.Resources.TurretIdle;
                         this.Image.RotateFlip(RotateFlipType.Rotate180FlipNone);

@@ -33,7 +33,7 @@ namespace Game
         private void MainTimerEvent(object sender, EventArgs e)
         {
             MainTimerEvent MainTimeEvent = new MainTimerEvent();
-            Collision collision = new Collision(level.playerOne, level.objectArray,out winCondition);
+            Collision collision = new Collision(level.playerOne, level.objectArray, this, out winCondition);
             level.playerOne.Move();
             if (escapeMenu.exitClicked == true) 
             {

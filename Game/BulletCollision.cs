@@ -34,6 +34,11 @@ namespace Game
                             var HitMine = gameobjects[i] as Mine;
                             HitMine.Explode();
                         }
+                        else if (gameobjects[i] is Player)
+                        {
+                            var activePlayer = gameobjects[i] as Player;
+                            activePlayer.Die();
+                        }
 
                 }
 
