@@ -9,12 +9,11 @@ namespace Game
         public bool goLeft, goRight, goUp, goDown, shoot;
         int speed = 5;
         //public PictureBox picture = new PictureBox();       
-        Image playerimage = Image.FromFile(@"..\..\Resources\playersmall.png");
-        public int health = 3;
+        Image playerimage = Image.FromFile(@"..\..\Resources\playerupsmall.png");
         public string direction;
 
         public Player()
-            : base(100, 100, 3, Image.FromFile(@"..\..\Resources\playersmall.png"))
+            : base(100, 70, 3, Image.FromFile(@"..\..\Resources\playerupsmall.png"))
         {
             this.SizeMode = PictureBoxSizeMode.AutoSize;
             PlayerControl playercontrol = new PlayerControl();
@@ -68,6 +67,7 @@ namespace Game
                 goRight = true;
                 this.Image = Image.FromFile(@"..\..\Resources\playerightsmall.png");
                 this.direction = "right";
+                Health -= 1;
             }
 
             if (e.KeyCode == Keys.Up)

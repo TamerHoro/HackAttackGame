@@ -19,6 +19,7 @@ namespace Game
         public GameObjects[] walling = new GameObjects[325];
         //List<PictureBox> enemies = new List<PictureBox>();        
         public Player playerOne = new Player();
+        public HealthLabelPlayer PlayerHealth;
         private int[,] ReadMapFile()
         {
             string[] lines= new string[0];
@@ -56,7 +57,7 @@ namespace Game
 
         public void LevelBuilder()            //creates a lists with GameObjects
         {
-
+            PlayerHealth = new HealthLabelPlayer(playerOne);
             Player PlayerOne = new Player();
             int l = -10, h = -15, k = 0;
             for (int i = 0; i < 18; i++)
