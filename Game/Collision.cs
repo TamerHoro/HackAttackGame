@@ -102,7 +102,7 @@ namespace Game
                                     //ActiveTurret.SelfDestruct();
                                     //player.Die();
                                     //gameobjects[i] = null;
-                                    ActiveTurret.Rotate(Turret.Direction.South);
+                                    ActiveTurret.Rotate(Turret.Direction.West);
                                     ActiveTurret.StartShooting();
                                 }
                                 

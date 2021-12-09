@@ -156,31 +156,6 @@ namespace Game
         {
             //Delay between spawned bullets
             int ShootDelay = 250;
-
-            //Creates a bullet at the right barrel
-            Bullet SpawnBullet(short barrel)
-            {
-                //Make a new bullet and add it to the rendered object list
-                Bullet bullet = new Bullet(gameObjects);
-
-                //Make the bullet fly in the right direction
-                bullet.direction = this.DirectionString;
-
-                //calculate the position of the barrel
-                int left, top;
-                if (barrel < 3) {
-                    left = this.Left + this.Width / 2 - 30 + 10 * barrel;
-                    top = this.Top + (this.Height / 2) + 10;
-                } else
-                {
-                    left = this.Left + this.Width / 2 - 25 + 10 * barrel;
-                    top = this.Top + (this.Height / 2) + 10;
-                }
-                //Set the position and return the bullet
-                bullet.bulletLeft = left;
-                bullet.bulletTop = top;
-                return bullet;
-            }
             
             //Try shooting 4 bullets in total
             for (short i = 1; i <= 4; i++)
@@ -196,6 +171,56 @@ namespace Game
                     await Task.Delay(ShootDelay + i*100);
                 } else { break; } //if killed while shooting, stop loop
 			}
+
+            //Auxiliary methods below
+            //------------------------------------//
+
+            ///Creates a bullet at the right barrel
+            Bullet SpawnBullet(short barrel)
+            {
+                //Make a new bullet and add it to the rendered object list
+                Bullet bullet = new Bullet(gameObjects);
+
+                //Make the bullet fly in the right direction
+                bullet.direction = this.DirectionString;
+
+                //calculate the position of the barrel
+                int left, top;
+                GetBarrelPosition(barrel, out left, out top);
+                
+                //Set the position and return the bullet
+                bullet.bulletLeft = left;
+                bullet.bulletTop = top;
+                return bullet;
+            //------------------------------------//
+            }
+
+            void GetBarrelPosition(short barrel, out int left, out int top)
+            {
+                left = 0;
+                top = 0;
+                int offset = -20;
+                switch (CurrentDirection)
+                {
+                    case Direction.North:
+                        top = this.Top - (this.Height / 2) - offset;
+                        left = this.Left + this.Width - (this.Width / 4) * barrel;
+                        break;
+                    case Direction.South:
+                        top = this.Top + this.Height - offset;
+                        left = this.Left + (this.Width / 4) * (barrel-1);
+                        break;
+                    case Direction.East:
+                        left = this.Left + (this.Width / 2) - offset;
+                        top = this.Top + (this.Height / 4) * (barrel-1);
+                        break;
+                    case Direction.West:
+                        left = this.Left + (this.Width / 4) + offset;
+                        top = this.Top + (this.Height / 4) * (barrel-1);
+                        break;
+                }
+            }
+
         }
 
         /// <summary>
@@ -215,9 +240,30 @@ namespace Game
                 state = State.Rotating;
 
                 //Select the right image and animation for each direction
-                var animation = Properties.Resources.TurretShootN;
-                var idle = Properties.Resources.TurretIdle;
-                switch (this.direction)
+                Bitmap animation;
+                Bitmap idle;
+                GetAnimation(out animation, out idle);
+
+                //Play shooting animation and spawn bullets
+                this.Image = animation;
+                MakeBullets(engine, gameObjects);
+                await Task.Delay(AnimationTime);
+
+                //If not killed while shooting, reset the image back to idle
+                if (alive)
+                    this.Image = idle;
+                this.state = State.Idle;
+            }
+
+            //Auxiliary methods below
+            //------------------------------------//
+            //Returns the right image and animation for each direction
+
+            void GetAnimation(out Bitmap animation, out Bitmap idle)
+            {
+                animation = null;
+                idle = null;
+                switch (CurrentDirection)
                 {
                     case Direction.North:
                         animation = Properties.Resources.TurretShootN;
@@ -239,7 +285,6 @@ namespace Game
                         break;
                     case Direction.South:
                         animation = Properties.Resources.TurretShootS;
-                        MakeBullets(engine, gameObjects);
                         idle = Properties.Resources.TurretIdle;
                         idle.RotateFlip(RotateFlipType.Rotate180FlipNone);
                         break;
@@ -258,18 +303,19 @@ namespace Game
                         idle = Properties.Resources.TurretIdle45;
                         idle.RotateFlip(RotateFlipType.Rotate270FlipNone);
                         break;
+                    default:
+                        animation = Properties.Resources.TurretShootN;
+                        idle = Properties.Resources.TurretIdle;
+                        break;
                 }
-
-                //Play the animation
-                this.Image = animation;
-                await Task.Delay(AnimationTime);
-
-                //If not killed while shooting, reset the image back to idle
-                if (alive)
-                    this.Image = idle;
-                this.state = State.Idle;
             }
         }
+
+
+
+
+        //Rotation
+        //--------------------------------------------------------------------------//
 
         /// <summary>
         /// Rotate clockwise
@@ -326,144 +372,145 @@ namespace Game
                 }
             }
 
-        /// <summary>
-        /// Returns the correct rotation animation, idle picture and final direction of the turret
-        /// </summary>
-        /// <param name="clockwise">Rotate clockwise?</param>
-        /// <param name="animation">Returns animation .gif file from resources</param>
-        /// <param name="idle">Returns idle .png from resources</param>
-        /// <param name="finalDirection">Returns direction after the rotation has completed</param>
-        void GetAnimation(bool isClockwise, out Bitmap animation, out Bitmap idle, out Direction finalDirection)
-        {
-            animation = null;
-            idle = null;
-            finalDirection = Direction.North;
-            if (isClockwise)
+            
+            //Auxiliary methods below
+            //------------------------------------//
+
+            /// <summary>
+            /// Returns the correct rotation animation, idle picture and final direction of the turret
+            /// </summary>
+            /// <param name="clockwise">Rotate clockwise?</param>
+            /// <param name="animation">Returns animation .gif file from resources</param>
+            /// <param name="idle">Returns idle .png from resources</param>
+            /// <param name="finalDirection">Returns direction after the rotation has completed</param>
+            void GetAnimation(bool isClockwise, out Bitmap animation, out Bitmap idle, out Direction finalDirection)
             {
-                switch (this.direction)
+                animation = null;
+                idle = null;
+                finalDirection = Direction.North;
+                if (isClockwise)
                 {
-                    case Direction.North:
-                        animation = Properties.Resources.CWTurretRotN;
-                        idle = Properties.Resources.TurretIdle45;
-                        finalDirection = Direction.NorthEast;
-                        break;
-                    case Direction.NorthEast:
-                        animation = Properties.Resources.CWTurretRotNE;
-                        idle = Properties.Resources.TurretIdle;
-                        idle.RotateFlip(RotateFlipType.Rotate90FlipNone);
-                        finalDirection = Direction.East;
-                        break;
-                    case Direction.East:
-                        animation = Properties.Resources.CWTurretRotE;
-                        idle = Properties.Resources.TurretIdle45;
-                        idle.RotateFlip(RotateFlipType.Rotate90FlipNone);
-                        finalDirection = Direction.SouthEast;
-                        break;
-                    case Direction.SouthEast:
-                        animation = Properties.Resources.CWTurretRotSE;
-                        idle = Properties.Resources.TurretIdle;
-                        idle.RotateFlip(RotateFlipType.Rotate180FlipNone);
-                        finalDirection = Direction.South;
-                        break;
-                    case Direction.South:
-                        animation = Properties.Resources.CWTurretRotS;
-                        idle = Properties.Resources.TurretIdle45;
-                        idle.RotateFlip(RotateFlipType.Rotate180FlipNone);
-                        finalDirection = Direction.SouthWest;
-                        break;
-                    case Direction.SouthWest:
-                        animation = Properties.Resources.CWTurretRotSW;
-                        idle = Properties.Resources.TurretIdle;
-                        idle.RotateFlip(RotateFlipType.Rotate270FlipNone);
-                        finalDirection = Direction.West;
-                        break;
-                    case Direction.West:
-                        animation = Properties.Resources.CWTurretRotW;
-                        idle = Properties.Resources.TurretIdle45;
-                        idle.RotateFlip(RotateFlipType.Rotate270FlipNone);
-                        finalDirection = Direction.NorthWest;
-                        break;
-                    case Direction.NorthWest:
-                        animation = Properties.Resources.CWTurretRotNW;
-                        idle = Properties.Resources.TurretIdle;
-                        finalDirection = Direction.North;
-                        break;
-                    default:
-                        animation = Properties.Resources.TurretShootN;
-                        idle = Properties.Resources.TurretIdle;
-                        finalDirection = Direction.North;
-                        break;
+                    switch (this.direction)
+                    {
+                        case Direction.North:
+                            animation = Properties.Resources.CWTurretRotN;
+                            idle = Properties.Resources.TurretIdle45;
+                            finalDirection = Direction.NorthEast;
+                            break;
+                        case Direction.NorthEast:
+                            animation = Properties.Resources.CWTurretRotNE;
+                            idle = Properties.Resources.TurretIdle;
+                            idle.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                            finalDirection = Direction.East;
+                            break;
+                        case Direction.East:
+                            animation = Properties.Resources.CWTurretRotE;
+                            idle = Properties.Resources.TurretIdle45;
+                            idle.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                            finalDirection = Direction.SouthEast;
+                            break;
+                        case Direction.SouthEast:
+                            animation = Properties.Resources.CWTurretRotSE;
+                            idle = Properties.Resources.TurretIdle;
+                            idle.RotateFlip(RotateFlipType.Rotate180FlipNone);
+                            finalDirection = Direction.South;
+                            break;
+                        case Direction.South:
+                            animation = Properties.Resources.CWTurretRotS;
+                            idle = Properties.Resources.TurretIdle45;
+                            idle.RotateFlip(RotateFlipType.Rotate180FlipNone);
+                            finalDirection = Direction.SouthWest;
+                            break;
+                        case Direction.SouthWest:
+                            animation = Properties.Resources.CWTurretRotSW;
+                            idle = Properties.Resources.TurretIdle;
+                            idle.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                            finalDirection = Direction.West;
+                            break;
+                        case Direction.West:
+                            animation = Properties.Resources.CWTurretRotW;
+                            idle = Properties.Resources.TurretIdle45;
+                            idle.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                            finalDirection = Direction.NorthWest;
+                            break;
+                        case Direction.NorthWest:
+                            animation = Properties.Resources.CWTurretRotNW;
+                            idle = Properties.Resources.TurretIdle;
+                            finalDirection = Direction.North;
+                            break;
+                        default:
+                            animation = Properties.Resources.TurretShootN;
+                            idle = Properties.Resources.TurretIdle;
+                            finalDirection = Direction.North;
+                            break;
+                    }
                 }
-            }
-            else
-            {
-                switch (this.direction)
+                else
                 {
-                    case Direction.North:
-                        animation = Properties.Resources.CCWTurretRotN;
-                        idle = Properties.Resources.TurretIdle45;
-                        idle.RotateFlip(RotateFlipType.Rotate270FlipNone);
-                        finalDirection = Direction.NorthWest;
-                        break;
-                    case Direction.NorthWest:
-                        animation = Properties.Resources.CCWTurretRotNW;
-                        idle = Properties.Resources.TurretIdle;
-                        idle.RotateFlip(RotateFlipType.Rotate270FlipNone);
-                        finalDirection = Direction.West;
-                        break;
-                    case Direction.West:
-                        animation = Properties.Resources.CCWTurretRotW;
-                        idle = Properties.Resources.TurretIdle45;
-                        idle.RotateFlip(RotateFlipType.Rotate180FlipNone);
-                        finalDirection = Direction.SouthWest;
-                        break;
-                    case Direction.SouthWest:
-                        animation = Properties.Resources.CCWTurretRotSW;
-                        idle = Properties.Resources.TurretIdle;
-                        idle.RotateFlip(RotateFlipType.Rotate180FlipNone);
-                        finalDirection = Direction.South;
-                        break;
-                    case Direction.South:
-                        animation = Properties.Resources.CCWTurretRotS;
-                        idle = Properties.Resources.TurretIdle45;
-                        idle.RotateFlip(RotateFlipType.Rotate90FlipNone);
-                        finalDirection = Direction.SouthEast;
-                        break;
-                    case Direction.SouthEast:
-                        animation = Properties.Resources.CCWTurretRotSE;
-                        idle = Properties.Resources.TurretIdle;
-                        idle.RotateFlip(RotateFlipType.Rotate90FlipNone);
-                        finalDirection = Direction.East;
-                        break;
-                    case Direction.East:
-                        animation = Properties.Resources.CCWTurretRotE;
-                        idle = Properties.Resources.TurretIdle45;
-                        finalDirection = Direction.NorthEast;
-                        break;
-                    case Direction.NorthEast:
-                        animation = Properties.Resources.CCWTurretRotNE;
-                        idle = Properties.Resources.TurretIdle;
-                        finalDirection = Direction.North;
-                        break;
-                    default:
-                        animation = Properties.Resources.CCWTurretRotN;
-                        idle = Properties.Resources.TurretIdle;
-                        finalDirection = Direction.North;
-                        break;
+                    switch (this.direction)
+                    {
+                        case Direction.North:
+                            animation = Properties.Resources.CCWTurretRotN;
+                            idle = Properties.Resources.TurretIdle45;
+                            idle.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                            finalDirection = Direction.NorthWest;
+                            break;
+                        case Direction.NorthWest:
+                            animation = Properties.Resources.CCWTurretRotNW;
+                            idle = Properties.Resources.TurretIdle;
+                            idle.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                            finalDirection = Direction.West;
+                            break;
+                        case Direction.West:
+                            animation = Properties.Resources.CCWTurretRotW;
+                            idle = Properties.Resources.TurretIdle45;
+                            idle.RotateFlip(RotateFlipType.Rotate180FlipNone);
+                            finalDirection = Direction.SouthWest;
+                            break;
+                        case Direction.SouthWest:
+                            animation = Properties.Resources.CCWTurretRotSW;
+                            idle = Properties.Resources.TurretIdle;
+                            idle.RotateFlip(RotateFlipType.Rotate180FlipNone);
+                            finalDirection = Direction.South;
+                            break;
+                        case Direction.South:
+                            animation = Properties.Resources.CCWTurretRotS;
+                            idle = Properties.Resources.TurretIdle45;
+                            idle.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                            finalDirection = Direction.SouthEast;
+                            break;
+                        case Direction.SouthEast:
+                            animation = Properties.Resources.CCWTurretRotSE;
+                            idle = Properties.Resources.TurretIdle;
+                            idle.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                            finalDirection = Direction.East;
+                            break;
+                        case Direction.East:
+                            animation = Properties.Resources.CCWTurretRotE;
+                            idle = Properties.Resources.TurretIdle45;
+                            finalDirection = Direction.NorthEast;
+                            break;
+                        case Direction.NorthEast:
+                            animation = Properties.Resources.CCWTurretRotNE;
+                            idle = Properties.Resources.TurretIdle;
+                            finalDirection = Direction.North;
+                            break;
+                        default:
+                            animation = Properties.Resources.CCWTurretRotN;
+                            idle = Properties.Resources.TurretIdle;
+                            finalDirection = Direction.North;
+                            break;
+                    }
                 }
+            //---------------------------------------------//
             }
         }
-        }
-
-
-
-       
 
         /// <summary>
         /// Rotates the turret into the desired direction
         /// </summary>
         /// <param name="direction">desired final direction</param>
-        public void Rotate(Direction direction)  //(implemented optimum as hardcoded state machine)
+        public void Rotate(Direction direction)  //(implemented shortest path as hardcoded state machine)
         {
             if (CurrentDirection != direction)
             {
