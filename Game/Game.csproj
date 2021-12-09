@@ -163,6 +163,10 @@
   <ItemGroup>
     <Content Include="Level1.txt" />
     <Content Include="Level2.txt" />
+    <Content Include="Resources\Explosion.wav" />
+    <Content Include="Resources\PlayerHit.wav" />
+    <Content Include="Resources\Rotate.wav" />
+    <Content Include="Resources\Shot.wav" />
     <Content Include="Resources\TurretShootSW.gif" />
     <Content Include="Resources\TurretShootW.gif" />
     <None Include="Resources\Bullet.png" />

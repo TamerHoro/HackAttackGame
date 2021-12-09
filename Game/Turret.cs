@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Media;
 
 namespace Game
 {
@@ -28,8 +29,12 @@ namespace Game
             Shooting = 2,
         }
 
+        
         Direction direction;
         State state;
+        SoundPlayer SFXRotate = new SoundPlayer(Properties.Resources.Rotate);
+        SoundPlayer SFXShot = new SoundPlayer(Properties.Resources.Shot);
+        SoundPlayer SFXExplosion = new SoundPlayer(Properties.Resources.Explosion);
 
         public State CurrentState{ get => this.state; }
         public Direction CurrentDirection { get => this.direction; }
@@ -63,14 +68,21 @@ namespace Game
             this.Top = h;
             this.BringToFront();
             this.direction = direction;
-            this.hitpoints = 3;
+            this.hitpoints = 1;
+            SFXRotate.Load();
+            SFXShot.Load();
+            SFXExplosion.Load();
         }
 
         public async void SelfDestruct()
         {
-            this.Image = Properties.Resources.MineExplode;
-            await Task.Delay(1500);
-            this.alive = false;
+            if (alive)
+            {
+                this.alive = false;
+                SFXExplosion.Play();
+                this.Image = Properties.Resources.MineExplode;
+                await Task.Delay(1500);
+            }
             this.Dispose();
         }
         public void StartShooting()
@@ -107,17 +119,24 @@ namespace Game
                     return bullet;
                 }
             }
+            for (int i = 0; i < 4; i++)
+			{
+                if (alive) 
+                {
+                    SFXShot.Play();
+                    SpawnBullet(1).MakeBullet(engine);
+                    await Task.Delay(ShootDelay + i*100);
+                } else { break; }
+			}
+            
             if (alive)
-            { SpawnBullet(1).MakeBullet(engine); }
-            await Task.Delay(ShootDelay);
-            if (alive)
-            { SpawnBullet(2).MakeBullet(engine); }
+            { SFXShot.Play(); SpawnBullet(2).MakeBullet(engine); }
             await Task.Delay(ShootDelay + 100);
             if (alive)
-            { SpawnBullet(3).MakeBullet(engine); }
+            { SFXShot.Play(); SpawnBullet(3).MakeBullet(engine); }
             await Task.Delay(ShootDelay + 200);
             if (alive)
-            { SpawnBullet(4).MakeBullet(engine); }
+            { SFXShot.Play(); SpawnBullet(4).MakeBullet(engine); }
             await Task.Delay(ShootDelay + 400);
         }
 
@@ -132,26 +151,30 @@ namespace Game
                     case Direction.North:
                         this.Image = Properties.Resources.TurretShootN;
                         await Task.Delay(AnimationTime);
-                        this.Image = Properties.Resources.TurretIdle;
+                        if (alive)
+                            this.Image = Properties.Resources.TurretIdle;
                         this.state = State.Idle;
                         break;
                     case Direction.NorthEast:
                         this.Image = Properties.Resources.TurretShootNE;
                         await Task.Delay(AnimationTime);
-                        this.Image = Properties.Resources.TurretIdle45;
+                        if (alive)
+                            this.Image = Properties.Resources.TurretIdle45;
                         this.state = State.Idle;
                         break;
                     case Direction.East:
                         this.Image = Properties.Resources.TurretShootE;
                         await Task.Delay(AnimationTime);
-                        this.Image = Properties.Resources.TurretIdle;
+                        if (alive)
+                            this.Image = Properties.Resources.TurretIdle;
                         this.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
                         this.state = State.Idle;
                         break;
                     case Direction.SouthEast:
                         this.Image = Properties.Resources.TurretShootSE;
                         await Task.Delay(AnimationTime);
-                        this.Image = Properties.Resources.TurretIdle45;
+                        if (alive)
+                            this.Image = Properties.Resources.TurretIdle45;
                         this.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
                         this.state = State.Idle;
                         break;
@@ -159,28 +182,32 @@ namespace Game
                         this.Image = Properties.Resources.TurretShootS;
                         MakeBullets(engine, gameObjects);
                         await Task.Delay(AnimationTime);
-                        this.Image = Properties.Resources.TurretIdle;
+                        if (alive)
+                            this.Image = Properties.Resources.TurretIdle;
                         this.Image.RotateFlip(RotateFlipType.Rotate180FlipNone);
                         this.state = State.Idle;
                         break;
                     case Direction.SouthWest:
                         this.Image = Properties.Resources.TurretShootSW;
                         await Task.Delay(AnimationTime);
-                        this.Image = Properties.Resources.TurretIdle45;
+                        if (alive)
+                            this.Image = Properties.Resources.TurretIdle45;
                         this.Image.RotateFlip(RotateFlipType.Rotate180FlipNone);
                         this.state = State.Idle;
                         break;
                     case Direction.West:
                         this.Image = Properties.Resources.TurretShootW;
                         await Task.Delay(AnimationTime);
-                        this.Image = Properties.Resources.TurretIdle;
+                        if (alive)
+                            this.Image = Properties.Resources.TurretIdle;
                         this.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
                         this.state = State.Idle;
                         break;
                     case Direction.NorthWest:
                         this.Image = Properties.Resources.TurretShootNW;
                         await Task.Delay(AnimationTime);
-                        this.Image = Properties.Resources.TurretIdle45;
+                        if (alive)
+                            this.Image = Properties.Resources.TurretIdle45;
                         this.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
                         this.state = State.Idle;
                         break;
@@ -197,78 +224,90 @@ namespace Game
             {
                 for (int i = 0; i < repeat; i++)
                 {
-                    switch (this.direction)
-                    {
-                        case Direction.North:
-                            this.Image = Properties.Resources.CWTurretRotN;
-                            this.state = State.Rotating;
-                            await Task.Delay(AnimationTime);
-                            this.Image = Properties.Resources.TurretIdle45;
-                            this.state = State.Idle;
-                            this.direction = Direction.NorthEast;
-                            break;
-                        case Direction.NorthEast:
-                            this.Image = Properties.Resources.CWTurretRotNE;
-                            this.state = State.Rotating;
-                            await Task.Delay(AnimationTime);
-                            this.Image = Properties.Resources.TurretIdle;
-                            this.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
-                            this.state = State.Idle;
-                            this.direction = Direction.East;
-                            break;
-                        case Direction.East:
-                            this.Image = Properties.Resources.CWTurretRotE;
-                            this.state = State.Rotating;
-                            await Task.Delay(AnimationTime);
-                            this.Image = Properties.Resources.TurretIdle45;
-                            this.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
-                            this.state = State.Idle;
-                            this.direction = Direction.SouthEast;
-                            break;
-                        case Direction.SouthEast:
-                            this.Image = Properties.Resources.CWTurretRotSE;
-                            this.state = State.Rotating;
-                            await Task.Delay(AnimationTime);
-                            this.Image = Properties.Resources.TurretIdle;
-                            this.Image.RotateFlip(RotateFlipType.Rotate180FlipNone);
-                            this.state = State.Idle;
-                            this.direction = Direction.South;
-                            break;
-                        case Direction.South:
-                            this.Image = Properties.Resources.CWTurretRotS;
-                            this.state = State.Rotating;
-                            await Task.Delay(AnimationTime);
-                            this.Image = Properties.Resources.TurretIdle45;
-                            this.Image.RotateFlip(RotateFlipType.Rotate180FlipNone);
-                            this.state = State.Idle;
-                            this.direction = Direction.SouthWest;
-                            break;
-                        case Direction.SouthWest:
-                            this.Image = Properties.Resources.CWTurretRotSW;
-                            this.state = State.Rotating;
-                            await Task.Delay(AnimationTime);
-                            this.Image = Properties.Resources.TurretIdle;
-                            this.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
-                            this.state = State.Idle;
-                            this.direction = Direction.West;
-                            break;
-                        case Direction.West:
-                            this.Image = Properties.Resources.CWTurretRotW;
-                            this.state = State.Rotating;
-                            await Task.Delay(AnimationTime);
-                            this.Image = Properties.Resources.TurretIdle45;
-                            this.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
-                            this.state = State.Idle;
-                            this.direction = Direction.NorthWest;
-                            break;
-                        case Direction.NorthWest:
-                            this.Image = Properties.Resources.CWTurretRotNW;
-                            this.state = State.Rotating;
-                            await Task.Delay(AnimationTime);
-                            this.Image = Properties.Resources.TurretIdle;
-                            this.state = State.Idle;
-                            this.direction = Direction.North;
-                            break;
+                    if (alive)
+                    { 
+                        SFXRotate.Play();
+                        switch (this.direction)
+                        {
+                            case Direction.North:
+                                this.Image = Properties.Resources.CWTurretRotN;
+                                this.state = State.Rotating;
+                                await Task.Delay(AnimationTime);
+                                if (alive)
+                                    this.Image = Properties.Resources.TurretIdle45;
+                                this.state = State.Idle;
+                                this.direction = Direction.NorthEast;
+                                break;
+                            case Direction.NorthEast:
+                                this.Image = Properties.Resources.CWTurretRotNE;
+                                this.state = State.Rotating;
+                                await Task.Delay(AnimationTime);
+                                if (alive)
+                                    this.Image = Properties.Resources.TurretIdle;
+                                this.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                                this.state = State.Idle;
+                                this.direction = Direction.East;
+                                break;
+                            case Direction.East:
+                                this.Image = Properties.Resources.CWTurretRotE;
+                                this.state = State.Rotating;
+                                await Task.Delay(AnimationTime);
+                                if (alive)
+                                    this.Image = Properties.Resources.TurretIdle45;
+                                this.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                                this.state = State.Idle;
+                                this.direction = Direction.SouthEast;
+                                break;
+                            case Direction.SouthEast:
+                                this.Image = Properties.Resources.CWTurretRotSE;
+                                this.state = State.Rotating;
+                                await Task.Delay(AnimationTime);
+                                if (alive)
+                                    this.Image = Properties.Resources.TurretIdle;
+                                this.Image.RotateFlip(RotateFlipType.Rotate180FlipNone);
+                                this.state = State.Idle;
+                                this.direction = Direction.South;
+                                break;
+                            case Direction.South:
+                                this.Image = Properties.Resources.CWTurretRotS;
+                                this.state = State.Rotating;
+                                await Task.Delay(AnimationTime);
+                                if (alive)
+                                    this.Image = Properties.Resources.TurretIdle45;
+                                this.Image.RotateFlip(RotateFlipType.Rotate180FlipNone);
+                                this.state = State.Idle;
+                                this.direction = Direction.SouthWest;
+                                break;
+                            case Direction.SouthWest:
+                                this.Image = Properties.Resources.CWTurretRotSW;
+                                this.state = State.Rotating;
+                                await Task.Delay(AnimationTime);
+                                if (alive)
+                                    this.Image = Properties.Resources.TurretIdle;
+                                this.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                                this.state = State.Idle;
+                                this.direction = Direction.West;
+                                break;
+                            case Direction.West:
+                                this.Image = Properties.Resources.CWTurretRotW;
+                                this.state = State.Rotating;
+                                await Task.Delay(AnimationTime);
+                                if (alive)
+                                    this.Image = Properties.Resources.TurretIdle45;
+                                this.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                                this.state = State.Idle;
+                                this.direction = Direction.NorthWest;
+                                break;
+                            case Direction.NorthWest:
+                                this.Image = Properties.Resources.CWTurretRotNW;
+                                this.state = State.Rotating;
+                                await Task.Delay(AnimationTime);
+                                if (alive)
+                                    this.Image = Properties.Resources.TurretIdle;
+                                this.state = State.Idle;
+                                this.direction = Direction.North;
+                                break;
+                        }
                     }
                 }
             }
@@ -281,78 +320,82 @@ namespace Game
             {
                 for (int i = 0; i < repeat; i++)
                 {
-                    switch (this.direction)
-                    {
-                        case Direction.North:
-                            this.Image = Properties.Resources.CCWTurretRotN;
-                            this.state = State.Rotating;
-                            await Task.Delay(AnimationTime);
-                            this.Image = Properties.Resources.TurretIdle45;
-                            this.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
-                            this.state = State.Idle;
-                            this.direction = Direction.NorthWest;
-                            break;
-                        case Direction.NorthWest:
-                            this.Image = Properties.Resources.CCWTurretRotNW;
-                            this.state = State.Rotating;
-                            await Task.Delay(AnimationTime);
-                            this.Image = Properties.Resources.TurretIdle;
-                            this.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
-                            this.state = State.Idle;
-                            this.direction = Direction.West;
-                            break;
-                        case Direction.West:
-                            this.Image = Properties.Resources.CCWTurretRotW;
-                            this.state = State.Rotating;
-                            await Task.Delay(AnimationTime);
-                            this.Image = Properties.Resources.TurretIdle45;
-                            this.Image.RotateFlip(RotateFlipType.Rotate180FlipNone);
-                            this.state = State.Idle;
-                            this.direction = Direction.SouthWest;
-                            break;
-                        case Direction.SouthWest:
-                            this.Image = Properties.Resources.CCWTurretRotSW;
-                            this.state = State.Rotating;
-                            await Task.Delay(AnimationTime);
-                            this.Image = Properties.Resources.TurretIdle;
-                            this.Image.RotateFlip(RotateFlipType.Rotate180FlipNone);
-                            this.state = State.Idle;
-                            this.direction = Direction.South;
-                            break;
-                        case Direction.South:
-                            this.Image = Properties.Resources.CCWTurretRotS;
-                            this.state = State.Rotating;
-                            await Task.Delay(AnimationTime);
-                            this.Image = Properties.Resources.TurretIdle45;
-                            this.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
-                            this.state = State.Idle;
-                            this.direction = Direction.SouthEast;
-                            break;
-                        case Direction.SouthEast:
-                            this.Image = Properties.Resources.CCWTurretRotSE;
-                            this.state = State.Rotating;
-                            await Task.Delay(AnimationTime);
-                            this.Image = Properties.Resources.TurretIdle;
-                            this.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
-                            this.state = State.Idle;
-                            this.direction = Direction.East;
-                            break;
-                        case Direction.East:
-                            this.Image = Properties.Resources.CCWTurretRotE;
-                            this.state = State.Rotating;
-                            await Task.Delay(AnimationTime);
-                            this.Image = Properties.Resources.TurretIdle45;
-                            this.state = State.Idle;
-                            this.direction = Direction.NorthEast;
-                            break;
-                        case Direction.NorthEast:
-                            this.Image = Properties.Resources.CCWTurretRotNE;
-                            this.state = State.Rotating;
-                            await Task.Delay(AnimationTime);
-                            this.Image = Properties.Resources.TurretIdle;
-                            this.state = State.Idle;
-                            this.direction = Direction.North;
-                            break;
+                    if (alive)
+                    { 
+                        SFXRotate.Play();
+                        switch (this.direction)
+                        {
+                            case Direction.North:
+                                this.Image = Properties.Resources.CCWTurretRotN;
+                                this.state = State.Rotating;
+                                await Task.Delay(AnimationTime);
+                                this.Image = Properties.Resources.TurretIdle45;
+                                this.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                                this.state = State.Idle;
+                                this.direction = Direction.NorthWest;
+                                break;
+                            case Direction.NorthWest:
+                                this.Image = Properties.Resources.CCWTurretRotNW;
+                                this.state = State.Rotating;
+                                await Task.Delay(AnimationTime);
+                                this.Image = Properties.Resources.TurretIdle;
+                                this.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                                this.state = State.Idle;
+                                this.direction = Direction.West;
+                                break;
+                            case Direction.West:
+                                this.Image = Properties.Resources.CCWTurretRotW;
+                                this.state = State.Rotating;
+                                await Task.Delay(AnimationTime);
+                                this.Image = Properties.Resources.TurretIdle45;
+                                this.Image.RotateFlip(RotateFlipType.Rotate180FlipNone);
+                                this.state = State.Idle;
+                                this.direction = Direction.SouthWest;
+                                break;
+                            case Direction.SouthWest:
+                                this.Image = Properties.Resources.CCWTurretRotSW;
+                                this.state = State.Rotating;
+                                await Task.Delay(AnimationTime);
+                                this.Image = Properties.Resources.TurretIdle;
+                                this.Image.RotateFlip(RotateFlipType.Rotate180FlipNone);
+                                this.state = State.Idle;
+                                this.direction = Direction.South;
+                                break;
+                            case Direction.South:
+                                this.Image = Properties.Resources.CCWTurretRotS;
+                                this.state = State.Rotating;
+                                await Task.Delay(AnimationTime);
+                                this.Image = Properties.Resources.TurretIdle45;
+                                this.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                                this.state = State.Idle;
+                                this.direction = Direction.SouthEast;
+                                break;
+                            case Direction.SouthEast:
+                                this.Image = Properties.Resources.CCWTurretRotSE;
+                                this.state = State.Rotating;
+                                await Task.Delay(AnimationTime);
+                                this.Image = Properties.Resources.TurretIdle;
+                                this.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                                this.state = State.Idle;
+                                this.direction = Direction.East;
+                                break;
+                            case Direction.East:
+                                this.Image = Properties.Resources.CCWTurretRotE;
+                                this.state = State.Rotating;
+                                await Task.Delay(AnimationTime);
+                                this.Image = Properties.Resources.TurretIdle45;
+                                this.state = State.Idle;
+                                this.direction = Direction.NorthEast;
+                                break;
+                            case Direction.NorthEast:
+                                this.Image = Properties.Resources.CCWTurretRotNE;
+                                this.state = State.Rotating;
+                                await Task.Delay(AnimationTime);
+                                this.Image = Properties.Resources.TurretIdle;
+                                this.state = State.Idle;
+                                this.direction = Direction.North;
+                                break;
+                        }
                     }
                 }
             }
