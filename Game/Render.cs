@@ -52,6 +52,8 @@ namespace Game
             Wall = 1,
             Mine = 2,
             Turret = 3,
+            Flashdrive = 7,
+            Server = 8,
             Gate = 9
         }
 
@@ -75,7 +77,14 @@ namespace Game
                     else if (maparray[i, j] == (int)Objects.Mine)
                     {
                         objectArray[k++] = new Mine(l, h, i, j);
-                        
+                    }
+                    else if (maparray[i, j] == (int)Objects.Server)
+                    {
+                        objectArray[k++] = new Server(l, h);
+                    }
+                    else if (maparray[i, j] == (int)Objects.Flashdrive)
+                    {
+                        objectArray[k++] = new Flashdrive(l, h);
                     }
                     else if (maparray[i, j] == (int)Objects.Gate)
                     {

@@ -249,9 +249,9 @@ namespace Game
                 bullet.bulletLeft = left;
                 bullet.bulletTop = top;
                 return bullet;
-            //------------------------------------//
             }
 
+            ///Calculates the spawn location of the bullets
             void GetBarrelPosition(short barrel, out int left, out int top)
             {
                 left = 0;
@@ -293,7 +293,7 @@ namespace Game
                         break;
                 }
             }
-
+            //------------------------------------//
         }
 
         /// <summary>
