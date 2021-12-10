@@ -85,7 +85,7 @@ namespace Game
         {
             if(wincondition == true)
             {
-                if (stage == 1)
+                if (stage == 3)
                 {
                     Hide();
                     winningScreen.Visible = true;
