@@ -252,6 +252,16 @@ namespace Game.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap flashdrive {
+            get {
+                object obj = ResourceManager.GetObject("flashdrive", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap floor {
             get {
                 object obj = ResourceManager.GetObject("floor", resourceCulture);

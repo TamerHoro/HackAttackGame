@@ -176,6 +176,7 @@
     <Content Include="Level1.txt" />
     <Content Include="Level2.txt" />
     <Content Include="Resources\Explosion.wav" />
+    <None Include="Resources\flashdrive.png" />
     <Content Include="Resources\PlayerHit.wav" />
     <Content Include="Resources\Rotate.wav" />
     <Content Include="Resources\Shot.wav" />
