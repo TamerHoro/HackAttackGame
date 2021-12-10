@@ -177,8 +177,10 @@
     <Content Include="Level2.txt" />
     <Content Include="Resources\Explosion.wav" />
     <None Include="Resources\flashdrive.png" />
+    <None Include="Resources\Hacked_Server.png" />
     <Content Include="Resources\PlayerHit.wav" />
     <Content Include="Resources\Rotate.wav" />
+    <None Include="Resources\Server.png" />
     <Content Include="Resources\Shot.wav" />
     <Content Include="Resources\TurretShootSW.gif" />
     <Content Include="Resources\TurretShootW.gif" />
