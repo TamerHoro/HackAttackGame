@@ -19,7 +19,10 @@ namespace Game
 
         private int speed = 10;
         private Timer bulletTimer = new Timer();
-
+        public Bullet(GameObjects[] objects)
+        {
+            gameobjects = objects;
+        }
         public void MakeBullet(Engine engine)
         {
             this.BackColor = Color.Black;

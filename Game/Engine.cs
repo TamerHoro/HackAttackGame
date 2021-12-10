@@ -35,7 +35,7 @@ namespace Game
         private void MainTimerEvent(object sender, EventArgs e)
         {
             MainTimerEvent MainTimeEvent = new MainTimerEvent();
-            Collision collision = new Collision(level.playerOne, level.walling,out winCondition);
+            Collision collision = new Collision(level.playerOne, level.objectArray, this, out winCondition);
             level.playerOne.Move();
             level.PlayerHealth.update(level.playerOne);
             if (level.playerOne.Health <= 0)
@@ -70,7 +70,7 @@ namespace Game
         }
         public void StartGame()
         {
-            this.Controls.AddRange(level.walling);
+            this.Controls.AddRange(level.objectArray);
             this.Controls.Add(level.playerOne);
             this.Controls.Add(escapeMenu);
             this.Controls.Add(level.PlayerHealth);
@@ -100,7 +100,7 @@ namespace Game
                 level = LevelManager.CreateLevel(stage);
                 escapeMenu = new EscapeMenu();
                 InitializeComponent();
-                this.Controls.AddRange(level.walling);
+                this.Controls.AddRange(level.objectArray);
                 this.Controls.Add(level.playerOne);                
                 this.Controls.Add(escapeMenu);
                 this.Controls.Add(level.PlayerHealth);
@@ -122,7 +122,7 @@ namespace Game
             escapeMenu = new EscapeMenu();
             InitializeComponent();
             
-            this.Controls.AddRange(level.walling);
+            this.Controls.AddRange(level.objectArray);
             this.Controls.Add(level.playerOne);
             this.Controls.Add(escapeMenu);
             this.Controls.Add(level.PlayerHealth);
@@ -147,12 +147,16 @@ namespace Game
 
         private void ShootBullet(string direction)
         {
-            Bullet shotBullet = new Bullet();
+            Bullet shotBullet = new Bullet(level.objectArray);
             shotBullet.direction = direction;
             shotBullet.bulletLeft = level.playerOne.Left + (level.playerOne.Width / 2);
             shotBullet.bulletTop = level.playerOne.Top + (level.playerOne.Height / 2);
             shotBullet.MakeBullet(this);
         }
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

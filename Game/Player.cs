@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Media;
 
 namespace Game
 {
@@ -9,7 +10,9 @@ namespace Game
         public bool goLeft, goRight, goUp, goDown, shoot;
         int speed = 5;
         //public PictureBox picture = new PictureBox();       
-        Image playerimage = Image.FromFile(@"..\..\Resources\playerupsmall.png");
+        SoundPlayer SFXHit = new SoundPlayer(Properties.Resources.PlayerHit);
+        Image playerimage = Image.FromFile(@"..\..\Resources\playersmall.png");
+        public int health = 3;
         public string direction;
 
         public Player()
@@ -109,6 +112,12 @@ namespace Game
             {
                 Top += speed;
             }
+        }
+
+        public void Die()
+        {
+            SFXHit.Play();
+            this.Location = new Point(100, 100);
         }
   
     }

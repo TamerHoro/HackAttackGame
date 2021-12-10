@@ -16,7 +16,7 @@ namespace Game
         int stage = 0;
         int[,] maparray;
         //List<PictureBox> levelwalling = new List<PictureBox>();
-        public GameObjects[] walling = new GameObjects[325];
+        public GameObjects[] objectArray = new GameObjects[325];
         //List<PictureBox> enemies = new List<PictureBox>();        
         public Player playerOne = new Player();
         public HealthLabelPlayer PlayerHealth;
@@ -66,20 +66,20 @@ namespace Game
                 {
                     if (maparray[i, j] == (int)Objects.Wall)
                     {
-                        walling[k++] = new Wall(l, h, i, j);
+                        objectArray[k++] = new Wall(l, h, i, j);
                     }
                     else if (maparray[i, j] == (int)Objects.Turret)
                     {
-                        walling[k++] = new Turret(l, h, i, j);
+                        objectArray[k++] = new Turret(l, h, i, j);
                     }
                     else if (maparray[i, j] == (int)Objects.Mine)
                     {
-                        walling[k++] = new Mine(l, h, i, j);
+                        objectArray[k++] = new Mine(l, h, i, j);
                         
                     }
                     else if (maparray[i, j] == (int)Objects.Gate)
                     {
-                        walling[k++] = new Gate(l, h, i, j);
+                        objectArray[k++] = new Gate(l, h, i, j);
                     }
                     l = l + 40;
                 }
