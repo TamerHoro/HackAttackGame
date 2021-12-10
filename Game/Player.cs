@@ -16,7 +16,7 @@ namespace Game
         public string direction;
 
         public Player()
-            : base(100, 100, 3, Image.FromFile(@"..\..\Resources\playersmall.png"))
+            : base(100, 70, 3, Image.FromFile(@"..\..\Resources\playerupsmall.png"))
         {
             this.SizeMode = PictureBoxSizeMode.AutoSize;
             PlayerControl playercontrol = new PlayerControl();

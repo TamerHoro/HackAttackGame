@@ -1,10 +1,10 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using System.Drawing;
 
 namespace Game
 {
-    class HealthLabel: Label
+
+    class HealthLabel : Label
     {
         public InteractableObject interactable;
         public int fullHealth;
@@ -17,7 +17,10 @@ namespace Game
             health = interactable.Health;
             Text = $"{health}/{fullHealth}";
             ForeColor = Color.FromArgb(255, 255, 255);
-            Location = new Point(interactable.Left + 15, interactable.Top + 50);
+            Location = new Point(interactable.Left + 4, interactable.Top + 15);
+            BringToFront();
+            Size = new Size(new Point(23, 12));
+            this.BackColor = Color.Transparent;
         }
 
     }

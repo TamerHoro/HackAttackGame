@@ -49,6 +49,15 @@
     <Compile Include="Bullet.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="DeathScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HealthLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="HealthLabelPlayer.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Mine.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -104,6 +113,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="WinGame.cs" />
+    <Compile Include="WinningScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <EmbeddedResource Include="Engine.resx">
       <DependentUpon>Engine.cs</DependentUpon>
     </EmbeddedResource>

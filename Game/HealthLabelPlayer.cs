@@ -2,7 +2,7 @@
 
 namespace Game
 {
-    class HealthLabelPlayer: HealthLabel
+    class HealthLabelPlayer : HealthLabel
     {
         public HealthLabelPlayer(Player player)
             : base(player)
@@ -14,20 +14,22 @@ namespace Game
         {
             if (player.goDown)
             {
-                Location = new Point(player.Left + 15, player.Top - 15);
+                Location = new Point(player.Left + 4, player.Top - 15);
             }
-            else if(player.goUp)
+            else if (player.goUp)
             {
-                Location = new Point(player.Left + 15, player.Top + 50);
+                Location = new Point(player.Left + 4, player.Top + 15);
             }
             else if (player.goLeft)
             {
-                Location = new Point(player.Left + 90, player.Top + 20);
+                Location = new Point(player.Left + 20, player.Top + 5);
             }
             else if (player.goRight)
             {
-                Location = new Point(player.Left - 20, player.Top + 20);
+                Location = new Point(player.Left - 20, player.Top + 5);
             }
+
+            Text = $"{player.Health}/{fullHealth}";
         }
 
     }

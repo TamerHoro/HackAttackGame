@@ -22,6 +22,8 @@ namespace Game
         public EscapeMenu escapeMenu = new EscapeMenu();
         public bool restart = false;
         int stage = 1;
+        public DeathScreen deathScreen = new DeathScreen();
+        public WinningScreen winningScreen = new WinningScreen();
 
 
         public Engine()
@@ -35,15 +37,30 @@ namespace Game
             MainTimerEvent MainTimeEvent = new MainTimerEvent();
             Collision collision = new Collision(level.playerOne, level.objectArray, this, out winCondition);
             level.playerOne.Move();
-            if (escapeMenu.exitClicked == true) 
+            level.PlayerHealth.update(level.playerOne);
+            if (level.playerOne.Health <= 0)
+            {
+                Hide();
+                deathScreen.Visible = true;
+                level.playerOne.Health = 3;
+            }
+            if (escapeMenu.exitClicked == true || deathScreen.exitClicked == true || winningScreen.exitClicked == true) 
             {
                 this.Close(); 
             }
-            if(escapeMenu.restartClicked == true) 
+            if (deathScreen.restartClicked == true || winningScreen.restartClicked == true)
             {
-                RestartLevel();
+                winningScreen.restartClicked = false;
+                deathScreen.restartClicked = false;
+                stage = 1;
+                RestartLevel(stage);
+                Show();
+            }
+            if (escapeMenu.restartClicked == true) 
+            {
+                RestartLevel(stage);
                 escapeMenu.restartClicked = false;
-            };
+            }
             if (level.playerOne.shoot == true)
             {
                 this.ShootBullet(level.playerOne.direction);
@@ -56,6 +73,7 @@ namespace Game
             this.Controls.AddRange(level.objectArray);
             this.Controls.Add(level.playerOne);
             this.Controls.Add(escapeMenu);
+            this.Controls.Add(level.PlayerHealth);
         }
        
         private void Engine_Load(object sender, EventArgs e)
@@ -67,6 +85,11 @@ namespace Game
         {
             if(wincondition == true)
             {
+                if (stage == 1)
+                {
+                    Hide();
+                    winningScreen.Visible = true;
+                }
                 stage++;
                 level.Dispose();
                 level.Controls.Clear();
@@ -80,6 +103,7 @@ namespace Game
                 this.Controls.AddRange(level.objectArray);
                 this.Controls.Add(level.playerOne);                
                 this.Controls.Add(escapeMenu);
+                this.Controls.Add(level.PlayerHealth);
             }
             else
             {
@@ -89,7 +113,7 @@ namespace Game
         }
         
         
-        private void RestartLevel()
+        private void RestartLevel(int stage)
         {
             level.Dispose();
             level.Controls.Clear();
@@ -101,7 +125,8 @@ namespace Game
             this.Controls.AddRange(level.objectArray);
             this.Controls.Add(level.playerOne);
             this.Controls.Add(escapeMenu);
-           
+            this.Controls.Add(level.PlayerHealth);
+
         }
 
         private void RestartGame()
