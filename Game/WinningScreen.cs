@@ -5,7 +5,7 @@ using System.Drawing;
 
 namespace Game
 {
-    public class WinningScreen: Form
+    public class WinningScreen : Form
     {
         public Label WinLabel = new Label();
         public Button Exit = new Button();

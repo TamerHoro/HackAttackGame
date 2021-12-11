@@ -10,7 +10,6 @@ namespace Game
     class Wall : StaticObject
     {
 
-
         public Wall(int l, int h, int i, int j) : base(l,h)
         {
             this.Tag = $"wall{i}{j}";

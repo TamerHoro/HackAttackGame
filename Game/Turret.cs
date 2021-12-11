@@ -179,6 +179,7 @@ namespace Game
             }
             //Remove dead turret
             this.Dispose();
+
         }
 
         /// <summary>

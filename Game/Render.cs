@@ -16,7 +16,7 @@ namespace Game
         int stage = 0;
         int[,] maparray;
         //List<PictureBox> levelwalling = new List<PictureBox>();
-        public GameObjects[] objectArray = new GameObjects[325];
+        public GameObjects[] objectArray = new GameObjects[200];
         //List<PictureBox> enemies = new List<PictureBox>();        
         public Player playerOne = new Player();
         public HealthLabelPlayer PlayerHealth;
@@ -32,7 +32,11 @@ namespace Game
             {
                 lines = File.ReadAllText(@"..\..\Level2.txt").Split(new string[] { "\n" }, StringSplitOptions.None);                
             }
-            else
+            if (stage == 3)
+            {
+                lines = File.ReadAllText(@"..\..\Level3.txt").Split(new string[] { "\n" }, StringSplitOptions.None);
+            }
+            if(stage >3)
             {
                 lines = File.ReadAllText(@"..\..\Level1.txt").Split(new string[] { "\n" }, StringSplitOptions.None);
             }
