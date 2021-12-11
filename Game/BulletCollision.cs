@@ -31,21 +31,32 @@ namespace Game
                         if (gameobjects[i] is Wall)
                         {
                             col = true;
-                        } else if (gameobjects[i] is Turret)
+                        }
+                        else if (gameobjects[i] is Turret)
                         {
                             col = true;
                             var HitTurret = gameobjects[i] as Turret;
                             HitTurret.TakeDamage();
+                            if (!HitTurret.IsAlive)
+                            {
+                                gameobjects[i] = null;
+                                HitTurret = null;
+                            }
                         }
                         else if (gameobjects[i] is Mine)
                         {
                             col = true;
                             var HitMine = gameobjects[i] as Mine;
                             HitMine.Explode();
+                            gameobjects[i] = null;
+                            HitMine = null;
                         }
-
+                        else if (gameobjects[i] is Player)
+                        {
+                            var activePlayer = gameobjects[i] as Player;
+                            activePlayer.Die();
+                        }
                     }
-
                 }
 
             }

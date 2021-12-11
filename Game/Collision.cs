@@ -12,6 +12,7 @@ namespace Game
         public Player player;
         public Player futurePlayer = new Player();
         public GameObjects[] gameobjects;
+        public Engine engine;
         bool win = false;
         
         public void CollsionCheck() 
@@ -83,27 +84,53 @@ namespace Game
                         }
                         if (gameobjects[i] is Mine || gameobjects[i] is Turret)
                         {
-                            if (gameobjects[i] is Mine)
+                            if (player.Bounds.IntersectsWith(gameobjects[i].Bounds))
                             {
-                                var ActiveMine = gameobjects[i] as Mine;
-                                if (ActiveMine.IsAlive)
+                                if (gameobjects[i] is Mine)
                                 {
-                                    ActiveMine.Explode();
-                                    player.Die();
-                                    gameobjects[i] = null;
+                                    var ActiveMine = gameobjects[i] as Mine;
+                                    if (ActiveMine.IsAlive)
+                                    {
+                                        ActiveMine.Explode();
+                                        player.Die();
+                                        gameobjects[i] = null;
+                                    }
+                                }
+                                else
+                                {
+                                    var ActiveTurret = gameobjects[i] as Turret;
+                                    if (ActiveTurret.IsAlive)
+                                    {
+                                        //ActiveTurret.SelfDestruct();
+                                        //player.Die();
+                                        //gameobjects[i] = null;
+                                        ActiveTurret.TestFire();
+                                    }
+
                                 }
                             }
-                            else
+                            if (gameobjects[i] is Turret)
                             {
-                                var ActiveTurret = gameobjects[i] as Turret;
-                                if (ActiveTurret.IsAlive)
+                                var TurretToCheck = gameobjects[i] as Turret;
+                                if (TurretToCheck.CurrentState == Turret.State.Shooting)
                                 {
-                                    ActiveTurret.SelfDestruct();
-                                    player.Die();
-                                    gameobjects[i] = null;
+                                    TurretToCheck.Shoot(engine, gameobjects);
                                 }
 
                             }                            
+                        }
+                        if (gameobjects[i] is Flashdrive)
+                        {
+                            var badUSB = gameobjects[i] as Flashdrive;
+                            if (!badUSB.Collected) badUSB.collect();
+                            badUSB.Dispose();
+                            badUSB = null;
+                            gameobjects[i] = null;
+                        }
+                        if (gameobjects[i] is Server)
+                        {
+                            var server = gameobjects[i] as Server;
+                            server.Hack();
                         }
                     }
                     
@@ -117,10 +144,11 @@ namespace Game
                 }
             }
         }
-        public Collision(Player player, GameObjects[] gameobjects, out bool winCondition)
+        public Collision(Player player, GameObjects[] gameobjects, Engine engine, out bool winCondition)
         {            
             this.player = player;
             this.gameobjects = gameobjects;
+            this.engine = engine;
             CollsionCheck();
             winCondition = win;
         }

@@ -53,6 +53,30 @@ namespace Game
             if (direction == "down")
                this.Top += speed;
 
+            if (direction == "NorthEast")
+            {
+                this.Left += speed;
+                this.Top -= speed;
+            }
+
+            if (direction == "NorthWest")
+            {
+                this.Left -= speed;
+                this.Top -= speed;
+            }
+
+            if (direction == "SouthEast")
+            {
+                this.Left += speed;
+                this.Top += speed;
+            }
+
+            if (direction == "SouthWest")
+            {
+                this.Left -= speed;
+                this.Top += speed;
+            }
+
             BulletCollision bulCol = new BulletCollision(this, gameobjects, out collided);
 
             if(collided == true)
