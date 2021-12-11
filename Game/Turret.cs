@@ -7,6 +7,56 @@ namespace Game
 {
     class Turret : Enemy
     {
+        public bool TestFireInProgress = false;
+        public async void TestFire()
+        {
+            if (!TestFireInProgress)
+            {
+                TestFireInProgress = true;
+                Rotate(Direction.South);
+                await Task.Delay(7000);
+                StartShooting();
+                await Task.Delay(3000);
+
+                Rotate(Direction.West);
+                await Task.Delay(4000);
+                StartShooting();
+                await Task.Delay(3000);
+
+                Rotate(Direction.SouthWest);
+                await Task.Delay(2000);
+                StartShooting();
+                await Task.Delay(3000);
+
+                Rotate(Direction.NorthWest);
+                await Task.Delay(4000);
+                StartShooting();
+                await Task.Delay(3000);
+
+                Rotate(Direction.SouthEast);
+                await Task.Delay(7000);
+                StartShooting();
+                await Task.Delay(3000);
+
+                Rotate(Direction.East);
+                await Task.Delay(2000);
+                StartShooting();
+                await Task.Delay(3000);
+
+                Rotate(Direction.NorthEast);
+                await Task.Delay(2000);
+                StartShooting();
+                await Task.Delay(3000);
+
+                Rotate(Direction.North);
+                await Task.Delay(2000);
+                StartShooting();
+                await Task.Delay(4000);
+
+                SelfDestruct();
+            }
+        }
+
         //Turrets can rotate in 8 different directions
         public enum Direction
         {
@@ -19,7 +69,6 @@ namespace Game
             SouthWest = 7,
             SouthEast = 8
         }
-
         //Turrets can have 3 states
         public enum State
         {
@@ -62,6 +111,14 @@ namespace Game
                         return "left";
                     case Direction.East:
                         return "right";
+                    case Direction.NorthEast:
+                        return "NorthEast";
+                    case Direction.NorthWest:
+                        return "NorthWest";
+                    case Direction.SouthEast:
+                        return "SouthEast";
+                    case Direction.SouthWest:
+                        return "SouthWest";
                     default: 
                         return "";
                 }
@@ -122,6 +179,7 @@ namespace Game
             }
             //Remove dead turret
             this.Dispose();
+
         }
 
         /// <summary>
@@ -192,9 +250,9 @@ namespace Game
                 bullet.bulletLeft = left;
                 bullet.bulletTop = top;
                 return bullet;
-            //------------------------------------//
             }
 
+            ///Calculates the spawn location of the bullets
             void GetBarrelPosition(short barrel, out int left, out int top)
             {
                 left = 0;
@@ -218,9 +276,25 @@ namespace Game
                         left = this.Left + (this.Width / 4) + offset;
                         top = this.Top + (this.Height / 4) * (barrel-1);
                         break;
+                    case Direction.NorthEast:
+                        left = this.Left + this.Width;
+                        top = this.Top;
+                        break;
+                    case Direction.NorthWest:
+                        left = this.Left;
+                        top = this.Top;
+                        break;
+                    case Direction.SouthEast:
+                        left = this.Left + this.Width;
+                        top = this.Top + this.Height;
+                        break;
+                    case Direction.SouthWest:
+                        left = this.Left;
+                        top = this.Top + this.Height;
+                        break;
                 }
             }
-
+            //------------------------------------//
         }
 
         /// <summary>

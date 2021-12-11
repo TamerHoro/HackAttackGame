@@ -7,8 +7,9 @@ using System.Drawing;
 
 namespace Game
 {
-    class Gate :StaticObject
+    class Gate : StaticObject
     {
+        
         public Gate(int l,int h, int i, int j) :base(l,h)
         {
             this.Tag = $"Gate{i}{j}";

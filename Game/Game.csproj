@@ -58,6 +58,9 @@
     <Compile Include="DeathScreen.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Flashdrive.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="HealthLabel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -109,6 +112,9 @@
     <Compile Include="Render.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Server.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="StaticObject.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -118,10 +124,10 @@
     <Compile Include="Wall.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="WinGame.cs" />
     <Compile Include="WinningScreen.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="WonGame.cs" />
     <EmbeddedResource Include="Engine.resx">
       <DependentUpon>Engine.cs</DependentUpon>
     </EmbeddedResource>
@@ -140,6 +146,9 @@
     </Compile>
     <EmbeddedResource Include="Render.resx">
       <DependentUpon>Render.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinningScreen.resx">
+      <DependentUpon>WinningScreen.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -182,8 +191,11 @@
     <Content Include="Level1.txt" />
     <Content Include="Level2.txt" />
     <Content Include="Resources\Explosion.wav" />
+    <None Include="Resources\flashdrive.png" />
+    <None Include="Resources\Hacked_Server.png" />
     <Content Include="Resources\PlayerHit.wav" />
     <Content Include="Resources\Rotate.wav" />
+    <None Include="Resources\Server.png" />
     <Content Include="Resources\Shot.wav" />
     <Content Include="Resources\TurretShootSW.gif" />
     <Content Include="Resources\TurretShootW.gif" />

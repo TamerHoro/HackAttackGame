@@ -35,92 +35,107 @@ namespace Game
                             futurePlayer.Top = futurePlayer.Top - 5;
 
                         if (futurePlayer.Bounds.IntersectsWith(gameobjects[i].Bounds))
-                        if (gameobjects[i] is Wall)
                         {
-                            if(j == 0)
-                                player.goRight = false;
-                            if(j == 1)
-                                player.goLeft = false;
-                            if(j == 2)
-                                player.goDown = false;
-                            if(j == 3)
-                                player.goUp = false;
+                            if (gameobjects[i] is Wall)
+                            {
+                                if (j == 0)
+                                    player.goRight = false;
+                                if (j == 1)
+                                    player.goLeft = false;
+                                if (j == 2)
+                                    player.goDown = false;
+                                if (j == 3)
+                                    player.goUp = false;
+                            }
                         }
+                        
 
                     }
 
                     if (player.Bounds.IntersectsWith(gameobjects[i].Bounds))
-                    if (gameobjects[i] is Wall)
                     {
-                        if (player.Location.X > gameobjects[i].Location.X) //Object is leftside of player
+                        if (gameobjects[i] is Wall)
                         {
-                            player.goLeft = false;
-                            player.Left = player.Left + 5;
+                            if (player.Location.X > gameobjects[i].Location.X) //Object is leftside of player
+                            {
+                                player.goLeft = false;
+                                player.Left = player.Left + 5;
+                            }
+                            if (player.Location.X < gameobjects[i].Location.X) //Object is rightside of player
+                            {
+                                player.goRight = false;
+                                player.Left = player.Left - 5;
+                            }
+                            if (player.Location.Y > gameobjects[i].Location.Y) //Object is below player
+                            {
+                                player.goDown = false;
+                                player.Top = player.Top + 5;
+                            }
+                            if (player.Location.Y < gameobjects[i].Location.Y) //Object is over player
+                            {
+                                player.goUp = false;
+                                player.Top = player.Top - 5;
+                            }
                         }
-                        if (player.Location.X < gameobjects[i].Location.X) //Object is rightside of player
-                        {
-                            player.goRight = false;
-                            player.Left = player.Left - 5;
-                        }
-                        if (player.Location.Y > gameobjects[i].Location.Y) //Object is below player
-                        {
-                            player.goDown = false;
-                            player.Top = player.Top + 5;
-                        }
-                        if (player.Location.Y < gameobjects[i].Location.Y) //Object is over player
-                        {
-                            player.goUp = false;
-                            player.Top = player.Top - 5;
-                        }
-                    }
-                    if (gameobjects[i] is Gate)
-                    {
-                        if (player.Bounds.IntersectsWith(gameobjects[i].Bounds))
+                        if (gameobjects[i] is Gate)
                         {
                             win = true;
+
                         }
-                            
-                    }
-                    if (gameobjects[i] is Mine || gameobjects[i] is Turret)
-                    {
-                        if (player.Bounds.IntersectsWith(gameobjects[i].Bounds))
+                        if (gameobjects[i] is Mine || gameobjects[i] is Turret)
                         {
-                            if (gameobjects[i] is Mine)
-                            {   
-                                var ActiveMine = gameobjects[i] as Mine;
-                                if (ActiveMine.IsAlive)
-                                {
-                                    ActiveMine.Explode();
-                                    player.Die();
-                                    gameobjects[i] = null;
-                                }
-                            } else
+                            if (player.Bounds.IntersectsWith(gameobjects[i].Bounds))
                             {
-                                var ActiveTurret = gameobjects[i] as Turret;
-                                if (ActiveTurret.IsAlive)
+                                if (gameobjects[i] is Mine)
                                 {
-                                    //ActiveTurret.SelfDestruct();
-                                    //player.Die();
-                                    //gameobjects[i] = null;
-                                    ActiveTurret.Rotate(Turret.Direction.West);
-                                    ActiveTurret.StartShooting();
+                                    var ActiveMine = gameobjects[i] as Mine;
+                                    if (ActiveMine.IsAlive)
+                                    {
+                                        ActiveMine.Explode();
+                                        player.Die();
+                                        gameobjects[i] = null;
+                                    }
                                 }
-                                
+                                else
+                                {
+                                    var ActiveTurret = gameobjects[i] as Turret;
+                                    if (ActiveTurret.IsAlive)
+                                    {
+                                        //ActiveTurret.SelfDestruct();
+                                        //player.Die();
+                                        //gameobjects[i] = null;
+                                        ActiveTurret.TestFire();
+                                    }
+
+                                }
                             }
+                            if (gameobjects[i] is Turret)
+                            {
+                                var TurretToCheck = gameobjects[i] as Turret;
+                                if (TurretToCheck.CurrentState == Turret.State.Shooting)
+                                {
+                                    TurretToCheck.Shoot(engine, gameobjects);
+                                }
+
+                            }                            
                         }
-                        if (gameobjects[i] is Turret)
+                        if (gameobjects[i] is Flashdrive)
                         {
-                            var TurretToCheck = gameobjects[i] as Turret;
-                            if (TurretToCheck.CurrentState == Turret.State.Shooting)
-                            {
-                                TurretToCheck.Shoot(engine, gameobjects);
-                            }
+                            var badUSB = gameobjects[i] as Flashdrive;
+                            if (!badUSB.Collected) badUSB.collect();
+                            badUSB.Dispose();
+                            badUSB = null;
+                            gameobjects[i] = null;
                         }
-
-
-
-
+                        if (gameobjects[i] is Server)
+                        {
+                            var server = gameobjects[i] as Server;
+                            server.Hack();
+                        }
                     }
+                    
+                    
+                    
 
 
                      

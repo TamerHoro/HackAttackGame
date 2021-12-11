@@ -121,136 +121,145 @@
   <data name="Wallhorizontal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Wallhorizontal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="playerup" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\playerup.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="wall" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\wall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="gate" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\gate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Bullet45" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Bullet45.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Bullet" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Bullet.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="playeright" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\playeright.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Wallvertical" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Wallvertical.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="TurretIdle45" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\TurretIdle45.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="floor" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\floor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="MineIdle" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MineIdle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="TurretIdle" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\TurretIdle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="player" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\player.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="MineExplode" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MineExplode.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="playerleft" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\playerleft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="MineTriggered" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MineTriggered.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="playerdown" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\playerdown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CCWTurretRotE" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CCWTurretRotE.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CCWTurretRotN" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CCWTurretRotN.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CCWTurretRotNE" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CCWTurretRotNE.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CCWTurretRotNW" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CCWTurretRotNW.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CCWTurretRotS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CCWTurretRotS.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CCWTurretRotSE" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CCWTurretRotSE.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CCWTurretRotSW" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CCWTurretRotSW.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CCWTurretRotW" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CCWTurretRotW.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CWTurretRotE" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CWTurretRotE.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CWTurretRotN" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CWTurretRotN.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="CWTurretRotNE" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CWTurretRotNE.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CWTurretRotNW" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CWTurretRotNW.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CWTurretRotS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CWTurretRotS.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="player" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\player.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CWTurretRotSE" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CWTurretRotSE.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CWTurretRotSW" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CWTurretRotSW.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CWTurretRotW" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CWTurretRotW.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="TurretShootE" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\TurretShootE.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="TurretShootN" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\TurretShootN.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="TurretShootNE" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\TurretShootNE.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="TurretShootNW" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\TurretShootNW.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="TurretShootS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\TurretShootS.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="TurretShootSE" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\TurretShootSE.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="TurretShootSW" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\TurretShootSW.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="TurretShootW" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\TurretShootW.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Explosion" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Explosion.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="PlayerHit" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PlayerHit.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="TurretIdle45" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TurretIdle45.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Rotate" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Rotate.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="TurretShootE" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TurretShootE.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CWTurretRotN" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CWTurretRotN.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MineExplode" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MineExplode.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CCWTurretRotNE" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CCWTurretRotNE.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TurretIdle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TurretIdle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="playerdown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\playerdown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CWTurretRotSW" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CWTurretRotSW.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="wall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\wall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Bullet45" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Bullet45.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CWTurretRotE" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CWTurretRotE.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CCWTurretRotSE" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CCWTurretRotSE.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CWTurretRotSE" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CWTurretRotSE.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MineTriggered" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MineTriggered.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="floor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\floor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TurretShootN" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TurretShootN.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TurretShootS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TurretShootS.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Explosion" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Explosion.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="CCWTurretRotN" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CCWTurretRotN.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TurretShootSW" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TurretShootSW.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TurretShootSE" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TurretShootSE.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="flashdrive" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\flashdrive.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PlayerHit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PlayerHit.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="CCWTurretRotE" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CCWTurretRotE.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CCWTurretRotW" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CCWTurretRotW.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="playerup" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\playerup.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="playeright" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\playeright.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Shot" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Shot.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="CCWTurretRotSW" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CCWTurretRotSW.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CWTurretRotS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CWTurretRotS.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CWTurretRotW" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CWTurretRotW.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Bullet" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Bullet.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MineIdle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MineIdle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CCWTurretRotNW" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CCWTurretRotNW.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TurretShootNW" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TurretShootNW.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TurretShootNE" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TurretShootNE.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="playerleft" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\playerleft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CCWTurretRotS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CCWTurretRotS.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TurretShootW" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TurretShootW.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="gate" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Wallvertical" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Wallvertical.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Hacked_Server" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Hacked_Server.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Server" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Server.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
