@@ -8,10 +8,10 @@ namespace Game
     class Player : InteractableObject
     {
         public bool goLeft, goRight, goUp, goDown, shoot;
-        int speed = 5;
+        int speed = 10;
+        public int ammo = 5;
         //public PictureBox picture = new PictureBox();       
         SoundPlayer SFXHit = new SoundPlayer(Properties.Resources.PlayerHit);
-        Image playerimage = Image.FromFile(@"..\..\Resources\playersmall.png");
         public int health = 3;
         public string direction;
 

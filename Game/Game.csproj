@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ammo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AmmoLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Bullet.cs">
       <SubType>Component</SubType>
     </Compile>

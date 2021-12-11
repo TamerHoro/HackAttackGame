@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace Game
 {
-    class GameObjects: PictureBox
+    public class GameObjects: PictureBox
     {
         public GameObjects(int left, int top)
         {
