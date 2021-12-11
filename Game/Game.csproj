@@ -191,6 +191,7 @@
     <Content Include="Resources\Rotate.wav" />
     <None Include="Resources\Server.png" />
     <Content Include="Resources\Shot.wav" />
+    <None Include="Resources\TurretShootN2.gif" />
     <Content Include="Resources\TurretShootSW.gif" />
     <Content Include="Resources\TurretShootW.gif" />
     <None Include="Resources\Bullet.png" />
