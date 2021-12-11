@@ -17,8 +17,9 @@ namespace Game
     public partial class Engine : Form
     {
         
-        Render level = new Render(0);
+        Render level = new Render(1);
         bool winCondition = false;
+        bool allEnemiesDead = false;
         public EscapeMenu escapeMenu = new EscapeMenu();
         public bool restart = false;
         int stage = 1;
@@ -65,7 +66,11 @@ namespace Game
             {
                 this.ShootBullet(level.playerOne.direction);
             }
-            NextLevel(winCondition);
+            if (winCondition)
+            {
+                NextLevel(winCondition);
+
+            }
             //MainTimeEvent.Update();
         }
         public void StartGame()
@@ -79,11 +84,11 @@ namespace Game
         private void Engine_Load(object sender, EventArgs e)
         {
 
-        }   
-        
+        }
+
         private void NextLevel(bool wincondition)
         {
-            if(wincondition == true)
+            if (WonGame.CheckWinCondition(wincondition, level.objectArray))
             {
                 if (stage == 3)
                 {
@@ -96,18 +101,17 @@ namespace Game
                 this.Controls.Clear();
                 timer1.Dispose();
                 escapeMenu.Dispose();
-                //escapeMenu.Dispose();
                 level = LevelManager.CreateLevel(stage);
                 escapeMenu = new EscapeMenu();
                 InitializeComponent();
                 this.Controls.AddRange(level.objectArray);
-                this.Controls.Add(level.playerOne);                
+                this.Controls.Add(level.playerOne);
                 this.Controls.Add(escapeMenu);
                 this.Controls.Add(level.PlayerHealth);
             }
             else
             {
-                
+
             }
 
         }

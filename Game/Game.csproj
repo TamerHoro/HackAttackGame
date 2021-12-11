@@ -118,10 +118,7 @@
     <Compile Include="Wall.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="WinGame.cs" />
-    <Compile Include="WinningScreen.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="WonGame.cs" />
     <EmbeddedResource Include="Engine.resx">
       <DependentUpon>Engine.cs</DependentUpon>
     </EmbeddedResource>

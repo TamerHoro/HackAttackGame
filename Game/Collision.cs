@@ -35,17 +35,20 @@ namespace Game
                             futurePlayer.Top = futurePlayer.Top - 5;
 
                         if (futurePlayer.Bounds.IntersectsWith(gameobjects[i].Bounds))
-                        if (gameobjects[i] is Wall)
                         {
-                            if(j == 0)
-                                player.goRight = false;
-                            if(j == 1)
-                                player.goLeft = false;
-                            if(j == 2)
-                                player.goDown = false;
-                            if(j == 3)
-                                player.goUp = false;
+                            if (gameobjects[i] is Wall)
+                            {
+                                if (j == 0)
+                                    player.goRight = false;
+                                if (j == 1)
+                                    player.goLeft = false;
+                                if (j == 2)
+                                    player.goDown = false;
+                                if (j == 3)
+                                    player.goUp = false;
+                            }
                         }
+                        
 
                     }
 
@@ -76,10 +79,7 @@ namespace Game
                         }
                         if (gameobjects[i] is Gate)
                         {
-                            if (player.Bounds.IntersectsWith(gameobjects[i].Bounds))
-                            {
-                                win = true;
-                            }
+                            win = true;
 
                         }
                         if (gameobjects[i] is Mine || gameobjects[i] is Turret)
@@ -116,7 +116,8 @@ namespace Game
                                 {
                                     TurretToCheck.Shoot(engine, gameobjects);
                                 }
-                            }
+
+                            }                            
                         }
                         if (gameobjects[i] is Flashdrive)
                         {
@@ -132,6 +133,14 @@ namespace Game
                             server.Hack();
                         }
                     }
+                    
+                    
+                    
+
+
+                     
+                    
+                    
                 }
             }
         }
