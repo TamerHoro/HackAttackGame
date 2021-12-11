@@ -25,7 +25,8 @@ namespace Game
         int stage = 1;
         public DeathScreen deathScreen = new DeathScreen();
         public WinningScreen winningScreen = new WinningScreen();
-
+        public Ammo ammo = new Ammo();
+        AmmoLabel ammoLabel = new AmmoLabel();
 
         public Engine()
         {           
@@ -66,11 +67,19 @@ namespace Game
             {
                 this.ShootBullet(level.playerOne.direction);
             }
-            if (winCondition)
+            if (level.playerOne.ammo == 0)
             {
-                NextLevel(winCondition);
+                    ammo.Spwan(level.objectArray);
 
+                if (level.playerOne.Bounds.IntersectsWith(ammo.Bounds))
+                {
+                    level.playerOne.ammo = ammo.Bullets;
+                    ammo.Visible = false;
+                    ammo.intersects = true;
+                }
             }
+            ammoLabel.UpdateAmmo(level.playerOne);
+            NextLevel(winCondition);
             //MainTimeEvent.Update();
         }
         public void StartGame()
@@ -79,6 +88,9 @@ namespace Game
             this.Controls.Add(level.playerOne);
             this.Controls.Add(escapeMenu);
             this.Controls.Add(level.PlayerHealth);
+            this.Controls.Add(ammo);
+            this.Controls.Add(ammoLabel);
+            ammoLabel.BringToFront();
         }
        
         private void Engine_Load(object sender, EventArgs e)
@@ -96,6 +108,9 @@ namespace Game
                     winningScreen.Visible = true;
                 }
                 stage++;
+                level.playerOne.ammo = 5;
+                ammo.intersects = true;
+                ammo.Visible = false;
                 level.Dispose();
                 level.Controls.Clear();
                 this.Controls.Clear();
@@ -108,12 +123,9 @@ namespace Game
                 this.Controls.Add(level.playerOne);
                 this.Controls.Add(escapeMenu);
                 this.Controls.Add(level.PlayerHealth);
+                this.Controls.Add(ammo);
+                this.Controls.Add(ammoLabel);
             }
-            else
-            {
-
-            }
-
         }
         
         
@@ -130,7 +142,8 @@ namespace Game
             this.Controls.Add(level.playerOne);
             this.Controls.Add(escapeMenu);
             this.Controls.Add(level.PlayerHealth);
-
+            this.Controls.Add(ammo);
+            this.Controls.Add(ammoLabel);
         }
 
         private void RestartGame()
@@ -151,11 +164,16 @@ namespace Game
 
         private void ShootBullet(string direction)
         {
-            Bullet shotBullet = new Bullet(level.objectArray);
-            shotBullet.direction = direction;
-            shotBullet.bulletLeft = level.playerOne.Left + (level.playerOne.Width / 2);
-            shotBullet.bulletTop = level.playerOne.Top + (level.playerOne.Height / 2);
-            shotBullet.MakeBullet(this);
+            if (level.playerOne.ammo > 0)
+            {
+                Bullet shotBullet = new Bullet(level.objectArray);
+                shotBullet.direction = direction;
+                shotBullet.bulletLeft = level.playerOne.Left + (level.playerOne.Width / 2);
+                shotBullet.bulletTop = level.playerOne.Top + (level.playerOne.Height / 2);
+                shotBullet.MakeBullet(this);
+                level.playerOne.ammo--;
+            }
+            
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
