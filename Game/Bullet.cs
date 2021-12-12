@@ -17,7 +17,7 @@ namespace Game
 
         public GameObjects[] gameobjects;
 
-        private int speed = 10;
+        private int speed = 20;
         private Timer bulletTimer = new Timer();
         public Bullet(GameObjects[] objects)
         {
@@ -34,7 +34,7 @@ namespace Game
 
             engine.Controls.Add(this);
 
-            bulletTimer.Interval = speed;
+            bulletTimer.Interval = 1;
             bulletTimer.Tick += new EventHandler(BulletTimerEvent);
             bulletTimer.Start();
         }

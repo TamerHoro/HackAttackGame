@@ -22,6 +22,7 @@ namespace Game
         bool allEnemiesDead = false;
         public EscapeMenu escapeMenu = new EscapeMenu();
         public bool restart = false;
+        int count = 5;
         int stage = 1;
         public DeathScreen deathScreen = new DeathScreen();
         public WinningScreen winningScreen = new WinningScreen();
@@ -35,7 +36,8 @@ namespace Game
             StartGame();
         }
         private void MainTimerEvent(object sender, EventArgs e)
-        {
+        {      
+            count++;
             MainTimerEvent MainTimeEvent = new MainTimerEvent();
             Collision collision = new Collision(level.playerOne, level.objectArray, this, out winCondition);
             level.playerOne.Move();
@@ -63,9 +65,10 @@ namespace Game
                 RestartLevel(stage);
                 escapeMenu.restartClicked = false;
             }
-            if (level.playerOne.shoot == true)
+            if (level.playerOne.shoot == true && count > 10)
             {
                 this.ShootBullet(level.playerOne.direction);
+                count = 0;
             }
             if (level.playerOne.ammo == 0)
             {
@@ -80,7 +83,7 @@ namespace Game
             }
             ammoLabel.UpdateAmmo(level.playerOne);
             NextLevel(winCondition);
-            //MainTimeEvent.Update();
+            //MainTimeEvent.Update();        
         }
         public void StartGame()
         {
