@@ -15,7 +15,7 @@ namespace Game
         {
             //BringToFront();
             Visible = false;
-            Image = Image.FromFile(@"..\..\ammo.png");
+            Image = Image.FromFile(@"..\..\Resources\ammo.png");
             Bullets = 5;
             Size = new Size(new Point(5, 5));
             SizeMode = PictureBoxSizeMode.AutoSize;
