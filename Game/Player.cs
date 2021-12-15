@@ -5,7 +5,7 @@ using System.Media;
 
 namespace Game
 {
-    class Player : InteractableObject
+    public class Player : InteractableObject
     {
         public bool goLeft, goRight, goUp, goDown, shoot;
         int speed = 10;

@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace Game
 {
-    class InteractableObject : GameObjects
+    public class InteractableObject : GameObjects
     {
         public int Health;
         public InteractableObject(int left, int top, int health, Image image)

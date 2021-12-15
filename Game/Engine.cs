@@ -17,7 +17,7 @@ namespace Game
     public partial class Engine : Form
     {
         
-        Render level = new Render(1);
+        public Render level = new Render(1);
         bool winCondition = false;
         bool allEnemiesDead = false;
         public EscapeMenu escapeMenu = new EscapeMenu();
@@ -169,7 +169,7 @@ namespace Game
         {
             if (level.playerOne.ammo > 0)
             {
-                Bullet shotBullet = new Bullet(level.objectArray);
+                Bullet shotBullet = new Bullet(level.objectArray, this.level.playerOne);
                 shotBullet.direction = direction;
                 shotBullet.bulletLeft = level.playerOne.Left + (level.playerOne.Width / 2);
                 shotBullet.bulletTop = level.playerOne.Top + (level.playerOne.Height / 2);
