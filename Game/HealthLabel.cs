@@ -4,7 +4,7 @@ using System.Drawing;
 namespace Game
 {
 
-    class HealthLabel : Label
+    public class HealthLabel : Label
     {
         public InteractableObject interactable;
         public int fullHealth;

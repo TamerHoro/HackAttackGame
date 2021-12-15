@@ -214,6 +214,7 @@ namespace Game
         {
             //Delay between spawned bullets
             int ShootDelay = 250;
+            Player playerturret = engine.level.playerOne;
             
             //Try shooting 4 bullets in total
             for (short i = 1; i <= 4; i++)
@@ -223,7 +224,7 @@ namespace Game
                 {
                     //Play SFX and spawn bullet
                     SFXShot.Play();
-                    SpawnBullet(i).MakeBullet(engine);
+                    SpawnBullet(i, playerturret).MakeBullet(engine);
 
                     //add lag adjusted delay
                     await Task.Delay(ShootDelay + i*100);
@@ -234,10 +235,10 @@ namespace Game
             //------------------------------------//
 
             ///Creates a bullet at the right barrel
-            Bullet SpawnBullet(short barrel)
+            Bullet SpawnBullet(short barrel, Player player)
             {
                 //Make a new bullet and add it to the rendered object list
-                Bullet bullet = new Bullet(gameObjects);
+                Bullet bullet = new Bullet(gameObjects, player);
 
                 //Make the bullet fly in the right direction
                 bullet.direction = this.DirectionString;

@@ -16,12 +16,14 @@ namespace Game
         public bool collided = false;
 
         public GameObjects[] gameobjects;
+        public Player player;
 
-        private int speed = 10;
+        private int speed = 20;
         private Timer bulletTimer = new Timer();
-        public Bullet(GameObjects[] objects)
+        public Bullet(GameObjects[] objects, Player playerin)
         {
             gameobjects = objects;
+            player = playerin;
         }
         public void MakeBullet(Engine engine)
         {
@@ -34,7 +36,7 @@ namespace Game
 
             engine.Controls.Add(this);
 
-            bulletTimer.Interval = speed;
+            bulletTimer.Interval = 1;
             bulletTimer.Tick += new EventHandler(BulletTimerEvent);
             bulletTimer.Start();
         }
@@ -77,7 +79,7 @@ namespace Game
                 this.Top += speed;
             }
 
-            BulletCollision bulCol = new BulletCollision(this, gameobjects, out collided);
+            BulletCollision bulCol = new BulletCollision(this, gameobjects, player, out collided);
 
             if(collided == true)
             {

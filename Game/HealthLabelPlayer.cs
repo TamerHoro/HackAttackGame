@@ -2,7 +2,7 @@
 
 namespace Game
 {
-    class HealthLabelPlayer : HealthLabel
+    public class HealthLabelPlayer : HealthLabel
     {
         public HealthLabelPlayer(Player player)
             : base(player)
