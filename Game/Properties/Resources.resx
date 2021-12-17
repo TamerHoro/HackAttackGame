@@ -262,4 +262,13 @@
   <data name="Server" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Server.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="TurretShootN2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TurretShootN2.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ammo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ammo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ae3x608t" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ae3x608t.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
