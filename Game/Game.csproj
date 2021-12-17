@@ -124,6 +124,9 @@
     <Compile Include="Wall.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="watchdog.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="WinningScreen.cs">
       <SubType>Form</SubType>
     </Compile>

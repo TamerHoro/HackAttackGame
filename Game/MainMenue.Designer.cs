@@ -131,7 +131,7 @@ namespace Game
             this.Load += new System.EventHandler(this.Form2_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
-            this.BackgroundImage = Image.FromFile(@"C:\Users\henke\Downloads\matrix.png");
+            this.BackgroundImage = Image.FromFile(@"..\..\Resources\matrix.png");
             
         }
     }

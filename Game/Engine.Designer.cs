@@ -1,4 +1,5 @@
 ﻿
+
 namespace Game
 {
     partial class Engine
@@ -29,6 +30,7 @@ namespace Game
         /// </summary>
         private void InitializeComponent()
         {
+            this.DoubleBuffered = true;
             this.components = new System.ComponentModel.Container();
             this.timer1 = new System.Windows.Forms.Timer(this.components);           
             this.SuspendLayout();
@@ -56,8 +58,6 @@ namespace Game
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(escapeMenu.KeyIsUp);
             ((System.ComponentModel.ISupportInitialize)(level.playerOne)).EndInit();
             this.ResumeLayout(false);
-
-
         }
 
         #endregion

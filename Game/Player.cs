@@ -8,7 +8,7 @@ namespace Game
     public class Player : InteractableObject
     {
         public bool goLeft, goRight, goUp, goDown, shoot;
-        int speed = 10;
+        int speed = 5;
         public int ammo = 5;
         //public PictureBox picture = new PictureBox();       
         SoundPlayer SFXHit = new SoundPlayer(Properties.Resources.PlayerHit);
@@ -20,7 +20,7 @@ namespace Game
         {
             this.SizeMode = PictureBoxSizeMode.AutoSize;
             PlayerControl playercontrol = new PlayerControl();
-            this.BackColor = Color.Transparent;
+            //this.BackColor = Color.Transparent;
             this.BringToFront();
 
         }
