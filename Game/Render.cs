@@ -11,7 +11,7 @@ using System.IO;
 
 namespace Game
 {
-    class Render : Form
+    public class Render : Form
     {
         int stage = 0;
         int[,] maparray;

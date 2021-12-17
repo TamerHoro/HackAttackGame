@@ -17,11 +17,12 @@ namespace Game
     public partial class Engine : Form
     {
         
-        Render level = new Render(1);
+        public Render level = new Render(1);
         bool winCondition = false;
         bool allEnemiesDead = false;
         public EscapeMenu escapeMenu = new EscapeMenu();
         public bool restart = false;
+        int count = 5;
         int stage = 1;
         public DeathScreen deathScreen = new DeathScreen();
         public WinningScreen winningScreen = new WinningScreen();
@@ -35,7 +36,8 @@ namespace Game
             StartGame();
         }
         private void MainTimerEvent(object sender, EventArgs e)
-        {
+        {      
+            count++;
             MainTimerEvent MainTimeEvent = new MainTimerEvent();
             Collision collision = new Collision(level.playerOne, level.objectArray, this, out winCondition);
             level.playerOne.Move();
@@ -63,9 +65,10 @@ namespace Game
                 RestartLevel(stage);
                 escapeMenu.restartClicked = false;
             }
-            if (level.playerOne.shoot == true)
+            if (level.playerOne.shoot == true && count > 10)
             {
                 this.ShootBullet(level.playerOne.direction);
+                count = 0;
             }
             if (level.playerOne.ammo == 0)
             {
@@ -80,7 +83,7 @@ namespace Game
             }
             ammoLabel.UpdateAmmo(level.playerOne);
             NextLevel(winCondition);
-            //MainTimeEvent.Update();
+            //MainTimeEvent.Update();        
         }
         public void StartGame()
         {
@@ -169,7 +172,7 @@ namespace Game
         {
             if (level.playerOne.ammo > 0)
             {
-                Bullet shotBullet = new Bullet(level.objectArray);
+                Bullet shotBullet = new Bullet(level.objectArray, this.level.playerOne);
                 shotBullet.direction = direction;
                 shotBullet.bulletLeft = level.playerOne.Left + (level.playerOne.Width / 2);
                 shotBullet.bulletTop = level.playerOne.Top + (level.playerOne.Height / 2);
