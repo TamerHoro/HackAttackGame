@@ -12,7 +12,7 @@ namespace Game
         public Watchdog(int xOffset, int yOffset, int i = 0, int j = 0, int k = 0)
             : base(xOffset, yOffset)
         {
-            Image = Image.FromFile(@"C:\Users\henke\Downloads\watchdog.png");
+            Image = Image.FromFile(@"..\..\Resources\watchdog.png");
             BackColor = Color.DimGray;
             SizeMode = PictureBoxSizeMode.AutoSize;
             if (k == 0)
