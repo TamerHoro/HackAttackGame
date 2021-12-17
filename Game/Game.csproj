@@ -46,42 +46,42 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Ammo.cs">
+    <Compile Include="GameObjects\Ammo.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="AmmoLabel.cs">
+    <Compile Include="Menues and Labels\AmmoLabel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Bullet.cs">
+    <Compile Include="GameObjects\Bullet.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="DeathScreen.cs">
+    <Compile Include="Menues and Labels\DeathScreen.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GameObjects\Flashdrive.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="HealthLabel.cs">
+    <Compile Include="Menues and Labels\HealthLabel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="HealthLabelPlayer.cs">
+    <Compile Include="Menues and Labels\HealthLabelPlayer.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="GameObjects\Mine.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="BulletCollision.cs" />
-    <Compile Include="Collision.cs" />
+    <Compile Include="Engine Releated\BulletCollision.cs" />
+    <Compile Include="Engine Releated\Collision.cs" />
     <Compile Include="GameObjects\Enemy.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Engine.cs">
+    <Compile Include="Engine Releated\Engine.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Engine.Designer.cs">
+    <Compile Include="Engine Releated\Engine.Designer.cs">
       <DependentUpon>Engine.cs</DependentUpon>
     </Compile>
-    <Compile Include="EscapeMenu.cs">
+    <Compile Include="Menues and Labels\EscapeMenu.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="GameObjects\GameObjects.cs">
@@ -93,23 +93,23 @@
     <Compile Include="GameObjects\InteractableObject.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="LevelManager.cs" />
-    <Compile Include="MainMenue.cs">
+    <Compile Include="Engine Releated\LevelManager.cs" />
+    <Compile Include="Menues and Labels\MainMenue.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainMenue.Designer.cs">
+    <Compile Include="Menues and Labels\MainMenue.Designer.cs">
       <DependentUpon>MainMenue.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainTImerEvent.cs" />
-    <Compile Include="Menue.cs" />
+    <Compile Include="Engine Releated\MainTImerEvent.cs" />
+    <Compile Include="Menues and Labels\Menue.cs" />
     <Compile Include="MenueControl.cs" />
-    <Compile Include="Player.cs">
+    <Compile Include="Player\Player.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="PlayerControl.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Render.cs">
+    <Compile Include="Engine Releated\Render.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GameObjects\Server.cs">
@@ -124,14 +124,14 @@
     <Compile Include="GameObjects\Wall.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="WinningScreen.cs">
+    <Compile Include="Menues and Labels\WinningScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WonGame.cs" />
-    <EmbeddedResource Include="Engine.resx">
+    <Compile Include="Engine Releated\WonGame.cs" />
+    <EmbeddedResource Include="Engine Releated\Engine.resx">
       <DependentUpon>Engine.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainMenue.resx">
+    <EmbeddedResource Include="Menues and Labels\MainMenue.resx">
       <DependentUpon>MainMenue.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -144,10 +144,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Render.resx">
+    <EmbeddedResource Include="Engine Releated\Render.resx">
       <DependentUpon>Render.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinningScreen.resx">
+    <EmbeddedResource Include="Menues and Labels\WinningScreen.resx">
       <DependentUpon>WinningScreen.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
@@ -188,10 +188,11 @@
     <None Include="Resources\Wallvertical.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Level1.txt" />
-    <Content Include="Level2.txt" />
+    <Content Include="Levels\Level1.txt" />
+    <Content Include="Levels\Level2.txt" />
     <None Include="Resources\ammo.png" />
-    <Content Include="Level3.txt" />
+    <Content Include="Levels\Level3.txt" />
+    <None Include="Resources\ae3x608t.bmp" />
     <Content Include="Resources\Explosion.wav" />
     <None Include="Resources\flashdrive.png" />
     <None Include="Resources\Hacked_Server.png" />
@@ -234,5 +235,6 @@
     <None Include="Resources\gate.png" />
     <None Include="Resources\floor.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
