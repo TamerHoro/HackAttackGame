@@ -58,7 +58,7 @@
     <Compile Include="DeathScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Flashdrive.cs">
+    <Compile Include="GameObjects\Flashdrive.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="HealthLabel.cs">
@@ -67,12 +67,12 @@
     <Compile Include="HealthLabelPlayer.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Mine.cs">
+    <Compile Include="GameObjects\Mine.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="BulletCollision.cs" />
     <Compile Include="Collision.cs" />
-    <Compile Include="Enemy.cs">
+    <Compile Include="GameObjects\Enemy.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Engine.cs">
@@ -84,13 +84,13 @@
     <Compile Include="EscapeMenu.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="GameObjects.cs">
+    <Compile Include="GameObjects\GameObjects.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Gate.cs">
+    <Compile Include="GameObjects\Gate.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="InteractableObject.cs">
+    <Compile Include="GameObjects\InteractableObject.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="LevelManager.cs" />
@@ -112,16 +112,16 @@
     <Compile Include="Render.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Server.cs">
+    <Compile Include="GameObjects\Server.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="StaticObject.cs">
+    <Compile Include="GameObjects\StaticObject.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Turret.cs">
+    <Compile Include="GameObjects\Turret.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Wall.cs">
+    <Compile Include="GameObjects\Wall.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="WinningScreen.cs">
@@ -190,6 +190,8 @@
   <ItemGroup>
     <Content Include="Level1.txt" />
     <Content Include="Level2.txt" />
+    <None Include="Resources\ammo.png" />
+    <Content Include="Level3.txt" />
     <Content Include="Resources\Explosion.wav" />
     <None Include="Resources\flashdrive.png" />
     <None Include="Resources\Hacked_Server.png" />

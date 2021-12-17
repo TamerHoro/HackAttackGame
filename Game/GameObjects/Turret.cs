@@ -143,9 +143,9 @@ namespace Game
             this.Tag = $"Turret{i}{j}";
 
             //Picture
-            this.Image = Properties.Resources.TurretShootN2;
+            this.Image = Properties.Resources.TurretShootN;
             this.SizeMode = PictureBoxSizeMode.AutoSize;
-            //this.BackColor = Color.Transparent;
+            this.BackColor = Color.Blue;
             this.BringToFront();
 
             //Properties

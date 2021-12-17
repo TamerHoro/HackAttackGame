@@ -66,6 +66,7 @@ namespace Game
             PlayerHealth = new HealthLabelPlayer(playerOne);
             Player PlayerOne = new Player();
             int l = -10, h = -15, k = 0;
+            
             for (int i = 0; i < 18; i++)
             {
                 for (int j = 0; j < 18; j++)
@@ -73,6 +74,7 @@ namespace Game
                     if (maparray[i, j] == (int)Objects.Wall)
                     {
                         objectArray[k++] = new Wall(l, h, i, j);
+                        //objectArray[k-1].Image = ;
                     }
                     else if (maparray[i, j] == (int)Objects.Turret)
                     {

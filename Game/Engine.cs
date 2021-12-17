@@ -100,12 +100,15 @@ namespace Game
 
         private void NextLevel(bool wincondition)
         {
+
             if (WonGame.CheckWinCondition(wincondition, level.objectArray))
             {
+
                 if (stage == 3)
                 {
                     Hide();
                     winningScreen.Visible = true;
+                    
                 }
                 stage++;
                 level.playerOne.ammo = 5;
