@@ -6,15 +6,13 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Media;
+using Game.Engine_Releated;
 
 namespace Game
 {
     class Mine : Enemy
-    {
-        //Attributes for SFX
-        SoundPlayer SFXExplosion = new SoundPlayer(Properties.Resources.Explosion);        
+    {    
         //Initialize new mines with a position, Tag and picture.
-        //Also load SFX into memory.
         public Mine(int l, int h, bool sound, int i, int j) : base(l, h, sound)
         {
             //Position
@@ -29,10 +27,6 @@ namespace Game
             this.SizeMode = PictureBoxSizeMode.AutoSize;
             this.BackColor = Color.Transparent;
             this.BringToFront();
-
-            //load SFX
-            this.sound = sound;
-            if(sound==true) SFXExplosion.Load();
         }
 
         //Mine detonation animation
@@ -45,7 +39,7 @@ namespace Game
                 alive = false;
 
                 //Play SFX and animation
-                if (sound == true) SFXExplosion.Play();
+                SFX.Play(SFX.Sound.Explode);
                 this.Image = Properties.Resources.MineExplode;
 
                 //Wait until animation is finished and remove the mine
