@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using Game.Engine_Releated;
+using System.Drawing;
 using System.Media;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -10,14 +11,9 @@ namespace Game
         public bool TestFireInProgress = false;        
         
 
-        //Declare attributes for properties and SFX
+        //Declare attributes for properties
         Direction direction;
         State state;
-        
-
-        SoundPlayer SFXRotate = new SoundPlayer(Properties.Resources.Rotate);
-        SoundPlayer SFXShot = new SoundPlayer(Properties.Resources.Shot);
-        SoundPlayer SFXExplosion = new SoundPlayer(Properties.Resources.Explosion);
 
         //Getter and Setter for attributes
         /// <summary>
@@ -33,7 +29,7 @@ namespace Game
         
 
         /// <summary>
-        ///Create a new turret with position, Tag, picture, direction, hp, state properties and load SFX into memory.
+        ///Create a new turret with position, Tag, picture, direction, hp, state properties.
         /// </summary>
         /// <param name="xOffset">offset from left page border</param>
         /// <param name="yOffset">offset from top page border</param>
@@ -58,19 +54,7 @@ namespace Game
             //Properties
             this.direction = direction;
             this.hitpoints = 3;
-            this.state = State.Idle;
-
-
-            this.sound = sound;
-            if (sound == true)
-            {
-                //Load SFX into RAM
-                SFXRotate.Load();
-                SFXShot.Load();
-                SFXExplosion.Load();
-            }
-            
-            
+            this.state = State.Idle;            
         }
 
         /// <summary>
@@ -85,7 +69,7 @@ namespace Game
                 this.alive = false;
 
                 //Play SFX and animation
-                if(sound==true) SFXExplosion.Play();
+                SFX.Play(SFX.Sound.Explode);
                 this.Image = Properties.Resources.MineExplode;
 
                 //Wait until the animation has finished
@@ -137,7 +121,7 @@ namespace Game
                 if (alive) 
                 {
                     //Play SFX and spawn bullet
-                    if (sound == true) SFXShot.Play();
+                    SFX.Play(SFX.Sound.Shoot);
                     SpawnBullet(i, playerturret).MakeBullet(engine);
 
                     //add lag adjusted delay
@@ -348,7 +332,7 @@ namespace Game
                         this.state = State.Rotating;
 
                         //Play SFX and animation
-                        if (sound == true) SFXRotate.Play();
+                        SFX.Play(SFX.Sound.Rotate);
                         this.Image = animation;
                         await Task.Delay(AnimationTime);
 

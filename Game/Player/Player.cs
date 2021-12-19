@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using System.Media;
+using Game.Engine_Releated;
 
 namespace Game
 {
@@ -10,8 +11,7 @@ namespace Game
         public bool goLeft, goRight, goUp, goDown, shoot;
         int speed = 5;
         public int ammo = 5;
-        //public PictureBox picture = new PictureBox();       
-        SoundPlayer SFXHit = new SoundPlayer(Properties.Resources.PlayerHit);
+        //public PictureBox picture = new PictureBox();
         public int health = 3;
         public string direction;
 
@@ -119,7 +119,7 @@ namespace Game
 
         public void Die()
         {
-            if (sound == true) SFXHit.Play();
+            if (sound == true) SFX.Play(SFX.Sound.Death);
             this.Location = new Point(100, 100);
         }
   

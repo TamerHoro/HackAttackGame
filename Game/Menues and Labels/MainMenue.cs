@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Game.Engine_Releated;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -33,8 +34,8 @@ namespace Game
         }
         private void soundButton_Click(object sender, EventArgs e)
         {
-            if (sound == true) { sound = false; }
-            else { sound = true; }
+            //Toggle SFX
+            SFX.enabled = !SFX.enabled;
         }
 
         private void exitButton_Click(object sender, EventArgs e)
