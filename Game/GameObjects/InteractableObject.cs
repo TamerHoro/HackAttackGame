@@ -6,12 +6,12 @@ namespace Game
 {
     public class InteractableObject : GameObjects
     {
-        public int Health;
-        public InteractableObject(int left, int top, int health, Image image)
+        protected short hitpoints;
+        protected bool sound= true;
+        public InteractableObject(int left, int top)
             :base(left, top)
         {
-            Health = health;
-            this.Image = image;
+            
         }
     }
 }

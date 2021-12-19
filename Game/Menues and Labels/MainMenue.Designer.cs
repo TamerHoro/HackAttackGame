@@ -21,6 +21,7 @@ namespace Game
         Label title = new Label();
         Button startGame = new Button();
         Button exitButton = new Button();
+        Button soundButton = new Button();
 
         private System.ComponentModel.IContainer components = null;
 
@@ -39,16 +40,7 @@ namespace Game
             this.title = new System.Windows.Forms.Label();
             this.exitButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // startGame
-            // 
-            this.startGame.Location = new System.Drawing.Point(320, 560);
-            this.startGame.Name = "startGame";
-            this.startGame.Size = new System.Drawing.Size(75, 23);
-            this.startGame.TabIndex = 0;
-            this.startGame.Text = "Start Game";
-            this.startGame.UseVisualStyleBackColor = true;
-            this.startGame.Click += new System.EventHandler(this.startGame_Click);
+            
             // 
             // Gametitle
             // 
@@ -62,15 +54,35 @@ namespace Game
             this.title.BackColor = Color.Transparent;
             this.title.ForeColor = Color.White;
             // 
+            // startGame
+            // 
+            this.startGame.Location = new System.Drawing.Point(320, 540);
+            this.startGame.Name = "startGame";
+            this.startGame.Size = new System.Drawing.Size(75, 23);
+            this.startGame.TabIndex = 0;
+            this.startGame.Text = "Start Game";
+            this.startGame.UseVisualStyleBackColor = true;
+            this.startGame.Click += new System.EventHandler(this.startGame_Click);
+            // 
             // exitButton
             // 
-            this.exitButton.Location = new System.Drawing.Point(320, 610);
+            this.exitButton.Location = new System.Drawing.Point(320, 580);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(75, 23);
             this.exitButton.TabIndex = 2;
             this.exitButton.Text = "Exit";
             this.exitButton.UseVisualStyleBackColor = true;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
+            // 
+            // soundButton
+            // 
+            this.soundButton.Location = new System.Drawing.Point(320, 620);
+            this.soundButton.Name = "soundButton";
+            this.soundButton.Size = new System.Drawing.Size(75, 23);
+            this.soundButton.TabIndex = 3;
+            this.soundButton.Text = "Sound on/off";
+            this.soundButton.UseVisualStyleBackColor = true;
+            this.soundButton.Click += new System.EventHandler(this.soundButton_Click);
             //
             // Goal
             //
@@ -121,6 +133,7 @@ namespace Game
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.title);
             this.Controls.Add(this.startGame);
+            this.Controls.Add(this.soundButton);
             this.Controls.Add(this.goal);
             this.Controls.Add(this.lvl1);
             this.Controls.Add(this.lvl2);

@@ -3,23 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace Game
 {
-    public class Enemy : GameObjects 
+    public class Enemy : InteractableObject
     {
         //Attributes, every enemy must be alive or dead and have hitpoints
         protected bool alive;
-        protected short hitpoints;
+        short hitpoints;
+       
 
         //Getter for the alive attribute
         public bool IsAlive { get => alive; }
 
         //constructor, every enemy must have coordinates
-        public Enemy(int left, int top) : base(left, top)
+        public Enemy(int left, int top, bool sound) : base(left, top)
         {
             //Enemy is alive by default
             alive = true;
+            this.sound = sound;
         }
     }
 }

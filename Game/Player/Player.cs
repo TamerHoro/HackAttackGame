@@ -15,14 +15,17 @@ namespace Game
         public int health = 3;
         public string direction;
 
-        public Player()
-            : base(100, 70, 3, Image.FromFile(@"..\..\Resources\playerupsmall.png"))
+        public int Health{ get => health; set => health = value; }
+
+        public Player(bool sound = true)
+            : base(100, 70)
         {
             this.SizeMode = PictureBoxSizeMode.AutoSize;
             PlayerControl playercontrol = new PlayerControl();
             //this.BackColor = Color.Transparent;
             this.BringToFront();
-
+            this.Image = Properties.Resources.playersmall;
+            this.sound = sound;
         }
         public void KeyIsUp(object sender, KeyEventArgs e)
         {
@@ -61,28 +64,28 @@ namespace Game
             if (e.KeyCode == Keys.Left)
             {
                 goLeft = true;
-                this.Image = Image.FromFile(@"..\..\Resources\playerleftsmall.png");
+                this.Image = Properties.Resources.playerleftsmall;
                 this.direction = "left";
             }
 
             if (e.KeyCode == Keys.Right)
             {
                 goRight = true;
-                this.Image = Image.FromFile(@"..\..\Resources\playerightsmall.png");
+                this.Image = Properties.Resources.playerightsmall;
                 this.direction = "right";
             }
 
             if (e.KeyCode == Keys.Up)
             {
                 goUp = true;
-                this.Image = Image.FromFile(@"..\..\Resources\playerupsmall.png");
+                this.Image = Properties.Resources.playerupsmall;
                 this.direction = "up";
             }
 
             if (e.KeyCode == Keys.Down)
             {
                 goDown = true;
-                this.Image = Image.FromFile(@"..\..\Resources\playerdownsmall.png");
+                this.Image = Properties.Resources.playerdownsmall;
                 this.direction = "down";
             }
             if (e.KeyCode == Keys.Space)
@@ -116,7 +119,7 @@ namespace Game
 
         public void Die()
         {
-            SFXHit.Play();
+            if (sound == true) SFXHit.Play();
             this.Location = new Point(100, 100);
         }
   

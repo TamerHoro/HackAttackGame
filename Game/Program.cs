@@ -17,16 +17,34 @@ namespace Game
             MainMenue start = new MainMenue();
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
-            Engine game = new Engine();
+            Engine game;
             Application.Run(start);
             if(start.start == true)
             {
+                if (start.sound == false)
+                {
+                    game = new Engine(false);
+                    
+                }
+                else
+                {
+                    game = new Engine(true);
+                }
                 Application.Exit();
                 Application.Run(game);
+                
                 if (game.restart == true)
                 {                    
                     Application.Exit();
-                    game = new Engine();
+                    if (start.sound == false)
+                    {
+                        game = new Engine(false);
+
+                    }
+                    else
+                    {
+                        game = new Engine(true);
+                    }
                     Application.Run(game);
                 }
             }

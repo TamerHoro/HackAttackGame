@@ -63,16 +63,6 @@ namespace Game.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ae3x608t {
-            get {
-                object obj = ResourceManager.GetObject("ae3x608t", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap ammo {
             get {
                 object obj = ResourceManager.GetObject("ammo", resourceCulture);
@@ -312,6 +302,16 @@ namespace Game.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap matrix {
+            get {
+                object obj = ResourceManager.GetObject("matrix", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap MineExplode {
             get {
                 object obj = ResourceManager.GetObject("MineExplode", resourceCulture);
@@ -342,19 +342,9 @@ namespace Game.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap player {
+        internal static System.Drawing.Bitmap playerdownsmall {
             get {
-                object obj = ResourceManager.GetObject("player", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap playerdown {
-            get {
-                object obj = ResourceManager.GetObject("playerdown", resourceCulture);
+                object obj = ResourceManager.GetObject("playerdownsmall", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -371,9 +361,9 @@ namespace Game.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap playeright {
+        internal static System.Drawing.Bitmap playerightsmall {
             get {
-                object obj = ResourceManager.GetObject("playeright", resourceCulture);
+                object obj = ResourceManager.GetObject("playerightsmall", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -381,9 +371,9 @@ namespace Game.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap playerleft {
+        internal static System.Drawing.Bitmap playerleftsmall {
             get {
-                object obj = ResourceManager.GetObject("playerleft", resourceCulture);
+                object obj = ResourceManager.GetObject("playerleftsmall", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -391,9 +381,19 @@ namespace Game.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap playerup {
+        internal static System.Drawing.Bitmap playersmall {
             get {
-                object obj = ResourceManager.GetObject("playerup", resourceCulture);
+                object obj = ResourceManager.GetObject("playersmall", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap playerupsmall {
+            get {
+                object obj = ResourceManager.GetObject("playerupsmall", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -562,6 +562,16 @@ namespace Game.Properties {
         internal static System.Drawing.Bitmap Wallvertical {
             get {
                 object obj = ResourceManager.GetObject("Wallvertical", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap watchdog {
+            get {
+                object obj = ResourceManager.GetObject("watchdog", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

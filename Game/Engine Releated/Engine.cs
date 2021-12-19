@@ -16,8 +16,7 @@ namespace Game
 
     public partial class Engine : Form
     {
-        
-        public Render level = new Render(1);
+        public Render level;
         bool winCondition = false;
         bool allEnemiesDead = false;
         public EscapeMenu escapeMenu = new EscapeMenu();
@@ -28,12 +27,20 @@ namespace Game
         public WinningScreen winningScreen = new WinningScreen();
         public Ammo ammo = new Ammo();
         AmmoLabel ammoLabel = new AmmoLabel();
-
-        public Engine()
-        {           
+        public bool sound;
+        
+        public Engine(bool sound)
+        {
+            this.sound = sound;
+            if (sound == false)
+            {
+                level = new Render(stage, false);
+            } 
+            else { level = new Render(stage, true); }            
+            StartGame();
             InitializeComponent();
             //this.Controls.Add(levelOne.PlayerControl);
-            StartGame();
+            
         }
         private void MainTimerEvent(object sender, EventArgs e)
         {      
@@ -123,7 +130,7 @@ namespace Game
                 this.Controls.Clear();
                 timer1.Dispose();
                 escapeMenu.Dispose();
-                level = LevelManager.CreateLevel(stage);
+                level = LevelManager.CreateLevel(stage, sound);
                 escapeMenu = new EscapeMenu();
                 InitializeComponent();
                 this.Controls.AddRange(level.objectArray);
@@ -141,7 +148,7 @@ namespace Game
             level.Dispose();
             level.Controls.Clear();
             this.Controls.Clear();
-            level = LevelManager.CreateLevel(stage);
+            level = LevelManager.CreateLevel(stage, sound);
             escapeMenu = new EscapeMenu();
             InitializeComponent();
             

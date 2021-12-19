@@ -193,13 +193,19 @@
   <ItemGroup>
     <Content Include="Levels\Level1.txt" />
     <Content Include="Levels\Level2.txt" />
+    <None Include="Resources\watchdog.png" />
     <None Include="Resources\ammo.png" />
     <Content Include="Levels\Level3.txt" />
     <None Include="Resources\ae3x608t.bmp" />
     <Content Include="Resources\Explosion.wav" />
     <None Include="Resources\flashdrive.png" />
     <None Include="Resources\Hacked_Server.png" />
+    <None Include="Resources\playerdownsmall.png" />
     <Content Include="Resources\PlayerHit.wav" />
+    <None Include="Resources\playerupsmall.png" />
+    <None Include="Resources\playerightsmall.png" />
+    <None Include="Resources\playerleftsmall.png" />
+    <None Include="Resources\playersmall.png" />
     <Content Include="Resources\Rotate.wav" />
     <None Include="Resources\Server.png" />
     <Content Include="Resources\Shot.wav" />

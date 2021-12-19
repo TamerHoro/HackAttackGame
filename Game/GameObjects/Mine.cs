@@ -12,11 +12,10 @@ namespace Game
     class Mine : Enemy
     {
         //Attributes for SFX
-        SoundPlayer SFXExplosion = new SoundPlayer(Properties.Resources.Explosion);
-
+        SoundPlayer SFXExplosion = new SoundPlayer(Properties.Resources.Explosion);        
         //Initialize new mines with a position, Tag and picture.
         //Also load SFX into memory.
-        public Mine(int l, int h, int i, int j) : base(l, h)
+        public Mine(int l, int h, bool sound, int i, int j) : base(l, h, sound)
         {
             //Position
             this.Left = l;
@@ -32,7 +31,8 @@ namespace Game
             this.BringToFront();
 
             //load SFX
-            SFXExplosion.Load();
+            this.sound = sound;
+            if(sound==true) SFXExplosion.Load();
         }
 
         //Mine detonation animation
@@ -45,7 +45,7 @@ namespace Game
                 alive = false;
 
                 //Play SFX and animation
-                SFXExplosion.Play();
+                if (sound == true) SFXExplosion.Play();
                 this.Image = Properties.Resources.MineExplode;
 
                 //Wait until animation is finished and remove the mine

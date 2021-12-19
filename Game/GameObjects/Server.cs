@@ -9,14 +9,14 @@ using System.Media;
 
 namespace Game
 {
-    class Server : StaticObject
+    class Server : InteractableObject
     {
         //State
         bool hacked;
         SystemSound hacksound; //SFX
-        bool hasBadUSB;
+        bool hasBadUSB;        
 
-        public Server(int xOffset, int yOffset) : base(xOffset, yOffset)
+        public Server(int xOffset, int yOffset, bool sound) : base(xOffset, yOffset)
         {
             //Position
             this.Left = xOffset;
@@ -35,6 +35,7 @@ namespace Game
             bool hacked = false;
 
             //Load SFX
+            this.sound = sound;
             hacksound = SystemSounds.Beep;
 
             //Listen to Flashdrive pickup event
@@ -61,7 +62,7 @@ namespace Game
                 this.Image = Properties.Resources.Hacked_Server;
                 for (int i = 0; i < 3; i++)
                 {
-                    hacksound.Play();
+                    if (sound == true) hacksound.Play();
                     await Task.Delay(1000);
                 }
             }

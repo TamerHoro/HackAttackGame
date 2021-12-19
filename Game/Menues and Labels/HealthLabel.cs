@@ -6,11 +6,11 @@ namespace Game
 
     public class HealthLabel : Label
     {
-        public InteractableObject interactable;
+        public Player interactable;
         public int fullHealth;
         public int health;
 
-        public HealthLabel(InteractableObject interactable)
+        public HealthLabel(Player interactable)
         {
             this.interactable = interactable;
             fullHealth = interactable.Health;
