@@ -82,7 +82,7 @@ namespace Game
                             win = true;
 
                         }
-                        if (gameobjects[i] is Mine || gameobjects[i] is Turret)
+                        if (gameobjects[i] is Mine || gameobjects[i] is Turret || gameobjects[i] is Watchdog)
                         {
                             if (player.Bounds.IntersectsWith(gameobjects[i].Bounds))
                             {
@@ -95,6 +95,10 @@ namespace Game
                                         player.Die();
                                         gameobjects[i] = null;
                                     }
+                                }
+                                else if (gameobjects[i] is Watchdog)
+                                {
+                                    player.Die();
                                 }
                                 else
                                 {

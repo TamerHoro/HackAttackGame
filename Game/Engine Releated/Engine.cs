@@ -41,6 +41,8 @@ namespace Game
             MainTimerEvent MainTimeEvent = new MainTimerEvent();
             Collision collision = new Collision(level.playerOne, level.objectArray, this, out winCondition);
             level.playerOne.Move();
+            Watchdog.Turn(level.watchdogs, level.objectArray);
+            Watchdog.Walk(level.watchdogs);
             level.PlayerHealth.update(level.playerOne);
             if (level.playerOne.Health <= 0)
             {
@@ -80,10 +82,9 @@ namespace Game
                     ammo.Visible = false;
                     ammo.intersects = true;
                 }
-            }
+            }          
             ammoLabel.UpdateAmmo(level.playerOne);
-            NextLevel(winCondition);
-            //MainTimeEvent.Update();        
+            NextLevel(winCondition);       
         }
         public void StartGame()
         {

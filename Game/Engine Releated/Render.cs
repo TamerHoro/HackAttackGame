@@ -17,6 +17,8 @@ namespace Game
         int[,] maparray;
         //List<PictureBox> levelwalling = new List<PictureBox>();
         public GameObjects[] objectArray = new GameObjects[200];
+        public List<Watchdog> watchdogs = new List<Watchdog>();
+        public List<Enemy> enemies = new List<Enemy>();
         //List<PictureBox> enemies = new List<PictureBox>();        
         public Player playerOne = new Player();
         public HealthLabelPlayer PlayerHealth;
@@ -56,6 +58,7 @@ namespace Game
             Wall = 1,
             Mine = 2,
             Turret = 3,
+            Watchdog = 4,
             Flashdrive = 7,
             Server = 8,
             Gate = 9
@@ -79,10 +82,21 @@ namespace Game
                     else if (maparray[i, j] == (int)Objects.Turret)
                     {
                         objectArray[k++] = new Turret(l, h, i, j);
+                        enemies.Add(objectArray[k - 1] as Enemy);
                     }
                     else if (maparray[i, j] == (int)Objects.Mine)
                     {
                         objectArray[k++] = new Mine(l, h, i, j);
+                    }
+                    else if (maparray[i, j] == (int)Objects.Watchdog + 1)
+                    {
+                        objectArray[k++] = new Watchdog(l, h, i, j, 1);
+                        watchdogs.Add(objectArray[k - 1] as Watchdog);
+                    }
+                    else if (maparray[i, j] == (int)Objects.Watchdog)
+                    {
+                        objectArray[k++] = new Watchdog(l, h, i, j);
+                        watchdogs.Add(objectArray[k - 1] as Watchdog);
                     }
                     else if (maparray[i, j] == (int)Objects.Server)
                     {

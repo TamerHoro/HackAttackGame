@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Game
 {
-    class Enemy : GameObjects 
+    public class Enemy : GameObjects 
     {
         //Attributes, every enemy must be alive or dead and have hitpoints
         protected bool alive;
