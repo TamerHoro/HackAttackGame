@@ -135,6 +135,9 @@
     <EmbeddedResource Include="Engine Releated\Engine.resx">
       <DependentUpon>Engine.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Menues and Labels\DeathScreen.resx">
+      <DependentUpon>DeathScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Menues and Labels\MainMenue.resx">
       <DependentUpon>MainMenue.cs</DependentUpon>
     </EmbeddedResource>

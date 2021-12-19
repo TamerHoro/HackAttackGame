@@ -7,7 +7,7 @@ namespace Game
         public HealthLabelPlayer(Player player)
             : base(player)
         {
-
+            this.maxHealth = player.maxHealth;
         }
 
         public void update(Player player)
@@ -29,7 +29,7 @@ namespace Game
                 Location = new Point(player.Left - 20, player.Top + 5);
             }
 
-            Text = $"{player.Health}/{fullHealth}";
+            Text = $"{player.Health}/{maxHealth}";
         }
 
     }

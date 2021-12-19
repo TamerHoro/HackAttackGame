@@ -9,8 +9,8 @@ namespace Game
         public int speed = 5;
         public bool goLeft, goRight, goUp, goDown;
 
-        public Watchdog(int xOffset, int yOffset, bool sound, int i = 0, int j = 0, int k = 0)
-            : base(xOffset, yOffset, sound)
+        public Watchdog(int xOffset, int yOffset, int i = 0, int j = 0, int k = 0)
+            : base(xOffset, yOffset)
         {
             Image = Properties.Resources.watchdog;
             BackColor = Color.DimGray;

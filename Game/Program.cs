@@ -17,18 +17,13 @@ namespace Game
             MainMenue start = new MainMenue();
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
-            Engine game;
+            Engine game = new Engine();
             Application.Run(start);
             if(start.start == true)
             {
                 if (start.sound == false)
                 {
-                    game = new Engine(false);
-                    
-                }
-                else
-                {
-                    game = new Engine(true);
+                    game.sound = false;
                 }
                 Application.Exit();
                 Application.Run(game);
@@ -36,14 +31,10 @@ namespace Game
                 if (game.restart == true)
                 {                    
                     Application.Exit();
+                    game = new Engine();
                     if (start.sound == false)
                     {
-                        game = new Engine(false);
-
-                    }
-                    else
-                    {
-                        game = new Engine(true);
+                        game.sound = false;
                     }
                     Application.Run(game);
                 }

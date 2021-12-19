@@ -19,7 +19,7 @@ namespace Game
         }
         public Bullet bullet;
         public GameObjects[] gameobjects;
-        public Player player;
+        public Player player;        
         bool col = false;
         public void BulletCollsionCheck()
         {
@@ -59,9 +59,11 @@ namespace Game
                 }
 
             }
-            if (bullet.Bounds.IntersectsWith(player.Bounds))
-            {                
-                   player.Die();  
+            if (bullet.Bounds.IntersectsWith(player.Bounds)&& col==false)
+            {
+                col = true;
+                player.Health--;
+                   //player.Die();  
             }
             
            

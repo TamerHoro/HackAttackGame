@@ -6,8 +6,8 @@ namespace Game
 {
     public class InteractableObject : GameObjects
     {
-        protected short hitpoints;
-        protected bool sound= true;
+        public int maxHealth;
+        public int currentHealth;        
         public InteractableObject(int left, int top)
             :base(left, top)
         {

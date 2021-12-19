@@ -36,7 +36,7 @@ namespace Game
         /// <param name="i">First tag numbering for unique tags</param>
         /// <param name="j">Second tag numbering for unique tags</param>
         /// <param name="direction"></param>
-        public Turret(int xOffset, int yOffset, bool sound, int i = 0, int j = 0, Direction direction = Direction.North) : base(xOffset, yOffset, sound)
+        public Turret(int xOffset, int yOffset, int i = 0, int j = 0, Direction direction = Direction.North) : base(xOffset, yOffset)
         {
             //Position
             this.Left = xOffset;
@@ -53,7 +53,7 @@ namespace Game
 
             //Properties
             this.direction = direction;
-            this.hitpoints = 3;
+            this.maxHealth = 3;
             this.state = State.Idle;            
         }
 
@@ -98,8 +98,8 @@ namespace Game
         public void TakeDamage()
         {
             //If it has hitpoints left, reduce them
-            if (this.hitpoints > 0)
-                this.hitpoints--;
+            if (this.maxHealth > 0)
+                this.maxHealth--;
 
             //if not, the turret dies
             else { SelfDestruct(); }

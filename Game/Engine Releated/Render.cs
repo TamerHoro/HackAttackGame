@@ -20,22 +20,12 @@ namespace Game
         public List<Watchdog> watchdogs = new List<Watchdog>();
         public List<Enemy> enemies = new List<Enemy>();
         //List<PictureBox> enemies = new List<PictureBox>();        
-        public Player playerOne;
-        public HealthLabelPlayer PlayerHealth;
-        bool sound = true;
-        public Render(int stage, bool sound)
+        public Player playerOne= new Player();
+        public HealthLabelPlayer PlayerHealthLabel;        
+        public Render(int stage=1)
         {
-
-            this.stage = stage;
-            this.sound = sound;
-            if (sound == true)
-            {
-                playerOne = new Player();
-            }
-            else
-            {
-                playerOne = new Player(false);
-            }
+            PlayerHealthLabel = new HealthLabelPlayer(playerOne);
+            this.stage = stage;    
             maparray = ReadMapFile();
             LevelBuilder();
 
@@ -74,9 +64,8 @@ namespace Game
         
 
         public void LevelBuilder()            //creates a lists with GameObjects
-        {
-            PlayerHealth = new HealthLabelPlayer(playerOne);
-            Player PlayerOne = new Player();
+        {          
+            
             int l = -10, h = -15, k = 0;
             
             for (int i = 0; i < 18; i++)
@@ -90,26 +79,26 @@ namespace Game
                     }
                     else if (maparray[i, j] == (int)Objects.Turret)
                     {
-                        objectArray[k++] = new Turret(l, h, sound, i, j);
+                        objectArray[k++] = new Turret(l, h, i, j);
                         enemies.Add(objectArray[k - 1] as Enemy);
                     }
                     else if (maparray[i, j] == (int)Objects.Mine)
                     {
-                        objectArray[k++] = new Mine(l, h, sound, i, j);
+                        objectArray[k++] = new Mine(l, h, i, j);
                     }
                     else if (maparray[i, j] == (int)Objects.Watchdog + 1)
                     {
-                        objectArray[k++] = new Watchdog(l, h, sound, i, j, 1);
+                        objectArray[k++] = new Watchdog(l, h, i, j, 1);
                         watchdogs.Add(objectArray[k - 1] as Watchdog);
                     }
                     else if (maparray[i, j] == (int)Objects.Watchdog)
                     {
-                        objectArray[k++] = new Watchdog(l, h, sound, i, j);
+                        objectArray[k++] = new Watchdog(l, h, i, j);
                         watchdogs.Add(objectArray[k - 1] as Watchdog);
                     }
                     else if (maparray[i, j] == (int)Objects.Server)
                     {
-                        objectArray[k++] = new Server(l, h, sound);
+                        objectArray[k++] = new Server(l, h);
                     }
                     else if (maparray[i, j] == (int)Objects.Flashdrive)
                     {

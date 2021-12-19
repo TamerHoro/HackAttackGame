@@ -6,6 +6,7 @@ namespace Game
 {
     public class GameObjects: PictureBox
     {
+        public bool col;
         public GameObjects(int left, int top)
         {
             DoubleBuffered = true;

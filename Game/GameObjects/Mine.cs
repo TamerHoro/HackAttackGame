@@ -13,7 +13,7 @@ namespace Game
     class Mine : Enemy
     {    
         //Initialize new mines with a position, Tag and picture.
-        public Mine(int l, int h, bool sound, int i, int j) : base(l, h, sound)
+        public Mine(int l, int h, int i, int j) : base(l, h)
         {
             //Position
             this.Left = l;

@@ -16,7 +16,7 @@ namespace Game
         bool hacked;
         bool hasBadUSB;        
 
-        public Server(int xOffset, int yOffset, bool sound) : base(xOffset, yOffset)
+        public Server(int xOffset, int yOffset) : base(xOffset, yOffset)
         {
             //Position
             this.Left = xOffset;

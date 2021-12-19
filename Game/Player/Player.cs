@@ -9,23 +9,27 @@ namespace Game
     public class Player : InteractableObject
     {
         public bool goLeft, goRight, goUp, goDown, shoot;
-        int speed = 5;
-        public int ammo = 5;
+        public int speed = 5;
+        public int ammo = 5;        
         //public PictureBox picture = new PictureBox();
-        public int health = 3;
+        
         public string direction;
 
-        public int Health{ get => health; set => health = value; }
-
-        public Player(bool sound = true)
+        public int Health
+        {
+            get { return this.currentHealth; }
+            set{ this.currentHealth = value;}
+        }
+        public Player()
             : base(100, 70)
         {
+            this.maxHealth = 3;
+            this.currentHealth = maxHealth;
             this.SizeMode = PictureBoxSizeMode.AutoSize;
             PlayerControl playercontrol = new PlayerControl();
             //this.BackColor = Color.Transparent;
             this.BringToFront();
-            this.Image = Properties.Resources.playersmall;
-            this.sound = sound;
+            this.Image = Properties.Resources.playersmall;            
         }
         public void KeyIsUp(object sender, KeyEventArgs e)
         {
@@ -119,7 +123,7 @@ namespace Game
 
         public void Die()
         {
-            if (sound == true) SFX.Play(SFX.Sound.Death);
+            SFX.Play(SFX.Sound.Death);
             this.Location = new Point(100, 100);
         }
   
