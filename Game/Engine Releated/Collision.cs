@@ -107,17 +107,17 @@ namespace Game
                                 }
                                 else
                                 {
-                                    
-                                    var ActiveTurret = gameobjects[i] as Turret;
-                                    if (ActiveTurret.IsAlive&& ActiveTurret!=null && gameobjects[i].col == false)
-                                    {
-                                        gameobjects[i].col = true;
-                                        player.Health--;
-                                        //ActiveTurret.SelfDestruct();
-                                        //player.Die();
-                                        //gameobjects[i] = null;
-                                        ActiveTurret.TestFire();
-                                    }
+                                    gameobjects[i].col = true;
+                                    player.Health--;
+                                    //var ActiveTurret = gameobjects[i] as Turret;
+                                    //if (ActiveTurret.IsAlive&& ActiveTurret!=null && gameobjects[i].col == false)
+                                    //{
+                                        
+                                    //    //ActiveTurret.SelfDestruct();
+                                    //    //player.Die();
+                                    //    //gameobjects[i] = null;
+                                    //    ActiveTurret.TestFire();
+                                    //}
 
                                 }
                             }
