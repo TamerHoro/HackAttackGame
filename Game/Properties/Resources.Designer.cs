@@ -342,6 +342,16 @@ namespace Game.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap nosound {
+            get {
+                object obj = ResourceManager.GetObject("nosound", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap playerdownsmall {
             get {
                 object obj = ResourceManager.GetObject("playerdownsmall", resourceCulture);

@@ -35,6 +35,7 @@ namespace Game
             if (sound == false)
             {
                 level = new Render(stage, false);
+
             } 
             else { level = new Render(stage, true); }            
             StartGame();

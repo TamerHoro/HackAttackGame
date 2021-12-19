@@ -201,6 +201,8 @@
     <None Include="Resources\flashdrive.png" />
     <None Include="Resources\Hacked_Server.png" />
     <None Include="Resources\playerdownsmall.png" />
+    <None Include="Resources\nosound.bmp" />
+    <None Include="Resources\nosound.png" />
     <Content Include="Resources\PlayerHit.wav" />
     <None Include="Resources\playerupsmall.png" />
     <None Include="Resources\playerightsmall.png" />
