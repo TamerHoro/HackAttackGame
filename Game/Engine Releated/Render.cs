@@ -15,6 +15,7 @@ namespace Game
     {
         int stage = 0;
         int[,] maparray;
+
         //List<PictureBox> levelwalling = new List<PictureBox>();
         public GameObjects[] objectArray = new GameObjects[200];
         public List<Watchdog> watchdogs = new List<Watchdog>();
@@ -61,7 +62,10 @@ namespace Game
             return maparray;
         }
 
-        
+        public void BackgroundColor(int stage)
+        {
+
+        }
 
         public void LevelBuilder()            //creates a lists with GameObjects
         {          
@@ -80,6 +84,7 @@ namespace Game
                     else if (maparray[i, j] == (int)Objects.Turret)
                     {
                         objectArray[k++] = new Turret(l, h, i, j);
+                        objectArray[k - 1].BackColor = Color.Black;
                         enemies.Add(objectArray[k - 1] as Enemy);
                     }
                     else if (maparray[i, j] == (int)Objects.Mine)

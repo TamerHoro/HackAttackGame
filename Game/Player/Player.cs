@@ -123,6 +123,7 @@ namespace Game
 
         public void Die()
         {
+            this.currentHealth--;
             SFX.Play(SFX.Sound.Death);
             this.Location = new Point(100, 100);
         }

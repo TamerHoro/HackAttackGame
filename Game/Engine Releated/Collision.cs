@@ -102,8 +102,8 @@ namespace Game
                                 else if (gameobjects[i] is Watchdog&& gameobjects[i].col == false)
                                 {
                                     gameobjects[i].col = true;
-                                    player.Health--;
-                                    //player.Die();
+                                    //player.Health--;
+                                    player.Die();
                                 }
                                 else
                                 {

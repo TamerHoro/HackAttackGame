@@ -33,8 +33,8 @@ namespace Game
                         if (gameobjects[i] is Wall)
                         {
                             col = true;
-                            gameobjects[i].Dispose();
-                            gameobjects[i] = null;
+                            //gameobjects[i].Dispose();
+                            //gameobjects[i] = null;
                         }
                         else if (gameobjects[i] is Turret)
                         {
