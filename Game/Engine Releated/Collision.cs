@@ -14,6 +14,7 @@ namespace Game
         public GameObjects[] gameobjects;
         public Engine engine;
         bool win = false;
+        int timepassed;
         
         public void CollsionCheck() 
         {            
@@ -22,7 +23,7 @@ namespace Game
                 if (gameobjects[i] == null) {  }
                 else
                 {
-                    for(int j = 0; j < 4; j++)
+                    for(int j = 0; j < 4; j++)                              //Improved Collision check
                     {
                         futurePlayer.Bounds = player.Bounds;
                         if(j == 0)
@@ -89,27 +90,34 @@ namespace Game
                                 if (gameobjects[i] is Mine)
                                 {
                                     var ActiveMine = gameobjects[i] as Mine;
-                                    if (ActiveMine.IsAlive)
+                                    if (ActiveMine.IsAlive && gameobjects[i].col == false)
                                     {
                                         ActiveMine.Explode();
-                                        player.Die();
+                                        player.Health--;
+                                        gameobjects[i].col = true;
+                                        //player.Die();
                                         gameobjects[i] = null;
                                     }
                                 }
-                                else if (gameobjects[i] is Watchdog)
+                                else if (gameobjects[i] is Watchdog&& gameobjects[i].col == false)
                                 {
+                                    gameobjects[i].col = true;
+                                    //player.Health--;
                                     player.Die();
                                 }
                                 else
                                 {
-                                    var ActiveTurret = gameobjects[i] as Turret;
-                                    if (ActiveTurret.IsAlive)
-                                    {
-                                        //ActiveTurret.SelfDestruct();
-                                        //player.Die();
-                                        //gameobjects[i] = null;
-                                        ActiveTurret.TestFire();
-                                    }
+                                    gameobjects[i].col = true;
+                                    player.Health--;
+                                    //var ActiveTurret = gameobjects[i] as Turret;
+                                    //if (ActiveTurret.IsAlive&& ActiveTurret!=null && gameobjects[i].col == false)
+                                    //{
+                                        
+                                    //    //ActiveTurret.SelfDestruct();
+                                    //    //player.Die();
+                                    //    //gameobjects[i] = null;
+                                    //    ActiveTurret.TestFire();
+                                    //}
 
                                 }
                             }
@@ -137,20 +145,22 @@ namespace Game
                             server.Hack();
                         }
                     }
-                    
-                    
-                    
+                    if(timepassed%200==0) gameobjects[i].col = false;
 
 
-                     
-                    
-                    
+
+
+
+
                 }
+                
             }
+
         }
-        public Collision(Player player, GameObjects[] gameobjects, Engine engine, out bool winCondition)
+        public Collision(Player player, GameObjects[] gameobjects,int count, Engine engine, out bool winCondition)
         {            
             this.player = player;
+            this.timepassed = count;
             this.gameobjects = gameobjects;
             this.engine = engine;
             CollsionCheck();

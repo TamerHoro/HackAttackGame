@@ -60,6 +60,22 @@ namespace Game
             Exit.Click += new EventHandler(exitClick);
         }
 
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // DeathScreen
+            // 
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Name = "DeathScreen";
+            this.Load += new System.EventHandler(this.DeathScreen_Load);
+            this.ResumeLayout(false);
 
+        }
+
+        private void DeathScreen_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

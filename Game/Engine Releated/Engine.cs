@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-
+using Game.Engine_Releated;
 
 namespace Game
 {
@@ -16,10 +16,8 @@ namespace Game
 
     public partial class Engine : Form
     {
-        
-        public Render level = new Render(1);
-        bool winCondition = false;
-        bool allEnemiesDead = false;
+        public Render level = new Render();
+        bool winCondition = false;        
         public EscapeMenu escapeMenu = new EscapeMenu();
         public bool restart = false;
         int count = 5;
@@ -28,22 +26,33 @@ namespace Game
         public WinningScreen winningScreen = new WinningScreen();
         public Ammo ammo = new Ammo();
         AmmoLabel ammoLabel = new AmmoLabel();
-
+        public bool sound = true;
+        
         public Engine()
-        {           
+        {
+            //this.sound = sound;
+            //if (sound == false)
+            //{
+            //    level = new Render(stage, false);
+
+            //} 
+            //else { level = new Render(stage, true); }
+            
+            StartGame();
             InitializeComponent();
             //this.Controls.Add(levelOne.PlayerControl);
-            StartGame();
+            
         }
+        
         private void MainTimerEvent(object sender, EventArgs e)
         {      
             count++;
             MainTimerEvent MainTimeEvent = new MainTimerEvent();
-            Collision collision = new Collision(level.playerOne, level.objectArray, this, out winCondition);
+            Collision collision = new Collision(level.playerOne, level.objectArray,count, this, out winCondition);
             level.playerOne.Move();
             Watchdog.Turn(level.watchdogs, level.objectArray);
             Watchdog.Walk(level.watchdogs);
-            level.PlayerHealth.update(level.playerOne);
+            level.PlayerHealthLabel.update(level.playerOne);
             if (level.playerOne.Health <= 0)
             {
                 Hide();
@@ -88,10 +97,11 @@ namespace Game
         }
         public void StartGame()
         {
+            SFX.enabled = sound;
             this.Controls.AddRange(level.objectArray);
             this.Controls.Add(level.playerOne);
             this.Controls.Add(escapeMenu);
-            this.Controls.Add(level.PlayerHealth);
+            this.Controls.Add(level.PlayerHealthLabel);
             this.Controls.Add(ammo);
             this.Controls.Add(ammoLabel);
             ammoLabel.BringToFront();
@@ -129,7 +139,7 @@ namespace Game
                 this.Controls.AddRange(level.objectArray);
                 this.Controls.Add(level.playerOne);
                 this.Controls.Add(escapeMenu);
-                this.Controls.Add(level.PlayerHealth);
+                this.Controls.Add(level.PlayerHealthLabel);
                 this.Controls.Add(ammo);
                 this.Controls.Add(ammoLabel);
             }
@@ -148,7 +158,7 @@ namespace Game
             this.Controls.AddRange(level.objectArray);
             this.Controls.Add(level.playerOne);
             this.Controls.Add(escapeMenu);
-            this.Controls.Add(level.PlayerHealth);
+            this.Controls.Add(level.PlayerHealthLabel);
             this.Controls.Add(ammo);
             this.Controls.Add(ammoLabel);
         }
@@ -175,8 +185,26 @@ namespace Game
             {
                 Bullet shotBullet = new Bullet(level.objectArray, this.level.playerOne);
                 shotBullet.direction = direction;
-                shotBullet.bulletLeft = level.playerOne.Left + (level.playerOne.Width / 2);
-                shotBullet.bulletTop = level.playerOne.Top + (level.playerOne.Height / 2);
+                if (direction == "up")
+                {
+                    shotBullet.bulletLeft = level.playerOne.Left + level.playerOne.Width/2;
+                    shotBullet.bulletTop = level.playerOne.Top - level.playerOne.Height;
+                }
+                if (direction == "down")
+                {
+                    shotBullet.bulletLeft = level.playerOne.Left + level.playerOne.Width/2;
+                    shotBullet.bulletTop = level.playerOne.Top + level.playerOne.Height;
+                }
+                if (direction == "left")
+                {
+                    shotBullet.bulletLeft = level.playerOne.Left - level.playerOne.Width;
+                    shotBullet.bulletTop = level.playerOne.Top + level.playerOne.Height/2;
+                }
+                if (direction == "right")
+                {
+                    shotBullet.bulletLeft = level.playerOne.Left + level.playerOne.Width;
+                    shotBullet.bulletTop = level.playerOne.Top + level.playerOne.Height/2;
+                }                
                 shotBullet.MakeBullet(this);
                 level.playerOne.ammo--;
             }

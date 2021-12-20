@@ -7,15 +7,15 @@ namespace Game
     public class HealthLabel : Label
     {
         public InteractableObject interactable;
-        public int fullHealth;
-        public int health;
+        public int maxHealth;
+        public int currenthealth;
 
         public HealthLabel(InteractableObject interactable)
         {
             this.interactable = interactable;
-            fullHealth = interactable.Health;
-            health = interactable.Health;
-            Text = $"{health}/{fullHealth}";
+            this.maxHealth = interactable.maxHealth;
+            this.currenthealth = interactable.currentHealth;
+            Text = $"{currenthealth}/{maxHealth}";
             ForeColor = Color.FromArgb(255, 255, 255);
             Location = new Point(interactable.Left + 4, interactable.Top + 15);
             BringToFront();

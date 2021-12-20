@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Game.Engine_Releated;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,10 +14,12 @@ namespace Game
     public partial class MainMenue : Form
     {
         bool _start = false;
+        public bool sound=true;
         public bool start { get=> _start; private set => _start = value; }
         public MainMenue()
         {
             InitializeComponent();
+            
         }
 
         private void startGame_Click(object sender, EventArgs e)
@@ -28,6 +31,11 @@ namespace Game
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+        private void soundButton_Click(object sender, EventArgs e)
+        {
+            //Toggle SFX
+            SFX.enabled = !SFX.enabled;
         }
 
         private void exitButton_Click(object sender, EventArgs e)

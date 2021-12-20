@@ -47,7 +47,7 @@ namespace Game
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
             this.BackgroundImage = global::Game.Properties.Resources.floor;
-            this.ClientSize = new System.Drawing.Size(939, 838);
+            this.ClientSize = new System.Drawing.Size(720, 720);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Engine";
             this.Text = "Engine";

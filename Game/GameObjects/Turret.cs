@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using Game.Engine_Releated;
+using System.Drawing;
 using System.Media;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -7,82 +8,12 @@ namespace Game
 {
     class Turret : Enemy
     {
-        public bool TestFireInProgress = false;
-        public async void TestFire()
-        {
-            if (!TestFireInProgress)
-            {
-                TestFireInProgress = true;
-                Rotate(Direction.South);
-                await Task.Delay(7000);
-                StartShooting();
-                await Task.Delay(3000);
+        public bool TestFireInProgress = false;        
+        
 
-                Rotate(Direction.West);
-                await Task.Delay(4000);
-                StartShooting();
-                await Task.Delay(3000);
-
-                Rotate(Direction.SouthWest);
-                await Task.Delay(2000);
-                StartShooting();
-                await Task.Delay(3000);
-
-                Rotate(Direction.NorthWest);
-                await Task.Delay(4000);
-                StartShooting();
-                await Task.Delay(3000);
-
-                Rotate(Direction.SouthEast);
-                await Task.Delay(7000);
-                StartShooting();
-                await Task.Delay(3000);
-
-                Rotate(Direction.East);
-                await Task.Delay(2000);
-                StartShooting();
-                await Task.Delay(3000);
-
-                Rotate(Direction.NorthEast);
-                await Task.Delay(2000);
-                StartShooting();
-                await Task.Delay(3000);
-
-                Rotate(Direction.North);
-                await Task.Delay(2000);
-                StartShooting();
-                await Task.Delay(4000);
-
-                SelfDestruct();
-            }
-        }
-
-        //Turrets can rotate in 8 different directions
-        public enum Direction
-        {
-            North = 1,
-            South = 2,
-            West = 3,
-            East = 4,
-            NorthEast = 5,
-            NorthWest = 6,
-            SouthWest = 7,
-            SouthEast = 8
-        }
-        //Turrets can have 3 states
-        public enum State
-        {
-            Idle = 0,
-            Rotating = 1,
-            Shooting = 2,
-        }
-
-        //Declare attributes for properties and SFX
+        //Declare attributes for properties
         Direction direction;
         State state;
-        SoundPlayer SFXRotate = new SoundPlayer(Properties.Resources.Rotate);
-        SoundPlayer SFXShot = new SoundPlayer(Properties.Resources.Shot);
-        SoundPlayer SFXExplosion = new SoundPlayer(Properties.Resources.Explosion);
 
         //Getter and Setter for attributes
         /// <summary>
@@ -95,38 +26,10 @@ namespace Game
         /// </summary>
         public Direction CurrentDirection { get => this.direction; }
 
-        /// <summary>
-        /// Gets the direction in which the turret is currently facing, as a string value
-        /// </summary>
-        public string DirectionString
-        {
-            get { 
-                switch (direction)
-                {
-                    case Direction.North:
-                        return "up";
-                    case Direction.South:
-                        return "down";
-                    case Direction.West:
-                        return "left";
-                    case Direction.East:
-                        return "right";
-                    case Direction.NorthEast:
-                        return "NorthEast";
-                    case Direction.NorthWest:
-                        return "NorthWest";
-                    case Direction.SouthEast:
-                        return "SouthEast";
-                    case Direction.SouthWest:
-                        return "SouthWest";
-                    default: 
-                        return "";
-                }
-            }
-        }
+        
 
         /// <summary>
-        ///Create a new turret with position, Tag, picture, direction, hp, state properties and load SFX into memory.
+        ///Create a new turret with position, Tag, picture, direction, hp, state properties.
         /// </summary>
         /// <param name="xOffset">offset from left page border</param>
         /// <param name="yOffset">offset from top page border</param>
@@ -150,13 +53,8 @@ namespace Game
 
             //Properties
             this.direction = direction;
-            this.hitpoints = 3;
-            this.state = State.Idle;
-
-            //Load SFX into RAM
-            SFXRotate.Load();
-            SFXShot.Load();
-            SFXExplosion.Load();
+            this.maxHealth = 3;
+            this.state = State.Idle;            
         }
 
         /// <summary>
@@ -171,7 +69,7 @@ namespace Game
                 this.alive = false;
 
                 //Play SFX and animation
-                SFXExplosion.Play();
+                SFX.Play(SFX.Sound.Explode);
                 this.Image = Properties.Resources.MineExplode;
 
                 //Wait until the animation has finished
@@ -200,8 +98,8 @@ namespace Game
         public void TakeDamage()
         {
             //If it has hitpoints left, reduce them
-            if (this.hitpoints > 0)
-                this.hitpoints--;
+            if (this.maxHealth > 0)
+                this.maxHealth--;
 
             //if not, the turret dies
             else { SelfDestruct(); }
@@ -223,7 +121,7 @@ namespace Game
                 if (alive) 
                 {
                     //Play SFX and spawn bullet
-                    SFXShot.Play();
+                    SFX.Play(SFX.Sound.Shoot);
                     SpawnBullet(i, playerturret).MakeBullet(engine);
 
                     //add lag adjusted delay
@@ -434,7 +332,7 @@ namespace Game
                         this.state = State.Rotating;
 
                         //Play SFX and animation
-                        SFXRotate.Play();
+                        SFX.Play(SFX.Sound.Rotate);
                         this.Image = animation;
                         await Task.Delay(AnimationTime);
 
@@ -580,7 +478,104 @@ namespace Game
             //---------------------------------------------//
             }
         }
+        public async void TestFire()
+        {
+            if (!TestFireInProgress)
+            {
+                TestFireInProgress = true;
+                Rotate(Direction.South);
+                await Task.Delay(7000);
+                StartShooting();
+                await Task.Delay(3000);
 
+                Rotate(Direction.West);
+                await Task.Delay(4000);
+                StartShooting();
+                await Task.Delay(3000);
+
+                Rotate(Direction.SouthWest);
+                await Task.Delay(2000);
+                StartShooting();
+                await Task.Delay(3000);
+
+                Rotate(Direction.NorthWest);
+                await Task.Delay(4000);
+                StartShooting();
+                await Task.Delay(3000);
+
+                Rotate(Direction.SouthEast);
+                await Task.Delay(7000);
+                StartShooting();
+                await Task.Delay(3000);
+
+                Rotate(Direction.East);
+                await Task.Delay(2000);
+                StartShooting();
+                await Task.Delay(3000);
+
+                Rotate(Direction.NorthEast);
+                await Task.Delay(2000);
+                StartShooting();
+                await Task.Delay(3000);
+
+                Rotate(Direction.North);
+                await Task.Delay(2000);
+                StartShooting();
+                await Task.Delay(4000);
+
+                SelfDestruct();
+            }
+        }
+
+        //Turrets can rotate in 8 different directions
+        public enum Direction
+        {
+            North = 1,
+            South = 2,
+            West = 3,
+            East = 4,
+            NorthEast = 5,
+            NorthWest = 6,
+            SouthWest = 7,
+            SouthEast = 8
+        }
+        //Turrets can have 3 states
+        public enum State
+        {
+            Idle = 0,
+            Rotating = 1,
+            Shooting = 2,
+        }
+        /// <summary>
+        /// Gets the direction in which the turret is currently facing, as a string value
+        /// </summary>
+        public string DirectionString
+        {
+            get
+            {
+                switch (direction)
+                {
+                    case Direction.North:
+                        return "up";
+                    case Direction.South:
+                        return "down";
+                    case Direction.West:
+                        return "left";
+                    case Direction.East:
+                        return "right";
+                    case Direction.NorthEast:
+                        return "NorthEast";
+                    case Direction.NorthWest:
+                        return "NorthWest";
+                    case Direction.SouthEast:
+                        return "SouthEast";
+                    case Direction.SouthWest:
+                        return "SouthWest";
+                    default:
+                        return "";
+                }
+            }
+        }
         /// <summary>
         /// Rotates the turret into the desired direction
         /// </summary>

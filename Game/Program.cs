@@ -21,12 +21,21 @@ namespace Game
             Application.Run(start);
             if(start.start == true)
             {
+                if (start.sound == false)
+                {
+                    game.sound = false;
+                }
                 Application.Exit();
                 Application.Run(game);
+                
                 if (game.restart == true)
                 {                    
                     Application.Exit();
                     game = new Engine();
+                    if (start.sound == false)
+                    {
+                        game.sound = false;
+                    }
                     Application.Run(game);
                 }
             }

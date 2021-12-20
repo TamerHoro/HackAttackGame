@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Media;
+using Game.Engine_Releated;
 
 namespace Game
 {
-    class Server : StaticObject
+    class Server : InteractableObject
     {
         //State
         bool hacked;
-        SystemSound hacksound; //SFX
-        bool hasBadUSB;
+        bool hasBadUSB;        
 
         public Server(int xOffset, int yOffset) : base(xOffset, yOffset)
         {
@@ -33,9 +33,6 @@ namespace Game
 
             //Properties
             bool hacked = false;
-
-            //Load SFX
-            hacksound = SystemSounds.Beep;
 
             //Listen to Flashdrive pickup event
             Flashdrive.OnPickup += OnFlashdrivePickup;
@@ -61,7 +58,7 @@ namespace Game
                 this.Image = Properties.Resources.Hacked_Server;
                 for (int i = 0; i < 3; i++)
                 {
-                    hacksound.Play();
+                    SFX.Play(SFX.Sound.Hack);
                     await Task.Delay(1000);
                 }
             }

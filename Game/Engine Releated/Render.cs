@@ -15,13 +15,22 @@ namespace Game
     {
         int stage = 0;
         int[,] maparray;
+
         //List<PictureBox> levelwalling = new List<PictureBox>();
         public GameObjects[] objectArray = new GameObjects[200];
         public List<Watchdog> watchdogs = new List<Watchdog>();
         public List<Enemy> enemies = new List<Enemy>();
         //List<PictureBox> enemies = new List<PictureBox>();        
-        public Player playerOne = new Player();
-        public HealthLabelPlayer PlayerHealth;
+        public Player playerOne= new Player();
+        public HealthLabelPlayer PlayerHealthLabel;        
+        public Render(int stage=1)
+        {
+            PlayerHealthLabel = new HealthLabelPlayer(playerOne);
+            this.stage = stage;    
+            maparray = ReadMapFile();
+            LevelBuilder();
+
+        }
         private int[,] ReadMapFile()
         {
             string[] lines= new string[0];
@@ -53,21 +62,14 @@ namespace Game
             return maparray;
         }
 
-        enum Objects
+        public void BackgroundColor(int stage)
         {
-            Wall = 1,
-            Mine = 2,
-            Turret = 3,
-            Watchdog = 4,
-            Flashdrive = 7,
-            Server = 8,
-            Gate = 9
+
         }
 
         public void LevelBuilder()            //creates a lists with GameObjects
-        {
-            PlayerHealth = new HealthLabelPlayer(playerOne);
-            Player PlayerOne = new Player();
+        {          
+            
             int l = -10, h = -15, k = 0;
             
             for (int i = 0; i < 18; i++)
@@ -82,6 +84,7 @@ namespace Game
                     else if (maparray[i, j] == (int)Objects.Turret)
                     {
                         objectArray[k++] = new Turret(l, h, i, j);
+                        objectArray[k - 1].BackColor = Color.Black;
                         enemies.Add(objectArray[k - 1] as Enemy);
                     }
                     else if (maparray[i, j] == (int)Objects.Mine)
@@ -117,14 +120,7 @@ namespace Game
             }
         }
 
-        public Render(int stage)
-        {
-
-            this.stage = stage;
-            maparray = ReadMapFile();
-            LevelBuilder();
-            
-        }
+        
 
         private void InitializeComponent()
         {
@@ -138,7 +134,16 @@ namespace Game
             this.ResumeLayout(false);
 
         }
-
+        enum Objects
+        {
+            Wall = 1,
+            Mine = 2,
+            Turret = 3,
+            Watchdog = 4,
+            Flashdrive = 7,
+            Server = 8,
+            Gate = 9
+        }
         private void Render_Load(object sender, EventArgs e)
         {
 

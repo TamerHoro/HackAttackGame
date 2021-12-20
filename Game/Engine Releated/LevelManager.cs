@@ -16,7 +16,7 @@ namespace Game
                 case 2: return new Render(2);
                 case 3: return new Render(3);
                 default: return new Render(0);
-            }
+            } 
         }
         
         

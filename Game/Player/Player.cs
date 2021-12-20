@@ -2,27 +2,34 @@
 using System.Drawing;
 using System.Windows.Forms;
 using System.Media;
+using Game.Engine_Releated;
 
 namespace Game
 {
     public class Player : InteractableObject
     {
         public bool goLeft, goRight, goUp, goDown, shoot;
-        int speed = 5;
-        public int ammo = 5;
-        //public PictureBox picture = new PictureBox();       
-        SoundPlayer SFXHit = new SoundPlayer(Properties.Resources.PlayerHit);
-        public int health = 3;
+        public int speed = 5;
+        public int ammo = 5;        
+        //public PictureBox picture = new PictureBox();
+        
         public string direction;
 
-        public Player()
-            : base(100, 70, 3, Image.FromFile(@"..\..\Resources\playerupsmall.png"))
+        public int Health
         {
+            get { return this.currentHealth; }
+            set{ this.currentHealth = value;}
+        }
+        public Player()
+            : base(100, 70)
+        {
+            this.maxHealth = 3;
+            this.currentHealth = maxHealth;
             this.SizeMode = PictureBoxSizeMode.AutoSize;
             PlayerControl playercontrol = new PlayerControl();
             //this.BackColor = Color.Transparent;
             this.BringToFront();
-
+            this.Image = Properties.Resources.playersmall;            
         }
         public void KeyIsUp(object sender, KeyEventArgs e)
         {
@@ -61,28 +68,28 @@ namespace Game
             if (e.KeyCode == Keys.Left)
             {
                 goLeft = true;
-                this.Image = Image.FromFile(@"..\..\Resources\playerleftsmall.png");
+                this.Image = Properties.Resources.playerleftsmall;
                 this.direction = "left";
             }
 
             if (e.KeyCode == Keys.Right)
             {
                 goRight = true;
-                this.Image = Image.FromFile(@"..\..\Resources\playerightsmall.png");
+                this.Image = Properties.Resources.playerightsmall;
                 this.direction = "right";
             }
 
             if (e.KeyCode == Keys.Up)
             {
                 goUp = true;
-                this.Image = Image.FromFile(@"..\..\Resources\playerupsmall.png");
+                this.Image = Properties.Resources.playerupsmall;
                 this.direction = "up";
             }
 
             if (e.KeyCode == Keys.Down)
             {
                 goDown = true;
-                this.Image = Image.FromFile(@"..\..\Resources\playerdownsmall.png");
+                this.Image = Properties.Resources.playerdownsmall;
                 this.direction = "down";
             }
             if (e.KeyCode == Keys.Space)
@@ -116,7 +123,8 @@ namespace Game
 
         public void Die()
         {
-            SFXHit.Play();
+            this.currentHealth--;
+            SFX.Play(SFX.Sound.Death);
             this.Location = new Point(100, 100);
         }
   

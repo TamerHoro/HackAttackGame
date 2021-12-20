@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Engine Releated\SFX.cs" />
     <Compile Include="GameObjects\Ammo.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -134,6 +135,9 @@
     <EmbeddedResource Include="Engine Releated\Engine.resx">
       <DependentUpon>Engine.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Menues and Labels\DeathScreen.resx">
+      <DependentUpon>DeathScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Menues and Labels\MainMenue.resx">
       <DependentUpon>MainMenue.cs</DependentUpon>
     </EmbeddedResource>
@@ -193,13 +197,21 @@
   <ItemGroup>
     <Content Include="Levels\Level1.txt" />
     <Content Include="Levels\Level2.txt" />
+    <None Include="Resources\watchdog.png" />
     <None Include="Resources\ammo.png" />
     <Content Include="Levels\Level3.txt" />
     <None Include="Resources\ae3x608t.bmp" />
     <Content Include="Resources\Explosion.wav" />
     <None Include="Resources\flashdrive.png" />
     <None Include="Resources\Hacked_Server.png" />
+    <None Include="Resources\playerdownsmall.png" />
+    <None Include="Resources\nosound.bmp" />
+    <None Include="Resources\nosound.png" />
     <Content Include="Resources\PlayerHit.wav" />
+    <None Include="Resources\playerupsmall.png" />
+    <None Include="Resources\playerightsmall.png" />
+    <None Include="Resources\playerleftsmall.png" />
+    <None Include="Resources\playersmall.png" />
     <Content Include="Resources\Rotate.wav" />
     <None Include="Resources\Server.png" />
     <Content Include="Resources\Shot.wav" />
