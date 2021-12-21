@@ -53,7 +53,7 @@
     <Compile Include="GameObjects\Firewall.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="GameObjects\Bucket.cs">
+    <Compile Include="GameObjects\FireExtinguisher.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="GameObjects\Watchdogs.cs">
@@ -214,6 +214,8 @@
     <None Include="Resources\nosound.bmp" />
     <None Include="Resources\nosound.png" />
     <None Include="Resources\Firewall.png" />
+    <None Include="Resources\Extinguisher.png" />
+    <None Include="Resources\Extinguisher_broken.png" />
     <Content Include="Resources\PlayerHit.wav" />
     <None Include="Resources\playerupsmall.png" />
     <None Include="Resources\playerightsmall.png" />

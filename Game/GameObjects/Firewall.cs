@@ -13,7 +13,7 @@ namespace Game
     class Firewall : InteractableObject
     {
         //State
-        static bool hasBucket;        
+        static bool hasExtinguisher;        
 
         public Firewall(int xOffset, int yOffset) : base(xOffset, yOffset)
         {
@@ -34,33 +34,35 @@ namespace Game
             //bool hacked = false;
 
             //Listen to Flashdrive pickup event
-            WaterBucket.OnPickup += OnBucketPickup;
+            FireExtinguisher.OnPickup += OnBucketPickup;
         }
         
         //Action to take on flashdrive pickup event
         private void OnBucketPickup(object sender, EventArgs eArgs)
         {
-            //Allow hacking
-            hasBucket = true;
+            //Allow removal
+            hasExtinguisher = true;
         }
 
         /// <summary>
-        /// Hacks the server
+        /// Fights the fire(wall)
         /// </summary>
-        public async void Extinguish()
-        {/*
-            //Server can only be hacked once using the bad USB
-            if (!hacked && hasBadUSB)
+        /// <returns>true if successful, false if not</returns>
+        public bool Fight()
+        {
+            //Fire can only be fought with the extinguisher
+            if (hasExtinguisher)
             {
                 //Change image, state and play SFX
-                hacked = true;
+                hasExtinguisher = true;
                 this.Image = Properties.Resources.Hacked_Server;
                 for (int i = 0; i < 3; i++)
                 {
                     SFX.Play(SFX.Sound.Hack);
-                    await Task.Delay(1000);
                 }
-            }*/
+                return true;
+            }
+            else return false;
         }
     
     }

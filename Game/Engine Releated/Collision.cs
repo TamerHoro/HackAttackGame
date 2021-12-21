@@ -139,10 +139,26 @@ namespace Game
                             badUSB = null;
                             gameobjects[i] = null;
                         }
+                        if (gameobjects[i] is FireExtinguisher)
+                        {
+                            var extinguisher = gameobjects[i] as FireExtinguisher;
+                            if (!extinguisher.Collected) extinguisher.collect();
+                        }
                         if (gameobjects[i] is Server)
                         {
                             var server = gameobjects[i] as Server;
                             server.Hack();
+                        }
+                        if (gameobjects[i] is Firewall)
+                        {
+                            var fire = gameobjects[i] as Firewall;
+                            if (fire.Fight())
+                            {
+                                fire.Dispose();
+                                fire = null;
+                                gameobjects[i] = null;
+                            }
+                            else player.Die();
                         }
                     }
                     if(timepassed%200==0) gameobjects[i].col = false;
