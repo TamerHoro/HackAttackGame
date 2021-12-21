@@ -154,6 +154,7 @@ namespace Game
             level = LevelManager.CreateLevel(stage);
             escapeMenu = new EscapeMenu();
             InitializeComponent();
+            ammo.Visible = false;
             
             this.Controls.AddRange(level.objectArray);
             this.Controls.Add(level.playerOne);

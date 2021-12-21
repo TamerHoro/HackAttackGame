@@ -6,7 +6,7 @@ namespace Game
 {
     public class InteractableObject : GameObjects
     {
-        public int maxHealth;
+        public int maxHealth = 2;
         public int currentHealth;        
         public InteractableObject(int left, int top)
             :base(left, top)
