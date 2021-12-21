@@ -25,7 +25,7 @@ namespace Game
             this.Tag = $"Firewall";
 
             //Picture
-            this.Image = Properties.Resources.Firewall;
+            this.Image = Properties.Resources.Firewallgif;
             this.SizeMode = PictureBoxSizeMode.AutoSize;
             this.BackColor = Color.Transparent;
             this.BringToFront();
@@ -55,11 +55,7 @@ namespace Game
             {
                 //Change image, state and play SFX
                 hasExtinguisher = true;
-                this.Image = Properties.Resources.Hacked_Server;
-                for (int i = 0; i < 3; i++)
-                {
-                    SFX.Play(SFX.Sound.Hack);
-                }
+                SFX.Play(SFX.Sound.Extinguish);
                 return true;
             }
             else return false;

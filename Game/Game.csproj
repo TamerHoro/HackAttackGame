@@ -203,10 +203,12 @@
   <ItemGroup>
     <Content Include="Levels\Level1.txt" />
     <Content Include="Levels\Level2.txt" />
+    <None Include="Resources\USBCollect.wav" />
     <None Include="Resources\watchdog.png" />
     <None Include="Resources\ammo.png" />
     <Content Include="Levels\Level3.txt" />
     <None Include="Resources\ae3x608t.bmp" />
+    <None Include="Resources\EmergencyGlassBreaking.wav" />
     <Content Include="Resources\Explosion.wav" />
     <None Include="Resources\flashdrive.png" />
     <None Include="Resources\Hacked_Server.png" />
@@ -216,6 +218,8 @@
     <None Include="Resources\Firewall.png" />
     <None Include="Resources\Extinguisher.png" />
     <None Include="Resources\Extinguisher_broken.png" />
+    <None Include="Resources\Firewall.gif" />
+    <None Include="Resources\Extinguish.wav" />
     <Content Include="Resources\PlayerHit.wav" />
     <None Include="Resources\playerupsmall.png" />
     <None Include="Resources\playerightsmall.png" />

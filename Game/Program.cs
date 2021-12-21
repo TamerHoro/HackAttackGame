@@ -23,7 +23,7 @@ namespace Game
             {
                 if (start.sound == false)
                 {
-                    game.sound = false;
+                    game.sound = true;
                 }
                 Application.Exit();
                 Application.Run(game);
@@ -34,7 +34,7 @@ namespace Game
                     game = new Engine();
                     if (start.sound == false)
                     {
-                        game.sound = false;
+                        game.sound = true;
                     }
                     Application.Run(game);
                 }

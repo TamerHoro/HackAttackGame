@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Media;
+using Game.Engine_Releated;
 
 namespace Game
 {
@@ -44,6 +45,8 @@ namespace Game
 
                 //Trigger static fire extinguisher pickup event!
                 OnPickup?.Invoke(this, EventArgs.Empty);
+                //Play SFX and change image
+                SFX.Play(SFX.Sound.GlassBreak);
                 this.Image = Properties.Resources.Extinguisher_broken;
             }
         }

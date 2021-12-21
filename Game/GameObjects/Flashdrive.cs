@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Media;
+using Game.Engine_Releated;
 
 namespace Game
 {
@@ -44,6 +45,9 @@ namespace Game
 
                 //Trigger static flashdrive pickup event!
                 OnPickup?.Invoke(this, EventArgs.Empty);
+
+                //Play SFX
+                SFX.Play(SFX.Sound.Taunt);
             }
         }
 
