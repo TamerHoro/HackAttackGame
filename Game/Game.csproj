@@ -50,6 +50,12 @@
     <Compile Include="GameObjects\Ammo.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="GameObjects\Firewall.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GameObjects\Bucket.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="GameObjects\Watchdogs.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -207,6 +213,7 @@
     <None Include="Resources\playerdownsmall.png" />
     <None Include="Resources\nosound.bmp" />
     <None Include="Resources\nosound.png" />
+    <None Include="Resources\Firewall.png" />
     <Content Include="Resources\PlayerHit.wav" />
     <None Include="Resources\playerupsmall.png" />
     <None Include="Resources\playerightsmall.png" />

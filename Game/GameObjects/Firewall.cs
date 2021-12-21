@@ -10,46 +10,45 @@ using Game.Engine_Releated;
 
 namespace Game
 {
-    class Server : InteractableObject
+    class Firewall : InteractableObject
     {
         //State
-        bool hacked;
-        static bool hasBadUSB;        
+        static bool hasBucket;        
 
-        public Server(int xOffset, int yOffset) : base(xOffset, yOffset)
+        public Firewall(int xOffset, int yOffset) : base(xOffset, yOffset)
         {
             //Position
             this.Left = xOffset;
             this.Top = yOffset;
 
             //Tag
-            this.Tag = $"Server";
+            this.Tag = $"Firewall";
 
             //Picture
-            this.Image = Properties.Resources.Server;
+            this.Image = Properties.Resources.Firewall;
             this.SizeMode = PictureBoxSizeMode.AutoSize;
             this.BackColor = Color.Transparent;
             this.BringToFront();
 
             //Properties
-            bool hacked = false;
+            //bool hacked = false;
 
             //Listen to Flashdrive pickup event
-            Flashdrive.OnPickup += OnFlashdrivePickup;
+            WaterBucket.OnPickup += OnBucketPickup;
         }
-
+        
         //Action to take on flashdrive pickup event
-        private void OnFlashdrivePickup(object sender, EventArgs eArgs)
+        private void OnBucketPickup(object sender, EventArgs eArgs)
         {
             //Allow hacking
-            hasBadUSB = true;
+            hasBucket = true;
         }
 
         /// <summary>
         /// Hacks the server
         /// </summary>
-        public async void Hack()
-        {
+        public async void Extinguish()
+        {/*
             //Server can only be hacked once using the bad USB
             if (!hacked && hasBadUSB)
             {
@@ -61,8 +60,8 @@ namespace Game
                     SFX.Play(SFX.Sound.Hack);
                     await Task.Delay(1000);
                 }
-            }
+            }*/
         }
-
+    
     }
 }
