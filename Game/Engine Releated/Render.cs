@@ -116,9 +116,9 @@ namespace Game
                     {
                         objectArray[k++] = new Firewall(l, h);
                     }
-                    else if (maparray[i, j] == (int)Objects.Bucket)
+                    else if (maparray[i, j] == (int)Objects.Extinguisher)
                     {
-                        objectArray[k++] = new Firewall(l, h);
+                        objectArray[k++] = new FireExtinguisher(l, h);
                     }
                     else if (maparray[i, j] == (int)Objects.Flashdrive)
                     {
@@ -161,7 +161,7 @@ namespace Game
             Gate = 9,
 
             Firewall = 'F',
-            Bucket = 'B',
+            Extinguisher = 'E',
         }
         private void Render_Load(object sender, EventArgs e)
         {

@@ -9,15 +9,15 @@ using System.Media;
 
 namespace Game
 {
-    class WaterBucket : StaticObject
+    class FireExtinguisher : StaticObject
     {
-        bool collected;
+        static bool collected;
         public bool Collected { get => collected; }
 
         //Static pickup event 
         public static event EventHandler OnPickup;
 
-        public WaterBucket(int xOffset, int yOffset) : base(xOffset, yOffset)
+        public FireExtinguisher(int xOffset, int yOffset) : base(xOffset, yOffset)
         {
             //Position
             this.Left = xOffset;
@@ -27,7 +27,7 @@ namespace Game
             this.Tag = $"WaterBucket";
 
             //Picture
-            this.Image = Properties.Resources.flashdrive;
+            this.Image = Properties.Resources.Extinguisher;
             this.SizeMode = PictureBoxSizeMode.AutoSize;
             this.BackColor = Color.Transparent;
             this.BringToFront();
@@ -42,8 +42,9 @@ namespace Game
             {
                 collected = true;
 
-                //Trigger static waterbucket pickup event!
+                //Trigger static fire extinguisher pickup event!
                 OnPickup?.Invoke(this, EventArgs.Empty);
+                this.Image = Properties.Resources.Extinguisher_broken;
             }
         }
 
