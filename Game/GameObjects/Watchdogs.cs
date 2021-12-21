@@ -12,16 +12,17 @@ namespace Game
         public Watchdog(int xOffset, int yOffset, int i = 0, int j = 0, int k = 0)
             : base(xOffset, yOffset)
         {
-            Image = Properties.Resources.watchdog;
             BackColor = Color.DimGray;
             SizeMode = PictureBoxSizeMode.AutoSize;
             if (k == 0)
             {
                 goLeft = true;
+                Image = Properties.Resources.watchdog;
             }
             else
             {
                 goUp = true;
+                Image = Properties.Resources.watchdog;
             }
         }
 
