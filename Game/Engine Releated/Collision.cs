@@ -93,22 +93,20 @@ namespace Game
                                     if (ActiveMine.IsAlive && gameobjects[i].col == false)
                                     {
                                         ActiveMine.Explode();
-                                        player.Health--;
                                         gameobjects[i].col = true;
-                                        //player.Die();
+                                        player.Die();
                                         gameobjects[i] = null;
                                     }
                                 }
                                 else if (gameobjects[i] is Watchdog&& gameobjects[i].col == false)
                                 {
                                     gameobjects[i].col = true;
-                                    //player.Health--;
                                     player.Die();
                                 }
                                 else
                                 {
                                     gameobjects[i].col = true;
-                                    player.Health--;
+                                    player.Die();
                                     //var ActiveTurret = gameobjects[i] as Turret;
                                     //if (ActiveTurret.IsAlive&& ActiveTurret!=null && gameobjects[i].col == false)
                                     //{

@@ -88,5 +88,15 @@ namespace Game
                 }
             }
         }
+
+        public void TakeDamage()
+        {
+            if (maxHealth > 0)
+                maxHealth--;
+            else
+            {
+                Dispose();
+            }
+        }
     }
 }

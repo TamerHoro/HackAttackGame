@@ -54,7 +54,13 @@ namespace Game
                             HitMine.Explode();
                             gameobjects[i] = null;
                             HitMine = null;
-                        }               
+                        }
+                        else if (gameobjects[i] is Watchdog)
+                        {
+                            col = true;
+                            var HitWatchdog = gameobjects[i] as Watchdog;
+                            HitWatchdog.TakeDamage();
+                        }
                     }
                 }
 
