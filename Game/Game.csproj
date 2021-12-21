@@ -197,6 +197,10 @@
   <ItemGroup>
     <Content Include="Levels\Level1.txt" />
     <Content Include="Levels\Level2.txt" />
+    <None Include="Resources\watchdogup.png" />
+    <None Include="Resources\watchdogright.png" />
+    <None Include="Resources\watchdogleft.png" />
+    <None Include="Resources\watchdogdown.png" />
     <None Include="Resources\watchdog.png" />
     <None Include="Resources\ammo.png" />
     <Content Include="Levels\Level3.txt" />

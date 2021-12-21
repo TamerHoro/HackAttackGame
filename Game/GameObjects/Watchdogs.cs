@@ -17,12 +17,12 @@ namespace Game
             if (k == 0)
             {
                 goLeft = true;
-                Image = Properties.Resources.watchdog;
+                Image = Properties.Resources.watchdogleft;
             }
             else
             {
                 goUp = true;
-                Image = Properties.Resources.watchdog;
+                Image = Properties.Resources.watchdogup;
             }
         }
 
@@ -59,26 +59,29 @@ namespace Game
                     {
                         if (watchdogs[i].Bounds.IntersectsWith(gameobjects[k].Bounds))
                         {
-                            if (true) { }
                             if (watchdogs[i].goUp)
                             {
                                 watchdogs[i].goUp = false;
                                 watchdogs[i].goDown = true;
+                                watchdogs[i].Image = Properties.Resources.watchdogdown;
                             }
                             else if (watchdogs[i].goDown)
                             {
                                 watchdogs[i].goDown = false;
                                 watchdogs[i].goUp = true;
+                                watchdogs[i].Image = Properties.Resources.watchdogup;
                             }
                             else if (watchdogs[i].goLeft)
                             {
                                 watchdogs[i].goLeft = false;
                                 watchdogs[i].goRight = true;
+                                watchdogs[i].Image = Properties.Resources.watchdogright;
                             }
                             else if (watchdogs[i].goRight)
                             {
                                 watchdogs[i].goRight = false;
                                 watchdogs[i].goLeft = true;
+                                watchdogs[i].Image = Properties.Resources.watchdogleft;
                             }
                         }
                     }
