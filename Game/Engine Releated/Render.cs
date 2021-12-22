@@ -56,7 +56,14 @@ namespace Game
                 var fields = lines[i].Split(' ');
                 for (int j = 0; j < 18; j++)
                 {
-                    maparray[i, j] = int.Parse(fields[j]);
+                    try
+                    {
+                        maparray[i, j] = int.Parse(fields[j]);
+                    }
+                    catch (System.FormatException)
+                    {
+                        maparray[i, j] = char.Parse(fields[j]);
+                    }
                 }
             }
             return maparray;
@@ -105,6 +112,14 @@ namespace Game
                     {
                         objectArray[k++] = new Server(l, h);
                     }
+                    else if (maparray[i, j] == (int)Objects.Firewall)
+                    {
+                        objectArray[k++] = new Firewall(l, h);
+                    }
+                    else if (maparray[i, j] == (int)Objects.Extinguisher)
+                    {
+                        objectArray[k++] = new FireExtinguisher(l, h);
+                    }
                     else if (maparray[i, j] == (int)Objects.Flashdrive)
                     {
                         objectArray[k++] = new Flashdrive(l, h);
@@ -140,9 +155,13 @@ namespace Game
             Mine = 2,
             Turret = 3,
             Watchdog = 4,
+
             Flashdrive = 7,
             Server = 8,
-            Gate = 9
+            Gate = 9,
+
+            Firewall = 'F',
+            Extinguisher = 'E',
         }
         private void Render_Load(object sender, EventArgs e)
         {

@@ -14,7 +14,7 @@ namespace Game
     {
         //State
         bool hacked;
-        bool hasBadUSB;        
+        static bool hasBadUSB;        
 
         public Server(int xOffset, int yOffset) : base(xOffset, yOffset)
         {

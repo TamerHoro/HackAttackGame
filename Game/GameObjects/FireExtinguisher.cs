@@ -10,25 +10,25 @@ using Game.Engine_Releated;
 
 namespace Game
 {
-    class Flashdrive : StaticObject
+    class FireExtinguisher : StaticObject
     {
-        bool collected;
+        static bool collected;
         public bool Collected { get => collected; }
 
         //Static pickup event 
         public static event EventHandler OnPickup;
 
-        public Flashdrive(int xOffset, int yOffset) : base(xOffset, yOffset)
+        public FireExtinguisher(int xOffset, int yOffset) : base(xOffset, yOffset)
         {
             //Position
             this.Left = xOffset;
             this.Top = yOffset;
 
             //Tag
-            this.Tag = $"Flashdrive";
+            this.Tag = $"WaterBucket";
 
             //Picture
-            this.Image = Properties.Resources.flashdrive;
+            this.Image = Properties.Resources.Extinguisher;
             this.SizeMode = PictureBoxSizeMode.AutoSize;
             this.BackColor = Color.Transparent;
             this.BringToFront();
@@ -43,11 +43,11 @@ namespace Game
             {
                 collected = true;
 
-                //Trigger static flashdrive pickup event!
+                //Trigger static fire extinguisher pickup event!
                 OnPickup?.Invoke(this, EventArgs.Empty);
-
-                //Play SFX
-                SFX.Play(SFX.Sound.Taunt);
+                //Play SFX and change image
+                SFX.Play(SFX.Sound.GlassBreak);
+                this.Image = Properties.Resources.Extinguisher_broken;
             }
         }
 
