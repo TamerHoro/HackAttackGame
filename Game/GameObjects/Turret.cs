@@ -45,16 +45,18 @@ namespace Game
             //Tag
             this.Tag = $"Turret{i}{j}";
 
-            //Picture
-            this.Image = Properties.Resources.TurretShootN;
-            this.SizeMode = PictureBoxSizeMode.AutoSize;
-            this.BackColor = Color.Blue;
-            this.BringToFront();
-
             //Properties
             this.direction = direction;
             this.maxHealth = 3;
-            this.state = State.Idle;            
+            this.state = State.Idle;
+
+            //Picture
+            Bitmap none, IdlePicture;
+            GetAnimation(out none, out IdlePicture);
+            this.Image = IdlePicture;
+            this.SizeMode = PictureBoxSizeMode.AutoSize;
+            this.BackColor = Color.Transparent;
+            this.BringToFront();
         }
 
         /// <summary>
@@ -227,63 +229,58 @@ namespace Game
                     this.Image = idle;
                 this.state = State.Idle;
             }
-
-            //Auxiliary methods below
-            //------------------------------------//
-            //Returns the right image and animation for each direction
-
-            void GetAnimation(out Bitmap animation, out Bitmap idle)
+        }
+        //Auxiliary method for shooting animation and idle graphics
+        void GetAnimation(out Bitmap animation, out Bitmap idle)
+        {
+            animation = null;
+            idle = null;
+            switch (CurrentDirection)
             {
-                animation = null;
-                idle = null;
-                switch (CurrentDirection)
-                {
-                    case Direction.North:
-                        animation = Properties.Resources.TurretShootN;
-                        idle = Properties.Resources.TurretIdle;
-                        break;
-                    case Direction.NorthEast:
-                        animation = Properties.Resources.TurretShootNE;
-                        idle = Properties.Resources.TurretIdle45;
-                        break;
-                    case Direction.East:
-                        animation = Properties.Resources.TurretShootE;
-                        idle = Properties.Resources.TurretIdle;
-                        idle.RotateFlip(RotateFlipType.Rotate90FlipNone);
-                        break;
-                    case Direction.SouthEast:
-                        animation = Properties.Resources.TurretShootSE;
-                        idle = Properties.Resources.TurretIdle45;
-                        idle.RotateFlip(RotateFlipType.Rotate90FlipNone);
-                        break;
-                    case Direction.South:
-                        animation = Properties.Resources.TurretShootS;
-                        idle = Properties.Resources.TurretIdle;
-                        idle.RotateFlip(RotateFlipType.Rotate180FlipNone);
-                        break;
-                    case Direction.SouthWest:
-                        animation = Properties.Resources.TurretShootSW;
-                        idle = Properties.Resources.TurretIdle45;
-                        idle.RotateFlip(RotateFlipType.Rotate180FlipNone);
-                        break;
-                    case Direction.West:
-                        animation = Properties.Resources.TurretShootW;
-                        idle = Properties.Resources.TurretIdle;
-                        idle.RotateFlip(RotateFlipType.Rotate270FlipNone);
-                        break;
-                    case Direction.NorthWest:
-                        animation = Properties.Resources.TurretShootNW;
-                        idle = Properties.Resources.TurretIdle45;
-                        idle.RotateFlip(RotateFlipType.Rotate270FlipNone);
-                        break;
-                    default:
-                        animation = Properties.Resources.TurretShootN;
-                        idle = Properties.Resources.TurretIdle;
-                        break;
-                }
+                case Direction.North:
+                    animation = Properties.Resources.TurretShootN;
+                    idle = Properties.Resources.TurretIdle;
+                    break;
+                case Direction.NorthEast:
+                    animation = Properties.Resources.TurretShootNE;
+                    idle = Properties.Resources.TurretIdle45;
+                    break;
+                case Direction.East:
+                    animation = Properties.Resources.TurretShootE;
+                    idle = Properties.Resources.TurretIdle;
+                    idle.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                    break;
+                case Direction.SouthEast:
+                    animation = Properties.Resources.TurretShootSE;
+                    idle = Properties.Resources.TurretIdle45;
+                    idle.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                    break;
+                case Direction.South:
+                    animation = Properties.Resources.TurretShootS;
+                    idle = Properties.Resources.TurretIdle;
+                    idle.RotateFlip(RotateFlipType.Rotate180FlipNone);
+                    break;
+                case Direction.SouthWest:
+                    animation = Properties.Resources.TurretShootSW;
+                    idle = Properties.Resources.TurretIdle45;
+                    idle.RotateFlip(RotateFlipType.Rotate180FlipNone);
+                    break;
+                case Direction.West:
+                    animation = Properties.Resources.TurretShootW;
+                    idle = Properties.Resources.TurretIdle;
+                    idle.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                    break;
+                case Direction.NorthWest:
+                    animation = Properties.Resources.TurretShootNW;
+                    idle = Properties.Resources.TurretIdle45;
+                    idle.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                    break;
+                default:
+                    animation = Properties.Resources.TurretShootN;
+                    idle = Properties.Resources.TurretIdle;
+                    break;
             }
         }
-
 
 
 

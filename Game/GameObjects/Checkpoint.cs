@@ -11,7 +11,10 @@ namespace Game
         //Each checkpoint has a turret and a direction that the turret must have to face the checkpoint
         Turret turret;
         Turret.Direction shootingDirection;
-        public Checkpoint(int xOffset, int yOffset) : base(xOffset, yOffset)
+        int xCoordinate, yCoordinate;
+        int size;
+        bool enabled = false;
+        public Checkpoint(int xOffset, int yOffset, int Size = 40, bool levelDesignMode = false) : base(xOffset, yOffset)
         {
             this.Tag = $"Checkpoint";
             this.BackColor = System.Drawing.Color.DarkRed;
@@ -19,7 +22,8 @@ namespace Game
             this.Height = 40;
             this.Left = xOffset;
             this.Top = yOffset;
-            //this.BringToFront();
+            this.size = Size;
+            if (!levelDesignMode) this.Hide(); //Visualizes checkpoints as a dark red box in level design mode
         }
 
         /// <summary>
@@ -35,46 +39,46 @@ namespace Game
         /// Calculates the direction of the checkpoint relative to the linked turret
         /// </summary>
         /// <returns></returns>
-        public Turret.Direction GetDirection()
+        public Turret.Direction GetDirection(int xPosition, int yPosition)
         {
             //Same X coordinate
-            if (turret.Left == this.Left)
+            if (turret.Left == xPosition)
             {
-                if (this.Top > turret.Top) //higher Y? must be below!
+                if (yPosition > turret.Top) //higher Y? must be below!
                     return Turret.Direction.South; 
-                else if (this.Top < turret.Top) //lower Y? must be above!
+                else if (yPosition < turret.Top) //lower Y? must be above!
                     return Turret.Direction.North;
             }
 
             //Same Y coordinate
-            else if (turret.Top == this.Top)
+            else if (turret.Top == yPosition)
             {
-                if (this.Left > turret.Left) //higher X? must be to the right!
+                if (xCoordinate > turret.Left) //higher X? must be to the right!
                     return Turret.Direction.East;
-                else if (this.Left < turret.Left) //lower X? must be to the left!
+                else if (xCoordinate < turret.Left) //lower X? must be to the left!
                     return Turret.Direction.West;
             }
 
             //Northwest
-            else if (this.Left > turret.Left && this.Top > turret.Top)
+            else if (xPosition > turret.Left && yPosition > turret.Top)
             {
                 return Turret.Direction.SouthEast;
             }
 
             //Southeast
-            else if (this.Left < turret.Left && this.Top < turret.Top)
+            else if (xPosition < turret.Left && yPosition < turret.Top)
             {
                 return Turret.Direction.NorthWest;
             }
 
             //Northeast
-            else if (this.Left > turret.Left && this.Top < turret.Top)
+            else if (xPosition > turret.Left && yPosition < turret.Top)
             {
                 return Turret.Direction.NorthEast;
             }
 
             //Soutwest
-            else if (this.Left < turret.Left && this.Top > turret.Top)
+            else if (xPosition < turret.Left && yPosition > turret.Top)
             {
                 return Turret.Direction.SouthWest;
             }
@@ -87,10 +91,27 @@ namespace Game
         /// </summary>
         /// <param name="engine">nessessary for turret control (bullet spawning)</param>
         /// <param name="gameObjects">nessessary for turret control (bullet spawning)</param>
+        /// <param name="Resize">Resizes the checkpoint once triggered (default 100px)</param>
         public void Trigger(Engine engine, GameObjects[] gameObjects)
         {
+            //Save current coordinates if triggered for the first time
+            if (!enabled)
+            {
+                xCoordinate = this.Left;
+                yCoordinate = this.Top;
+
+                Width = size;
+                Height = size;
+
+                Left = xCoordinate - Width/2 + 20;
+                Top = yCoordinate - Height / 2 + 20;
+
+                enabled = true;
+            }
+
+
             //If the turret is not facing at checkpoint, rotate it
-            var shootingDirection = GetDirection();
+            var shootingDirection = GetDirection(xCoordinate, yCoordinate);
             if (turret.CurrentDirection != shootingDirection)
                 turret.Rotate(shootingDirection);
             else //start shooting otherwise
