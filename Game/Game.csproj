@@ -50,6 +50,9 @@
     <Compile Include="GameObjects\Ammo.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="GameObjects\Checkpoint.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="GameObjects\Firewall.cs">
       <SubType>Component</SubType>
     </Compile>

@@ -20,6 +20,8 @@ namespace Game
         public GameObjects[] objectArray = new GameObjects[200];
         public List<Watchdog> watchdogs = new List<Watchdog>();
         public List<Enemy> enemies = new List<Enemy>();
+        List<Turret> turrets = new List<Turret>();
+        List<Checkpoint> checkpoints = new List<Checkpoint>();
         //List<PictureBox> enemies = new List<PictureBox>();        
         public Player playerOne= new Player();
         public HealthLabelPlayer PlayerHealthLabel;        
@@ -90,9 +92,17 @@ namespace Game
                     }
                     else if (maparray[i, j] == (int)Objects.Turret)
                     {
-                        objectArray[k++] = new Turret(l, h, i, j);
-                        objectArray[k - 1].BackColor = Color.Black;
-                        enemies.Add(objectArray[k - 1] as Enemy);
+                        var current_turret = new Turret(l, h, i, j);
+                        current_turret.BackColor = Color.Black;
+                        turrets.Add(current_turret);
+                        enemies.Add(current_turret as Enemy);
+                        objectArray[k++] = current_turret;
+                    }
+                    else if (maparray[i, j] == (int)Objects.Checkpoint)
+                    {
+                        var checkpoint = new Checkpoint(l, h);
+                        checkpoints.Add(checkpoint);
+                        objectArray[k++] = checkpoint;
                     }
                     else if (maparray[i, j] == (int)Objects.Mine)
                     {
@@ -133,6 +143,12 @@ namespace Game
                 l = -10;
                 h = h + 40;
             }
+
+            foreach (Checkpoint checkpoint in checkpoints) 
+            {
+                var nearest_turret = checkpoint.getNearestTurret(turrets);
+                checkpoint.Link(nearest_turret); 
+            }
         }
 
         
@@ -162,6 +178,7 @@ namespace Game
 
             Firewall = 'F',
             Extinguisher = 'E',
+            Checkpoint = 'C'
         }
         private void Render_Load(object sender, EventArgs e)
         {
