@@ -20,6 +20,8 @@ namespace Game
         public GameObjects[] objectArray = new GameObjects[200];
         public List<Watchdog> watchdogs = new List<Watchdog>();
         public List<Enemy> enemies = new List<Enemy>();
+        List<Turret> turrets = new List<Turret>();
+        List<Checkpoint> checkpoints = new List<Checkpoint>();
         //List<PictureBox> enemies = new List<PictureBox>();        
         public Player playerOne= new Player();
         public HealthLabelPlayer PlayerHealthLabel;        
@@ -76,7 +78,8 @@ namespace Game
 
         public void LevelBuilder()            //creates a lists with GameObjects
         {          
-            
+            Turret.Direction facing = Turret.Direction.North;
+
             int l = -10, h = -15, k = 0;
             
             for (int i = 0; i < 18; i++)
@@ -87,12 +90,6 @@ namespace Game
                     {
                         objectArray[k++] = new Wall(l, h, i, j);
                         //objectArray[k-1].Image = ;
-                    }
-                    else if (maparray[i, j] == (int)Objects.Turret)
-                    {
-                        objectArray[k++] = new Turret(l, h, i, j);
-                        objectArray[k - 1].BackColor = Color.Black;
-                        enemies.Add(objectArray[k - 1] as Enemy);
                     }
                     else if (maparray[i, j] == (int)Objects.Mine)
                     {
@@ -128,10 +125,76 @@ namespace Game
                     {
                         objectArray[k++] = new Gate(l, h, i, j);
                     }
+                    else if (checkTurret(i, j, out facing))
+                    {
+                        var current_turret = new Turret(l, h, i, j, facing);
+                        turrets.Add(current_turret);
+                        enemies.Add(current_turret as Enemy);
+                        objectArray[k++] = current_turret;
+                    }
+                    else if (maparray[i, j] == (int)Objects.CheckpointBig)
+                    {
+                        var checkpoint = new Checkpoint(l, h, 80);
+                        checkpoints.Add(checkpoint);
+                        objectArray[k++] = checkpoint;
+                    }
+                    else if (maparray[i, j] == (int)Objects.Checkpoint)
+                    {
+                        var checkpoint = new Checkpoint(l, h);
+                        checkpoints.Add(checkpoint);
+                        objectArray[k++] = checkpoint;
+                    }
                     l = l + 40;
                 }
                 l = -10;
                 h = h + 40;
+            }
+
+            foreach (Checkpoint checkpoint in checkpoints) 
+            {
+                var nearest_turret = checkpoint.getNearestTurret(turrets);
+                checkpoint.Link(nearest_turret); 
+            }
+
+            //Auxiliary method, checks if char is turret and returns the direction it is facing
+            bool checkTurret(int i, int j, out Turret.Direction direction)
+            {
+                direction = Turret.Direction.North;
+                switch (maparray[i,j])
+                { 
+                    case (int)Objects.TurretNorth:
+                        direction = Turret.Direction.North;
+                        return true;
+
+                    case (int)Objects.TurretEast:
+                        direction = Turret.Direction.East;
+                        return true;
+
+                    case (int)Objects.TurretSouth:
+                        direction = Turret.Direction.South;
+                        return true;
+
+                    case (int)Objects.TurretWest:
+                        direction = Turret.Direction.West;
+                        return true;
+
+                    case (int)Objects.TurretNorthEast:
+                        direction = Turret.Direction.NorthEast;
+                        return true;
+
+                    case (int)Objects.TurretNorthWest:
+                        direction = Turret.Direction.NorthWest;
+                        return true;
+
+                    case (int)Objects.TurretSouthEast:
+                        direction = Turret.Direction.SouthEast;
+                        return true;
+
+                    case (int)Objects.TurretSouthWest:
+                        direction = Turret.Direction.SouthWest;
+                        return true;
+                }
+                return false;
             }
         }
 
@@ -152,8 +215,7 @@ namespace Game
         enum Objects
         {
             Wall = 1,
-            Mine = 2,
-            Turret = 3,
+            Mine = 'M',
             Watchdog = 4,
 
             Flashdrive = 7,
@@ -161,7 +223,20 @@ namespace Game
             Gate = 9,
 
             Firewall = 'F',
-            Extinguisher = 'E',
+            Extinguisher = 'L',
+            CheckpointBig = 'P',
+            Checkpoint = 'p',
+
+            Turret = 3,
+            TurretNorth = 'w',
+            TurretWest = 'a',
+            TurretSouth = 'x',
+            TurretEast = 'd',
+            TurretNorthEast = 'e',
+            TurretNorthWest = 'q',
+            TurretSouthWest = 'y',
+            TurretSouthEast = 'c',
+
         }
         private void Render_Load(object sender, EventArgs e)
         {

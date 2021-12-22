@@ -160,6 +160,11 @@ namespace Game
                             }
                             else player.Die();
                         }
+                        if (gameobjects[i] is Checkpoint)
+                        {
+                            var Checkpoint = gameobjects[i] as Checkpoint;
+                            Checkpoint.Trigger(engine, gameobjects);
+                        }
                     }
                     if(timepassed%200==0) gameobjects[i].col = false;
 
