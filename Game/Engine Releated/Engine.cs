@@ -91,7 +91,8 @@ namespace Game
                     ammo.Visible = false;
                     ammo.intersects = true;
                 }
-            }          
+            }
+            HealthLabelEnemy.update(level.enemies, level.HealthLabelEnemies);
             ammoLabel.UpdateAmmo(level.playerOne);
             NextLevel(winCondition);       
         }
@@ -105,6 +106,10 @@ namespace Game
             this.Controls.Add(ammo);
             this.Controls.Add(ammoLabel);
             ammoLabel.BringToFront();
+            for (int i=0; i<level.enemies.Count; i++)
+            {
+                this.Controls.Add(level.HealthLabelEnemies[i]);
+            }
         }
        
         private void Engine_Load(object sender, EventArgs e)
@@ -142,6 +147,10 @@ namespace Game
                 this.Controls.Add(level.PlayerHealthLabel);
                 this.Controls.Add(ammo);
                 this.Controls.Add(ammoLabel);
+                for (int i = 0; i < level.enemies.Count; i++)
+                {
+                    this.Controls.Add(level.HealthLabelEnemies[i]);
+                }
             }
         }
         
@@ -162,22 +171,16 @@ namespace Game
             this.Controls.Add(level.PlayerHealthLabel);
             this.Controls.Add(ammo);
             this.Controls.Add(ammoLabel);
+            for (int i = 0; i < level.enemies.Count; i++)
+            {
+                this.Controls.Add(level.HealthLabelEnemies[i]);
+            }
         }
 
         private void RestartGame()
         {
             restart = true;
             this.Close();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
         }
 
         private void ShootBullet(string direction)

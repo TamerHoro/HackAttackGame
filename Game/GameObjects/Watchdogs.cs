@@ -91,9 +91,8 @@ namespace Game
 
         public void TakeDamage()
         {
-            if (maxHealth > 0)
-                maxHealth--;
-            else
+            currentHealth = currentHealth-1;
+            if (currentHealth == 0)
             {
                 Dispose();
             }

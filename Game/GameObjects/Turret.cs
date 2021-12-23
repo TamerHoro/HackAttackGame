@@ -98,11 +98,13 @@ namespace Game
         public void TakeDamage()
         {
             //If it has hitpoints left, reduce them
-            if (this.maxHealth > 0)
-                this.maxHealth--;
+            currentHealth = currentHealth - 1;
 
             //if not, the turret dies
-            else { SelfDestruct(); }
+            if(currentHealth == 0)
+            {
+                Dispose();
+            }
         }
 
         /// <summary>

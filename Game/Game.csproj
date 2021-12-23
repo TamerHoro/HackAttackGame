@@ -53,6 +53,9 @@
     <Compile Include="GameObjects\Watchdogs.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="HealthLabelEnemy.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Menues and Labels\AmmoLabel.cs">
       <SubType>Component</SubType>
     </Compile>

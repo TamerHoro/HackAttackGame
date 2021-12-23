@@ -22,7 +22,8 @@ namespace Game
         public List<Enemy> enemies = new List<Enemy>();
         //List<PictureBox> enemies = new List<PictureBox>();        
         public Player playerOne= new Player();
-        public HealthLabelPlayer PlayerHealthLabel;        
+        public HealthLabelPlayer PlayerHealthLabel;
+        public List<HealthLabelEnemy> HealthLabelEnemies = new List<HealthLabelEnemy>();
         public Render(int stage=1)
         {
             PlayerHealthLabel = new HealthLabelPlayer(playerOne);
@@ -86,6 +87,7 @@ namespace Game
                         objectArray[k++] = new Turret(l, h, i, j);
                         objectArray[k - 1].BackColor = Color.Black;
                         enemies.Add(objectArray[k - 1] as Enemy);
+                        HealthLabelEnemies.Add(new HealthLabelEnemy(objectArray[k - 1] as Enemy));
                     }
                     else if (maparray[i, j] == (int)Objects.Mine)
                     {
@@ -95,11 +97,15 @@ namespace Game
                     {
                         objectArray[k++] = new Watchdog(l, h, i, j, 1);
                         watchdogs.Add(objectArray[k - 1] as Watchdog);
+                        enemies.Add(objectArray[k - 1] as Enemy);
+                        HealthLabelEnemies.Add(new HealthLabelEnemy(objectArray[k - 1] as Enemy));
                     }
                     else if (maparray[i, j] == (int)Objects.Watchdog)
                     {
                         objectArray[k++] = new Watchdog(l, h, i, j);
                         watchdogs.Add(objectArray[k - 1] as Watchdog);
+                        enemies.Add(objectArray[k - 1] as Enemy);
+                        HealthLabelEnemies.Add(new HealthLabelEnemy(objectArray[k - 1] as Enemy));
                     }
                     else if (maparray[i, j] == (int)Objects.Server)
                     {

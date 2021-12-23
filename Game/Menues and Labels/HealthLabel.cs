@@ -20,7 +20,7 @@ namespace Game
             Location = new Point(interactable.Left + 4, interactable.Top + 15);
             BringToFront();
             Size = new Size(new Point(23, 12));
-            this.BackColor = Color.Transparent;
+            this.BackColor = Color.DimGray;
         }
 
     }
