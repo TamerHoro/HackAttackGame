@@ -14,7 +14,7 @@ namespace Game
         public Ammo()
             : base(200, 200)
         {
-            Image = Image.FromFile(@"..\..\Resources\ammo.png");
+            Image = Properties.Resources.ammo;
             Size = new Size(new Point(5, 5));
             SizeMode = PictureBoxSizeMode.AutoSize;
             BackColor = Color.Transparent;

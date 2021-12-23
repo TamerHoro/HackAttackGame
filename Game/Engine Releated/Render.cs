@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using Game.Engine_Releated;
 
 namespace Game
 {
@@ -36,23 +37,28 @@ namespace Game
         }
         private int[,] ReadMapFile()
         {
+            //load level data from .txt files as strings
+            string level1 = Properties.Resources.Level1;
+            string level2 = Properties.Resources.Level2;
+            string level3 = Properties.Resources.Level3;
+
             string[] lines= new string[0];
             int[,] maparray = new int[18, 18];
             if (stage == 0||stage == 1)
             {
-                 lines = File.ReadAllText(@"..\..\Levels\Level1.txt").Split(new string[] { "\n" }, StringSplitOptions.None);                
+                 lines = level1.Split(new string[] { "\n" }, StringSplitOptions.None);                
             }
             if(stage == 2)
             {
-                lines = File.ReadAllText(@"..\..\Levels\Level2.txt").Split(new string[] { "\n" }, StringSplitOptions.None);                
+                lines = level2.Split(new string[] { "\n" }, StringSplitOptions.None);                
             }
             if (stage == 3)
             {
-                lines = File.ReadAllText(@"..\..\Levels\Level3.txt").Split(new string[] { "\n" }, StringSplitOptions.None);
+                lines = level3.Split(new string[] { "\n" }, StringSplitOptions.None);
             }
             if(stage >3)
             {
-                lines = File.ReadAllText(@"..\..\Levels\Level1.txt").Split(new string[] { "\n" }, StringSplitOptions.None);
+                lines = level1.Split(new string[] { "\n" }, StringSplitOptions.None);
             }
             for (int i = 0; i < 18; i++)
             {
