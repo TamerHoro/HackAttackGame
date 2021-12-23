@@ -27,6 +27,11 @@
                         if (gameobjects[i] is Wall)
                         {
                             col = true;
+                            if(gameobjects[i] is DestructableWall)
+                            {
+                                gameobjects[i].Dispose();
+                                gameobjects[i] = null;
+                            }                            
                         }
                         else if (gameobjects[i] is Turret)
                         {
