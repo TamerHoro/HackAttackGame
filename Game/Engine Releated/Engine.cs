@@ -76,6 +76,14 @@ namespace Game
                 RestartLevel(stage);
                 escapeMenu.restartClicked = false;
             }
+            if (escapeMenu.soundClicked == true)
+            {
+                
+                SFX.enabled = false;
+                ActiveControl = default;
+
+
+            }
             if (level.playerOne.shoot == true && count > 10)
             {
                 this.ShootBullet(level.playerOne.direction);

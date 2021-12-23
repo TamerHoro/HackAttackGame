@@ -11,17 +11,20 @@ namespace Game
     {
         new Button exit = new Button();
         new Button restart = new Button();
-        bool menueopen = false;
+        new Button sound = new Button();
+        public bool menueopen = false;
+        bool soundIsOn = true;
         bool _exitClicked = false;
         bool _restartClicked = false;
-        
-        public bool exitClicked  { get => _exitClicked; private set => _exitClicked = value; }
-        public bool restartClicked { get => _restartClicked; set => _restartClicked = value; }
+        bool _soundClicked = false;
 
+        public bool exitClicked { get => _exitClicked; private set => _exitClicked = value; }
+        public bool restartClicked { get => _restartClicked; set => _restartClicked = value; }
+        public bool soundClicked { get => _soundClicked; set => _soundClicked = value; }
         public void KeyIsUp(object sender, KeyEventArgs e)
         {
 
-            
+
         }
         public void KeyIsDown(object sender, KeyEventArgs e)
         {
@@ -35,27 +38,38 @@ namespace Game
                 this.BringToFront();
                 this.Show();
                 menueopen = true;
-            }            
+            }
             else
             {
-                
-                
+
+
             }
         }
         public void exit_Click(object sender, EventArgs e)
         {
-             exitClicked = true;
+            exitClicked = true;
         }
         public void restart_Click(object sender, EventArgs e)
         {
-            restartClicked = true;            
+            restartClicked = true;
             menueopen = false;
             this.Dispose();
         }
+        public void sound_Click(object sender, EventArgs e)
+        {
+            soundClicked = true;
+            if (soundIsOn == true)
+            {
+                soundIsOn = false;
+            }
+            else { soundIsOn = true; }
+            menueopen = true;
+
+        }
         public void OpenMenue()
         {
-           
-            
+
+
         }
 
         public EscapeMenu()
@@ -65,6 +79,7 @@ namespace Game
             // 
             this.Controls.Add(this.exit);
             this.Controls.Add(this.restart);
+            this.Controls.Add(this.sound);
             this.Location = new System.Drawing.Point(111, 160);
             this.Name = "groupBox1";
             this.Size = new System.Drawing.Size(472, 294);
@@ -76,7 +91,7 @@ namespace Game
             // 
             // exit
             // 
-            this.exit.Location = new System.Drawing.Point(195, 119);
+            this.exit.Location = new System.Drawing.Point(195, 109);
             this.exit.Name = "exit";
             this.exit.Size = new System.Drawing.Size(75, 23);
             this.exit.TabIndex = 0;
@@ -86,13 +101,23 @@ namespace Game
             // 
             // restart
             // 
-            this.restart.Location = new System.Drawing.Point(195, 148);
+            this.restart.Location = new System.Drawing.Point(195, 128);
             this.restart.Name = "restart";
             this.restart.Size = new System.Drawing.Size(75, 23);
             this.restart.TabIndex = 1;
             this.restart.Text = "Restart";
             this.restart.UseVisualStyleBackColor = true;
             this.restart.Click += new System.EventHandler(this.restart_Click);
+            // 
+            // sound
+            // 
+            this.sound.Location = new System.Drawing.Point(195, 149);
+            this.sound.Name = "sound";
+            this.sound.Size = new System.Drawing.Size(75, 23);
+            this.sound.TabIndex = 0;
+            this.sound.Text = "Sound";
+            this.sound.UseVisualStyleBackColor = true;
+            this.sound.Click += new System.EventHandler(this.sound_Click);
         }
     }
 }
