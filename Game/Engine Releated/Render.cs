@@ -98,6 +98,7 @@ namespace Game
                         objectArray[k - 1].BackColor = Color.Black;
                         enemies.Add(objectArray[k - 1] as Enemy);
                         HealthLabelEnemies.Add(new HealthLabelEnemy(objectArray[k - 1] as Enemy));
+                        turrets.Add(objectArray[k - 1] as Turret);
                     }
                     else if (maparray[i, j] == (int)Objects.Mine)
                     {
@@ -143,6 +144,7 @@ namespace Game
                         turrets.Add(current_turret);
                         enemies.Add(current_turret as Enemy);
                         objectArray[k++] = current_turret;
+                        HealthLabelEnemies.Add(new HealthLabelEnemy(current_turret as Enemy));
                     }
                     else if (maparray[i, j] == (int)Objects.CheckpointBig)
                     {
