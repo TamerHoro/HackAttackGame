@@ -9,6 +9,6 @@ namespace Game.Engine_Releated
     static class RenderSettings
     {
         public static bool ultraHighQuality = true;
-        public static bool ultraLowQuality = false;
+        public static bool lowered = false;
     }
 }

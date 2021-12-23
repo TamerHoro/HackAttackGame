@@ -84,7 +84,7 @@ namespace Game
 
 
             }
-            if (!RenderSettings.ultraHighQuality) //Reduces graphics
+            if (!RenderSettings.ultraHighQuality && !RenderSettings.lowered) //Reduces graphics
             {
                 foreach (var item in level.objectArray)
                 {
@@ -95,7 +95,7 @@ namespace Game
                         item.Image = Properties.Resources.FirewallStatic;
                 }
                 RenderSettings.ultraHighQuality = false;
-                RenderSettings.ultraLowQuality = true;
+                RenderSettings.lowered = true;
             }
             if (level.playerOne.shoot == true && count > 10)
             {
