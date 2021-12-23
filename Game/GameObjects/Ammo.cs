@@ -31,8 +31,7 @@ namespace Game
                 Location = new Point(rnd.Next(100, 600), rnd.Next(100, 600));
                 for (int i = 0; i < gameobjects.Length; i++)
                 {
-                    if (gameobjects[i] == null) { }
-                    else
+                    if (gameobjects[i] is Wall || gameobjects[i] is InteractableObject)
                     {
                         if (Bounds.IntersectsWith(gameobjects[i].Bounds))
                         {
@@ -40,7 +39,6 @@ namespace Game
                             redo = true;
                             break;
                         }
-
                     }
                 }
                 if (redo)
