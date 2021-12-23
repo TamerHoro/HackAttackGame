@@ -24,7 +24,8 @@ namespace Game
         List<Checkpoint> checkpoints = new List<Checkpoint>();
         //List<PictureBox> enemies = new List<PictureBox>();        
         public Player playerOne= new Player();
-        public HealthLabelPlayer PlayerHealthLabel;        
+        public HealthLabelPlayer PlayerHealthLabel;
+        public List<HealthLabelEnemy> HealthLabelEnemies = new List<HealthLabelEnemy>();
         public Render(int stage=1)
         {
             PlayerHealthLabel = new HealthLabelPlayer(playerOne);
@@ -91,6 +92,13 @@ namespace Game
                         objectArray[k++] = new Wall(l, h, i, j);
                         //objectArray[k-1].Image = ;
                     }
+                    else if (maparray[i, j] == (int)Objects.Turret)
+                    {
+                        objectArray[k++] = new Turret(l, h, i, j);
+                        objectArray[k - 1].BackColor = Color.Black;
+                        enemies.Add(objectArray[k - 1] as Enemy);
+                        HealthLabelEnemies.Add(new HealthLabelEnemy(objectArray[k - 1] as Enemy));
+                    }
                     else if (maparray[i, j] == (int)Objects.Mine)
                     {
                         objectArray[k++] = new Mine(l, h, i, j);
@@ -99,11 +107,15 @@ namespace Game
                     {
                         objectArray[k++] = new Watchdog(l, h, i, j, 1);
                         watchdogs.Add(objectArray[k - 1] as Watchdog);
+                        enemies.Add(objectArray[k - 1] as Enemy);
+                        HealthLabelEnemies.Add(new HealthLabelEnemy(objectArray[k - 1] as Enemy));
                     }
                     else if (maparray[i, j] == (int)Objects.Watchdog)
                     {
                         objectArray[k++] = new Watchdog(l, h, i, j);
                         watchdogs.Add(objectArray[k - 1] as Watchdog);
+                        enemies.Add(objectArray[k - 1] as Enemy);
+                        HealthLabelEnemies.Add(new HealthLabelEnemy(objectArray[k - 1] as Enemy));
                     }
                     else if (maparray[i, j] == (int)Objects.Server)
                     {

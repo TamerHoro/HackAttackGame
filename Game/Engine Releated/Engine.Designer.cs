@@ -1,9 +1,10 @@
-﻿
+﻿using System.Windows.Forms;
 
 namespace Game
 {
     partial class Engine
     {
+        int k = 1;
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -43,11 +44,12 @@ namespace Game
             // 
             // Engine
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.MaximizeBox = false;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
             this.BackgroundImage = global::Game.Properties.Resources.floor;
-            this.ClientSize = new System.Drawing.Size(720, 720);
+            this.ClientSize = new System.Drawing.Size(710, 700);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Engine";
             this.Text = "Engine";

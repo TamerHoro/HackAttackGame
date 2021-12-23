@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace Game
 {
-
+    //Displays the health for the Player ant the Enemys
     public class HealthLabel : Label
     {
         public InteractableObject interactable;
@@ -20,7 +20,7 @@ namespace Game
             Location = new Point(interactable.Left + 4, interactable.Top + 15);
             BringToFront();
             Size = new Size(new Point(23, 12));
-            this.BackColor = Color.Transparent;
+            this.BackColor = Color.DimGray;
         }
 
     }

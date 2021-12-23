@@ -38,6 +38,8 @@ namespace Game
 
         public void Initalize()
         {
+            this.MaximizeBox = false;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             DeathLabel.Text = "You Died!";
             DeathLabel.Size = new Size(new Point(500, 200));
             DeathLabel.ForeColor = Color.FromArgb(138, 3, 3);

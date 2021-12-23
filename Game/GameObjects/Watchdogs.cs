@@ -12,19 +12,22 @@ namespace Game
         public Watchdog(int xOffset, int yOffset, int i = 0, int j = 0, int k = 0)
             : base(xOffset, yOffset)
         {
-            Image = Properties.Resources.watchdog;
             BackColor = Color.DimGray;
             SizeMode = PictureBoxSizeMode.AutoSize;
+            // Set the right picture for the watchdog
             if (k == 0)
             {
                 goLeft = true;
+                Image = Properties.Resources.watchdogleft;
             }
             else
             {
                 goUp = true;
+                Image = Properties.Resources.watchdogup;
             }
         }
 
+        // Watchdog movement
         public static void Walk(List<Watchdog> watchdogs)
         {
             for (int i = 0; i < watchdogs.Count; i++)
@@ -48,6 +51,7 @@ namespace Game
             }
         }
 
+        //Watchdog turns if it hits the wall
         public static void Turn(List<Watchdog> watchdogs, GameObjects[] gameobjects)
         {
             for (int i = 0; i < watchdogs.Count; i++)
@@ -58,30 +62,43 @@ namespace Game
                     {
                         if (watchdogs[i].Bounds.IntersectsWith(gameobjects[k].Bounds))
                         {
-                            if (true) { }
                             if (watchdogs[i].goUp)
                             {
                                 watchdogs[i].goUp = false;
                                 watchdogs[i].goDown = true;
+                                watchdogs[i].Image = Properties.Resources.watchdogdown;
                             }
                             else if (watchdogs[i].goDown)
                             {
                                 watchdogs[i].goDown = false;
                                 watchdogs[i].goUp = true;
+                                watchdogs[i].Image = Properties.Resources.watchdogup;
                             }
                             else if (watchdogs[i].goLeft)
                             {
                                 watchdogs[i].goLeft = false;
                                 watchdogs[i].goRight = true;
+                                watchdogs[i].Image = Properties.Resources.watchdogright;
                             }
                             else if (watchdogs[i].goRight)
                             {
                                 watchdogs[i].goRight = false;
                                 watchdogs[i].goLeft = true;
+                                watchdogs[i].Image = Properties.Resources.watchdogleft;
                             }
                         }
                     }
                 }
+            }
+        }
+
+        //if the watchdog gets hit, it loses a life 
+        public void TakeDamage()
+        {
+            currentHealth = currentHealth-1;
+            if (currentHealth == 0)
+            {
+                Dispose();
             }
         }
     }

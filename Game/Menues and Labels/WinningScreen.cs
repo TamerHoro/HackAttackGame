@@ -38,6 +38,8 @@ namespace Game
 
         public void Initalize()
         {
+            this.MaximizeBox = false;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             WinLabel.Text = "You Won!";
             WinLabel.Size = new Size(new Point(700, 200));
             WinLabel.ForeColor = Color.LimeGreen;

@@ -15,6 +15,7 @@ namespace Game
             BackColor = Color.Black;
         }
 
+        // Label shows the remaining Bullets
         public void UpdateAmmo(Player player)
         {
             Text = $"Ammo: {player.ammo}";

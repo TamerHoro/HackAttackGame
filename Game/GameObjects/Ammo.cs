@@ -6,26 +6,25 @@ namespace Game
 {
     public class Ammo : StaticObject
     {
-        public int Bullets;
-        Random rnd = new Random();
+        // New ammo always contains 5 bullets
+        public int Bullets = 5;
         public bool changePosition = true;
         public bool intersects = true;
+        Random rnd = new Random();
         public Ammo()
             : base(200, 200)
         {
-            //BringToFront();
-            Visible = false;
             Image = Image.FromFile(@"..\..\Resources\ammo.png");
-            Bullets = 5;
             Size = new Size(new Point(5, 5));
             SizeMode = PictureBoxSizeMode.AutoSize;
             BackColor = Color.Transparent;
             Visible = false;
         }
 
+        // New Ammo spawns if the player is out of bullets
         public void Spwan(GameObjects[] gameobjects)
         {
-            
+            //Checks if the Ammo intersects with a gameobject
             while (intersects)
             {
                 bool redo = false;
@@ -50,8 +49,8 @@ namespace Game
                 }
                 intersects = false;
             }
-
-            Visible = true;
+            // After finding a good location without intersections the ammo is visble for the player
+            Visible = true; 
         }
     }
 }

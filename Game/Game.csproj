@@ -65,6 +65,9 @@
     <Compile Include="GameObjects\Watchdogs.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Menues and Labels\HealthLabelEnemy.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Menues and Labels\AmmoLabel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -209,8 +212,10 @@
   <ItemGroup>
     <Content Include="Levels\Level1.txt" />
     <Content Include="Levels\Level2.txt" />
-    <None Include="Resources\walldest.png" />
-    <None Include="Resources\USBCollect.wav" />
+    <None Include="Resources\watchdogup.png" />
+    <None Include="Resources\watchdogright.png" />
+    <None Include="Resources\watchdogleft.png" />
+    <None Include="Resources\watchdogdown.png" />
     <None Include="Resources\watchdog.png" />
     <None Include="Resources\ammo.png" />
     <Content Include="Levels\Level3.txt" />
