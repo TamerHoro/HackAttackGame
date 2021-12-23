@@ -46,6 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GameObjects\DestructableWall.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Engine Releated\SFX.cs" />
     <Compile Include="GameObjects\Ammo.cs">
       <SubType>Component</SubType>
@@ -206,6 +209,7 @@
   <ItemGroup>
     <Content Include="Levels\Level1.txt" />
     <Content Include="Levels\Level2.txt" />
+    <None Include="Resources\walldest.png" />
     <None Include="Resources\USBCollect.wav" />
     <None Include="Resources\watchdog.png" />
     <None Include="Resources\ammo.png" />
