@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace Game
 {
-
+    //Displays the health for the Player ant the Enemys
     public class HealthLabel : Label
     {
         public InteractableObject interactable;

@@ -11,8 +11,6 @@ namespace Game
         public bool goLeft, goRight, goUp, goDown, shoot;
         public int speed = 5;
         public int ammo = 5;        
-        //public PictureBox picture = new PictureBox();
-        
         public string direction;
 
         public int Health
@@ -20,6 +18,7 @@ namespace Game
             get { return this.currentHealth; }
             set{ this.currentHealth = value;}
         }
+
         public Player()
             : base(100, 70)
         {
@@ -27,10 +26,11 @@ namespace Game
             this.currentHealth = maxHealth;
             this.SizeMode = PictureBoxSizeMode.AutoSize;
             PlayerControl playercontrol = new PlayerControl();
-            //this.BackColor = Color.Transparent;
             this.BringToFront();
             this.Image = Properties.Resources.playersmall;            
         }
+
+        //Contols
         public void KeyIsUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Left)
@@ -99,8 +99,7 @@ namespace Game
 
         }
 
-       
-        public void Move()
+        new public void Move()
         {
 
             if (goLeft == true)
@@ -121,6 +120,7 @@ namespace Game
             }
         }
 
+        // Player loses a life
         public void Die()
         {
             this.currentHealth--;

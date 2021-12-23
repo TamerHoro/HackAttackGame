@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Game
+﻿namespace Game
 {
     class BulletCollision
     {
@@ -33,8 +27,6 @@ namespace Game
                         if (gameobjects[i] is Wall)
                         {
                             col = true;
-                            //gameobjects[i].Dispose();
-                            //gameobjects[i] = null;
                         }
                         else if (gameobjects[i] is Turret)
                         {
@@ -68,11 +60,8 @@ namespace Game
             if (bullet.Bounds.IntersectsWith(player.Bounds)&& col==false)
             {
                 col = true;
-                player.Health--;
-                   //player.Die();  
-            }
-            
-           
+                player.Health--; 
+            } 
         }
     }
 }

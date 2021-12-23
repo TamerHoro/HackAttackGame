@@ -4,6 +4,7 @@ namespace Game
 {
     partial class Engine
     {
+        int k = 1;
         /// <summary>
         /// Required designer variable.
         /// </summary>

@@ -14,6 +14,7 @@ namespace Game
         {
             BackColor = Color.DimGray;
             SizeMode = PictureBoxSizeMode.AutoSize;
+            // Set the right picture for the watchdog
             if (k == 0)
             {
                 goLeft = true;
@@ -26,6 +27,7 @@ namespace Game
             }
         }
 
+        // Watchdog movement
         public static void Walk(List<Watchdog> watchdogs)
         {
             for (int i = 0; i < watchdogs.Count; i++)
@@ -49,6 +51,7 @@ namespace Game
             }
         }
 
+        //Watchdog turns if it hits the wall
         public static void Turn(List<Watchdog> watchdogs, GameObjects[] gameobjects)
         {
             for (int i = 0; i < watchdogs.Count; i++)
@@ -89,6 +92,7 @@ namespace Game
             }
         }
 
+        //if the watchdog gets hit, it loses a life 
         public void TakeDamage()
         {
             currentHealth = currentHealth-1;

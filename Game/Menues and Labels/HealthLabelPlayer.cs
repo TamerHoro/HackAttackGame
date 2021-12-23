@@ -10,6 +10,7 @@ namespace Game
             this.maxHealth = player.maxHealth;
         }
 
+        //Health Label follows the player
         public void update(Player player)
         {
             if (player.goDown)
@@ -29,6 +30,7 @@ namespace Game
                 Location = new Point(player.Left - 20, player.Top + 5);
             }
 
+            // Get current playerhealth update text
             Text = $"{player.currentHealth}/{maxHealth}";
         }
 
