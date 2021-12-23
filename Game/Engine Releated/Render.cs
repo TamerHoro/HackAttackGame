@@ -144,6 +144,10 @@ namespace Game
                         checkpoints.Add(checkpoint);
                         objectArray[k++] = checkpoint;
                     }
+                    else if (maparray[i, j] == (int)Objects.DestructableWall)
+                    {
+                        objectArray[k++] = new DestructableWall(l, h, i, j);
+                    }
                     l = l + 40;
                 }
                 l = -10;
@@ -217,6 +221,7 @@ namespace Game
             Wall = 1,
             Mine = 'M',
             Watchdog = 4,
+            DestructableWall = 6,
 
             Flashdrive = 7,
             Server = 8,
