@@ -105,7 +105,7 @@ namespace Game
             //if not, the turret dies
             if(currentHealth == 0)
             {
-                Dispose();
+                SelfDestruct();
             }
         }
 
