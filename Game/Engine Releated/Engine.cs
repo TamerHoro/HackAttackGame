@@ -84,6 +84,19 @@ namespace Game
 
 
             }
+            if (!RenderSettings.ultraHighQuality) //Reduces graphics
+            {
+                foreach (var item in level.objectArray)
+                {
+                    if (item is PictureBox)
+                        item.BackColor = Color.Gray;
+
+                    if (item is Firewall)
+                        item.Image = Properties.Resources.FirewallStatic;
+                }
+                RenderSettings.ultraHighQuality = false;
+                RenderSettings.ultraLowQuality = true;
+            }
             if (level.playerOne.shoot == true && count > 10)
             {
                 this.ShootBullet(level.playerOne.direction);

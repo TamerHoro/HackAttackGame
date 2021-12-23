@@ -19,7 +19,7 @@ namespace Game.Properties {
     // -Klasse über ein Tool wie ResGen oder Visual Studio automatisch generiert.
     // Um einen Member hinzuzufügen oder zu entfernen, bearbeiten Sie die .ResX-Datei und führen dann ResGen
     // mit der /str-Option erneut aus, oder Sie erstellen Ihr VS-Projekt neu.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -300,9 +300,9 @@ namespace Game.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Firewall {
+        internal static System.Drawing.Bitmap Firewallgif {
             get {
-                object obj = ResourceManager.GetObject("Firewall", resourceCulture);
+                object obj = ResourceManager.GetObject("Firewallgif", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -310,9 +310,9 @@ namespace Game.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Firewallgif {
+        internal static System.Drawing.Bitmap FirewallStatic {
             get {
-                object obj = ResourceManager.GetObject("Firewallgif", resourceCulture);
+                object obj = ResourceManager.GetObject("FirewallStatic", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -354,6 +354,72 @@ namespace Game.Properties {
             get {
                 object obj = ResourceManager.GetObject("Hacked_Server", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+        ///1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1
+        ///1 0 0 0 1 0 0 1 P 1 0 0 0 1 0 0 0 1
+        ///1 0 0 P 0 0 0 0 P 0 0 0 0 p P 0 0 1
+        ///1 0 1 0 p 0 0 0 M 0 0 0 p 0 0 1 0 1
+        ///1 0 0 0 0 p 0 0 P 0 0 p 0 0 0 0 0 1
+        ///1 0 0 0 0 0 p 0 p 0 p 0 0 6 6 0 0 1
+        ///1 0 1 0 0 0 0 p p p 0 0 0 0 0 1 0 1
+        ///1 0 P p p p p p x p p p p p p P 0 1
+        ///1 0 1 0 0 0 0 p p p 0 0 0 0 0 1 0 1
+        ///1 0 0 0 0 0 p 0 p 0 p 0 0 0 0 0 0 1
+        ///1 0 0 0 0 0 0 0 P 0 0 p 0 0 0 1 1 1
+        ///1 1 1 1 0 1 0 1 F 1 0 0 1 1 1 1 7 1
+        ///1 p p p P 0 0 1 8 1 0 0 1 p p 1 [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        /// </summary>
+        internal static string Level1 {
+            get {
+                return ResourceManager.GetString("Level1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die 1 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+        ///1 0 1 1 1 1 1 0 1 0 1 0 0 1 0 1 0 1
+        ///1 0 0 0 0 0 0 0 1 0 1 0 0 1 0 0 0 9
+        ///1 0 0 0 1 1 1 0 1 0 1 0 0 1 3 1 0 1
+        ///1 1 1 1 1 1 1 0 1 1 1 1 0 1 0 1 1 1
+        ///1 0 0 0 2 0 0 0 1 0 1 0 0 1 0 1 0 1
+        ///1 1 0 1 1 1 0 1 1 1 1 0 0 1 0 0 0 1
+        ///1 0 0 0 0 0 0 1 1 1 1 1 1 1 0 1 0 1
+        ///1 0 q w e 1 1 0 0 0 0 0 0 0 0 3 0 1
+        ///1 0 a 2 d 0 1 1 1 0 0 1 1 1 1 1 0 1
+        ///1 0 y x c 0 0 0 0 0 0 0 0 0 0 0 0 1
+        ///1 0 1 1 1 1 1 1 1 0 3 0 0 0 0 0 0 1
+        ///1 0 0 0 0 2 0 0 1 1 1 1 1 1 1 0 1 1
+        ///1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        /// </summary>
+        internal static string Level2 {
+            get {
+                return ResourceManager.GetString("Level2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+        ///1 0 1 1 1 1 1 0 1 0 1 0 0 1 0 1 0 1
+        ///1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1
+        ///1 0 0 0 1 1 1 1 1 1 1 1 1 1 3 1 0 1
+        ///1 1 1 1 1 1 1 M 1 1 M 1 0 0 0 0 0 1
+        ///1 0 0 0 M 0 0 0 0 0 0 0 0 1 0 1 1 1
+        ///1 1 0 1 1 1 0 1 1 1 1 0 0 1 0 0 0 1
+        ///1 0 0 0 0 0 1 1 1 1 1 1 1 1 0 1 0 1
+        ///1 0 1 1 1 1 1 0 0 0 0 0 0 1 0 3 0 1
+        ///1 0 1 0 M 0 1 9 1 0 0 1 1 1 1 1 0 1
+        ///1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1
+        ///1 0 1 1 1 1 1 1 1 0 3 0 0 0 0 1 0 1
+        ///1 0 0 0 0 M 0 0 1 1 1 1 1 1 1 0 1 1
+        ///1 0 1 1 1 1 1 1 1 1 1 1 1 1 1 0 [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        /// </summary>
+        internal static string Level3 {
+            get {
+                return ResourceManager.GetString("Level3", resourceCulture);
             }
         }
         
