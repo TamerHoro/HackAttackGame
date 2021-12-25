@@ -13,9 +13,9 @@ namespace Game
         new Button exit = new Button();
         new Button restart = new Button();
         new Button sound = new Button();
-        new Button graphics = new Button();
+        new Button graphics = new Button();        
+
         public bool menueopen = false;
-        bool soundIsOn = true;
         bool _exitClicked = false;
         bool _restartClicked = false;
         bool _soundClicked = false;
@@ -30,18 +30,20 @@ namespace Game
 
 
         }
-        public void KeyIsDown(object sender, KeyEventArgs e)
+        public void KeyIsDown(object sender, KeyEventArgs e)               
         {
-            if (e.KeyCode == Keys.Escape && menueopen == true)
+            if (e.KeyCode == Keys.Escape && menueopen == true)                   //Closes the Menue
             {
                 this.Hide();
                 menueopen = false;
+                this.Enabled = false;
             }
-            else if (e.KeyCode == Keys.Escape && menueopen == false)
+            else if (e.KeyCode == Keys.Escape && menueopen == false)             //"Opens" the Menue
             {
                 this.BringToFront();
                 this.Show();
                 menueopen = true;
+                this.Enabled = true;
             }
             else
             {
@@ -56,24 +58,31 @@ namespace Game
         public void restart_Click(object sender, EventArgs e)
         {
             restartClicked = true;
-            menueopen = false;
+            //menueopen = false;
             this.Dispose();
         }
         public void sound_Click(object sender, EventArgs e)
         {
+            if (SFX.enabled == true)
+            {
+                SFX.enabled = false;
+
+            }
+            else
+            {
+                SFX.enabled = true;
+            }
             soundClicked = true;
-            //Toggle SFX
-            SFX.enabled = !SFX.enabled;
-            menueopen = true;
-        }
-        public void graphics_Click(object sender, EventArgs e)
-        {
-            graphicsClicked = true;
-            RenderSettings.ultraHighQuality = false;
-            menueopen=true;
-            MessageBox.Show("graphics lowered, please click the sound button to restore control of the menu! (bug)");
 
         }
+        public void graphics_Click(object sender, EventArgs e)
+        {          
+            
+            graphicsClicked = true;                     
+            //MessageBox.Show("graphics lowered, please click the sound button to restore control of the menu! (bug)");
+
+        }
+       
 
         public void OpenMenue()
         {
@@ -135,7 +144,7 @@ namespace Game
             this.graphics.Name = "graphics";
             this.graphics.Size = new System.Drawing.Size(75, 23);
             this.graphics.TabIndex = 0;
-            this.graphics.Text = "low quality";
+            this.graphics.Text = "lower Graphics";
             this.graphics.UseVisualStyleBackColor = true;
             this.graphics.Click += new System.EventHandler(this.graphics_Click);
         }
