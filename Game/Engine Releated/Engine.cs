@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using Game.Menues_and_Labels;
 using Game.Engine_Releated;
 
 namespace Game
@@ -21,31 +22,29 @@ namespace Game
         public EscapeMenu escapeMenu = new EscapeMenu();
         public bool restart = false;
         int count = 5;
-        int stage = 1;
+        int _stage = 1;
         public DeathScreen deathScreen = new DeathScreen();
         public WinningScreen winningScreen = new WinningScreen();
         public Ammo ammo = new Ammo();
         AmmoLabel ammoLabel = new AmmoLabel();
+        SoundIcon soundIcon = new SoundIcon();
         public bool sound = true;
-        
-        public Engine()
+        public int stage
         {
-            //this.sound = sound;
-            //if (sound == false)
-            //{
-            //    level = new Render(stage, false);
-
-            //} 
-            //else { level = new Render(stage, true); }
-            
+            get { return _stage; }
+            set { _stage = value; }
+        }
+        
+        public Engine()                     //First initialization of the Game
+        {            
             StartGame();
-            InitializeComponent();
-            //this.Controls.Add(levelOne.PlayerControl);
+            InitializeComponent();          
             
         }
         
-        private void MainTimerEvent(object sender, EventArgs e)
-        {      
+        private void MainTimerEvent(object sender, EventArgs e)                     //Game Loop 20ms Timing
+        {
+            
             count++;
             MainTimerEvent MainTimeEvent = new MainTimerEvent();
             Collision collision = new Collision(level.playerOne, level.objectArray,count, this, out winCondition);
@@ -59,45 +58,8 @@ namespace Game
                 deathScreen.Visible = true;
                 level.playerOne.Health = 3;
             }
-            if (escapeMenu.exitClicked == true || deathScreen.exitClicked == true || winningScreen.exitClicked == true) 
-            {
-                this.Close(); 
-            }
-            if (deathScreen.restartClicked == true || winningScreen.restartClicked == true)
-            {
-                winningScreen.restartClicked = false;
-                deathScreen.restartClicked = false;
-                stage = 1;
-                RestartLevel(stage);
-                Show();
-            }
-            if (escapeMenu.restartClicked == true) 
-            {
-                RestartLevel(stage);
-                escapeMenu.restartClicked = false;
-            }
-            if (escapeMenu.soundClicked == true)
-            {
-                
-                SFX.enabled = false;
-                ActiveControl = default;
-
-
-            }
-            if (!RenderSettings.ultraHighQuality && !RenderSettings.lowered) //Reduces graphics
-            {
-                foreach (var item in level.objectArray)
-                {
-                    if (item is PictureBox)
-                        item.BackColor = Color.Gray;
-
-                    if (item is Firewall)
-                        item.Image = Properties.Resources.FirewallStatic;
-                }
-                RenderSettings.ultraHighQuality = false;
-                RenderSettings.lowered = true;
-            }
-            if (level.playerOne.shoot == true && count > 10)
+            MenueManager.ManageMenues(this);                               //Put all menue managing into one single place
+            if (level.playerOne.shoot == true && count > 10)               
             {
                 this.ShootBullet(level.playerOne.direction);
                 count = 0;
@@ -115,35 +77,36 @@ namespace Game
             }
             HealthLabelEnemy.update(level.enemies, level.HealthLabelEnemies);
             ammoLabel.UpdateAmmo(level.playerOne);
-            NextLevel(winCondition);       
+            NextLevel(winCondition);
+            soundIcon.Update();
         }
-        public void StartGame()
+        public void LoadRequiredObjects()
         {
-            SFX.enabled = sound;
             this.Controls.AddRange(level.objectArray);
             this.Controls.Add(level.playerOne);
             this.Controls.Add(escapeMenu);
             this.Controls.Add(level.PlayerHealthLabel);
             this.Controls.Add(ammo);
             this.Controls.Add(ammoLabel);
+            this.Controls.Add(soundIcon);
             ammoLabel.BringToFront();
+            soundIcon.BringToFront();
+        }
+
+        public void StartGame()                                  //Initializing a Level of the Game
+        {
+            SFX.enabled = sound;
+            LoadRequiredObjects();
             for (int i=0; i<level.enemies.Count; i++)
             {
                 this.Controls.Add(level.HealthLabelEnemies[i]);
             }
-        }
-       
-        private void Engine_Load(object sender, EventArgs e)
+        }       
+
+        private void NextLevel(bool wincondition)               //Loading next level
         {
-
-        }
-
-        private void NextLevel(bool wincondition)
-        {
-
             if (WonGame.CheckWinCondition(wincondition, level.objectArray))
             {
-
                 if (stage == 3)
                 {
                     Hide();
@@ -162,12 +125,7 @@ namespace Game
                 level = LevelManager.CreateLevel(stage);
                 escapeMenu = new EscapeMenu();
                 InitializeComponent();
-                this.Controls.AddRange(level.objectArray);
-                this.Controls.Add(level.playerOne);
-                this.Controls.Add(escapeMenu);
-                this.Controls.Add(level.PlayerHealthLabel);
-                this.Controls.Add(ammo);
-                this.Controls.Add(ammoLabel);
+                LoadRequiredObjects();
                 for (int i = 0; i < level.enemies.Count; i++)
                 {
                     this.Controls.Add(level.HealthLabelEnemies[i]);
@@ -176,7 +134,7 @@ namespace Game
         }
         
         
-        private void RestartLevel(int stage)
+        public void RestartLevel(int stage)                //Reloading the current Level
         {
             level.Dispose();
             level.Controls.Clear();
@@ -185,32 +143,26 @@ namespace Game
             escapeMenu = new EscapeMenu();
             InitializeComponent();
             ammo.Visible = false;
-            
-            this.Controls.AddRange(level.objectArray);
-            this.Controls.Add(level.playerOne);
-            this.Controls.Add(escapeMenu);
-            this.Controls.Add(level.PlayerHealthLabel);
-            this.Controls.Add(ammo);
-            this.Controls.Add(ammoLabel);
+            LoadRequiredObjects();
             for (int i = 0; i < level.enemies.Count; i++)
             {
                 this.Controls.Add(level.HealthLabelEnemies[i]);
             }
         }
 
-        private void RestartGame()
+        private void RestartGame()                      //Restart Game Method (Loading the whole Window from new)
         {
             restart = true;
             this.Close();
         }
 
-        private void ShootBullet(string direction)
+        private void ShootBullet(string direction)                          //Shooting bullets as Player method
         {
             if (level.playerOne.ammo > 0)
             {
                 Bullet shotBullet = new Bullet(level.objectArray, this.level.playerOne);
                 shotBullet.direction = direction;
-                if (direction == "up")
+                if (direction == "up")                 //shooting bulltets in direction the player is facing
                 {
                     shotBullet.bulletLeft = level.playerOne.Left + level.playerOne.Width/2;
                     shotBullet.bulletTop = level.playerOne.Top - level.playerOne.Height;
@@ -235,10 +187,10 @@ namespace Game
             }
             
         }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void Engine_Load(object sender, EventArgs e)
         {
 
         }
+       
     }
 }

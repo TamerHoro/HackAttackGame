@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Engine Releated\MenueManager.cs" />
     <Compile Include="Engine Releated\RenderSettings.cs" />
     <Compile Include="GameObjects\DestructableWall.cs">
       <SubType>Component</SubType>
@@ -123,6 +124,9 @@
     <Compile Include="Engine Releated\MainTImerEvent.cs" />
     <Compile Include="Menues and Labels\Menue.cs" />
     <Compile Include="MenueControl.cs" />
+    <Compile Include="Menues and Labels\SoundIcon.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Player\Player.cs">
       <SubType>Component</SubType>
     </Compile>

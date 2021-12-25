@@ -16,14 +16,11 @@ namespace Game
     {
         int stage = 0;
         int[,] maparray;
-
-        //List<PictureBox> levelwalling = new List<PictureBox>();
         public GameObjects[] objectArray = new GameObjects[200];
         public List<Watchdog> watchdogs = new List<Watchdog>();
         public List<Enemy> enemies = new List<Enemy>();
         List<Turret> turrets = new List<Turret>();
-        List<Checkpoint> checkpoints = new List<Checkpoint>();
-        //List<PictureBox> enemies = new List<PictureBox>();        
+        List<Checkpoint> checkpoints = new List<Checkpoint>();           
         public Player playerOne= new Player();
         public HealthLabelPlayer PlayerHealthLabel;
         public List<HealthLabelEnemy> HealthLabelEnemies = new List<HealthLabelEnemy>();
@@ -76,12 +73,7 @@ namespace Game
                 }
             }
             return maparray;
-        }
-
-        public void BackgroundColor(int stage)
-        {
-
-        }
+        }      
 
         public void LevelBuilder()            //creates a lists with GameObjects
         {          
