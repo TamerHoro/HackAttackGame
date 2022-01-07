@@ -18,7 +18,7 @@ namespace Game
         public GameObjects[] gameobjects;
         public Player player;
 
-        private int speed = 5;
+        private int speed = 15;
         private Timer bulletTimer = new Timer();
         public Bullet(GameObjects[] objects, Player playerin)
         {

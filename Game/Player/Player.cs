@@ -25,7 +25,7 @@ namespace Game
             this.maxHealth = 3;
             this.currentHealth = maxHealth;
             this.SizeMode = PictureBoxSizeMode.AutoSize;
-            PlayerControl playercontrol = new PlayerControl();
+            //PlayerControl playercontrol = new PlayerControl();
             this.BringToFront();
             this.Image = Properties.Resources.playersmall;            
         }

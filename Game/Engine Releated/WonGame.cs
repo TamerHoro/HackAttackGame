@@ -26,9 +26,10 @@ namespace Game
                     }
                     
                 }
-                
+
             }
-            if (win == true && enemyAlive == false )
+            //  Add "&& enemyAlive == false" to get to the next level only when all enemies are dead
+            if (win == true)           
             {
                 return true;
             }

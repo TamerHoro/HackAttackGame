@@ -88,7 +88,7 @@ namespace Game
                     if (maparray[i, j] == (int)Objects.Wall)
                     {
                         objectArray[k++] = new Wall(l, h, i, j);
-                        //objectArray[k-1].Image = ;
+                        if(stage==2) objectArray[k-1].Image = Properties.Resources.bluewall;
                     }
                     else if (maparray[i, j] == (int)Objects.Turret)
                     {
@@ -228,7 +228,7 @@ namespace Game
             this.ResumeLayout(false);
 
         }
-        enum Objects
+        enum Objects //Game Objects represented by Chars in the Level .txt files
         {
             Wall = 1,
             Mine = 'M',
