@@ -265,6 +265,7 @@
     <None Include="Resources\Extinguisher_broken.png" />
     <None Include="Resources\Firewall.gif" />
     <None Include="Resources\Extinguish.wav" />
+    <None Include="Resources\greenwall.png" />
     <Content Include="Resources\PlayerHit.wav" />
     <None Include="Resources\playerupsmall.png" />
     <None Include="Resources\playerightsmall.png" />

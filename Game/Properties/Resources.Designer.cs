@@ -370,6 +370,16 @@ namespace Game.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap greenwall {
+            get {
+                object obj = ResourceManager.GetObject("greenwall", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Hacked_Server {
             get {
                 object obj = ResourceManager.GetObject("Hacked_Server", resourceCulture);
@@ -381,8 +391,8 @@ namespace Game.Properties {
         ///   Looks up a localized string similar to 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
         ///1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1
         ///1 0 0 0 1 0 0 1 P 1 0 0 0 1 0 0 0 1
-        ///1 0 0 P 0 0 0 0 P 0 0 0 0 p P 0 0 1
-        ///1 0 1 0 p 0 0 0 M 0 0 0 p 0 0 1 0 1
+        ///1 0 0 P 0 0 0 0 P 0 4 0 0 p P 0 0 1
+        ///1 0 1 0 p 0 0 0 M 0 0 5 p 0 0 1 0 1
         ///1 0 0 0 0 p 0 0 P 0 0 p 0 0 0 0 0 1
         ///1 0 0 0 0 0 p 0 p 0 p 0 0 6 6 0 0 1
         ///1 0 1 0 0 0 0 p p p 0 0 0 0 0 1 0 1
@@ -403,12 +413,12 @@ namespace Game.Properties {
         ///   Looks up a localized string similar to 1 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
         ///1 0 1 1 1 1 1 0 1 0 1 0 0 1 0 1 0 1
         ///1 0 0 0 0 0 0 0 1 0 1 0 0 1 0 0 0 9
-        ///1 0 0 0 1 1 1 0 1 0 1 0 0 1 3 1 0 1
+        ///1 0 0 0 1 1 1 0 1 0 1 0 0 1 0 1 0 1
         ///1 1 1 1 1 1 1 0 1 1 1 1 0 1 0 1 1 1
-        ///1 0 0 0 2 0 0 0 1 0 1 0 0 1 0 1 0 1
+        ///1 0 0 0 2 0 0 0 0 8 0 0 0 0 0 1 0 1
         ///1 1 0 1 1 1 0 1 1 1 1 0 0 1 0 0 0 1
         ///1 0 0 0 0 0 0 1 1 1 1 1 1 1 0 1 0 1
-        ///1 0 q w e 1 1 0 0 0 0 0 0 0 0 3 0 1
+        ///1 0 q w e 1 1 0 0 0 0 0 0 0 0 0 0 1
         ///1 0 a 2 d 0 1 1 1 0 0 1 1 1 1 1 0 1
         ///1 0 y x c 0 0 0 0 0 0 0 0 0 0 0 0 1
         ///1 0 1 1 1 1 1 1 1 0 3 0 0 0 0 0 0 1
