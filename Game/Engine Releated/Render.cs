@@ -82,7 +82,7 @@ namespace Game
                     {
                         objectArray[k++] = new Wall(l, h, i, j);
                         if(stage==2) objectArray[k-1].Image = Properties.Resources.bluewall;
-                        if (stage == 3) objectArray[k - 1].Image = Properties.Resources.bluewall;
+                        if (stage == 3) objectArray[k - 1].Image = Properties.Resources.greenwall;
                     }
                     else if (maparray[i, j] == (int)Objects.Turret)
                     {
@@ -96,14 +96,14 @@ namespace Game
                     {
                         objectArray[k++] = new Mine(l, h, i, j);
                     }
-                    else if (maparray[i, j] == (int)Objects.Watchdog + 1)
+                    else if (maparray[i, j] == (int)Objects.WatchdogSide)
                     {
                         objectArray[k++] = new Watchdog(l, h, i, j, 1);
                         watchdogs.Add(objectArray[k - 1] as Watchdog);
                         enemies.Add(objectArray[k - 1] as Enemy);
                         HealthLabelEnemies.Add(new HealthLabelEnemy(objectArray[k - 1] as Enemy));
                     }
-                    else if (maparray[i, j] == (int)Objects.Watchdog)
+                    else if (maparray[i, j] == (int)Objects.WatchdogUpDown)
                     {
                         objectArray[k++] = new Watchdog(l, h, i, j);
                         watchdogs.Add(objectArray[k - 1] as Watchdog);
@@ -226,7 +226,8 @@ namespace Game
         {
             Wall = 1,
             Mine = 'M',
-            Watchdog = 4,
+            WatchdogSide = 4,
+            WatchdogUpDown = 5,
             DestructableWall = 6,
 
             Flashdrive = 7,

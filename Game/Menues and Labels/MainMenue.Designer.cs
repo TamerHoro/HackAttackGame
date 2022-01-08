@@ -10,6 +10,7 @@ namespace Game
         Label lvl1 = new Label();
         Label lvl2 = new Label();
         Label lvl3 = new Label();
+        Label instructions = new Label();
         Label warning = new Label();
         Label title = new Label();
         Button startGame = new Button();
@@ -58,6 +59,8 @@ namespace Game
             this.startGame.Text = "Start Game";
             this.startGame.UseVisualStyleBackColor = true;
             this.startGame.Click += new System.EventHandler(this.startGame_Click);
+            this.startGame.BackColor = Color.Black;
+            this.startGame.ForeColor = Color.Green;
             // 
             // exitButton
             // 
@@ -68,6 +71,8 @@ namespace Game
             this.exitButton.Text = "Exit";
             this.exitButton.UseVisualStyleBackColor = true;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
+            this.exitButton.BackColor = Color.Black;
+            this.exitButton.ForeColor = Color.Green;
             // 
             // soundButton
             // 
@@ -78,6 +83,8 @@ namespace Game
             this.soundButton.Text = "Sound on/off";
             this.soundButton.UseVisualStyleBackColor = true;
             this.soundButton.Click += new System.EventHandler(this.soundButton_Click);
+            this.soundButton.BackColor = Color.Black;
+            this.soundButton.ForeColor = Color.Green;
             //
             // Goal
             //
@@ -85,7 +92,8 @@ namespace Game
             this.goal.Font = new Font("Arial", 20);
             this.goal.Location = new Point(60, 150);
             this.goal.Size = new System.Drawing.Size(590, 70);
-            this.goal.BackColor = Color.LightGray;
+            this.goal.BackColor = Color.Black;
+            this.goal.ForeColor = Color.Green;
             //
             // Level1
             //
@@ -93,7 +101,8 @@ namespace Game
             this.lvl1.Font = new Font("Arial", 20);
             this.lvl1.Location = new Point(60, 220);
             this.lvl1.Size = new System.Drawing.Size(590, 70);
-            this.lvl1.BackColor = Color.LightGray;
+            this.lvl1.BackColor = Color.Black;
+            this.lvl1.ForeColor = Color.Green;
             //
             // Level2
             //
@@ -101,7 +110,8 @@ namespace Game
             this.lvl2.Font = new Font("Arial", 20);
             this.lvl2.Location = new Point(60, 290);
             this.lvl2.Size = new System.Drawing.Size(590, 50);
-            this.lvl2.BackColor = Color.LightGray;
+            this.lvl2.BackColor = Color.Black;
+            this.lvl2.ForeColor = Color.Green;
             //
             // Level3
             //
@@ -109,7 +119,8 @@ namespace Game
             this.lvl3.Font = new Font("Arial", 20);
             this.lvl3.Location = new Point(60, 340);
             this.lvl3.Size = new System.Drawing.Size(590, 70);
-            this.lvl3.BackColor = Color.LightGray;
+            this.lvl3.BackColor = Color.Black;
+            this.lvl3.ForeColor = Color.Green;
             //
             // Level3
             //
@@ -117,8 +128,17 @@ namespace Game
             this.warning.Font = new Font("Arial", 20);
             this.warning.Location = new Point(60, 410);
             this.warning.Size = new System.Drawing.Size(590, 60);
-            this.warning.BackColor = Color.LightGray;
+            this.warning.BackColor = Color.Black;
             this.warning.ForeColor = Color.Red;
+            //
+            // Instructions
+            //
+            this.instructions.Text = "Shoot by tapping the Space key and move with Arrow keys";
+            this.instructions.Font = new Font("Arial", 16);
+            this.instructions.Location = new Point(60, 470);
+            this.instructions.Size = new System.Drawing.Size(590, 25);
+            this.instructions.BackColor = Color.Black;
+            this.instructions.ForeColor = Color.LightGreen;
             // 
             // MainMenue
             // 
@@ -134,6 +154,7 @@ namespace Game
             this.Controls.Add(this.lvl2);
             this.Controls.Add(this.lvl3);
             this.Controls.Add(this.warning);
+            this.Controls.Add(this.instructions);
             this.Name = "MainMenue";
             this.Text = "MainMenue";
             this.Load += new System.EventHandler(this.Form2_Load);

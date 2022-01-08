@@ -1,4 +1,5 @@
 ﻿using Game.Engine_Releated;
+using System.Drawing;
 using System;
 using System.Windows.Forms;
 
@@ -102,7 +103,9 @@ namespace Game
             this.TabStop = false;
             this.Text = "";
             this.Hide();
-            //this.Enter += new System.EventHandler(this_Enter);
+            this.BackColor = Color.Black;
+            this.ForeColor = Color.Green;
+            this.BackgroundImage = Properties.Resources.matrix;
             // 
             // exit
             // 
@@ -113,6 +116,8 @@ namespace Game
             this.exit.Text = "Exit";
             this.exit.UseVisualStyleBackColor = true;
             this.exit.Click += new System.EventHandler(this.exit_Click);
+            this.exit.BackColor = Color.Black;
+            this.exit.ForeColor = Color.Green;
             // 
             // restart
             // 
@@ -123,6 +128,8 @@ namespace Game
             this.restart.Text = "Restart";
             this.restart.UseVisualStyleBackColor = true;
             this.restart.Click += new System.EventHandler(this.restart_Click);
+            this.restart.BackColor = Color.Black;
+            this.restart.ForeColor = Color.Green;
             // 
             // sound
             // 
@@ -133,6 +140,8 @@ namespace Game
             this.sound.Text = "Sound";
             this.sound.UseVisualStyleBackColor = true;
             this.sound.Click += new System.EventHandler(this.sound_Click);
+            this.sound.BackColor = Color.Black;
+            this.sound.ForeColor = Color.Green;
             // 
             // Low Quality Graphics
             // 
@@ -143,6 +152,8 @@ namespace Game
             this.graphics.Text = "lower Graphics";
             this.graphics.UseVisualStyleBackColor = true;
             this.graphics.Click += new System.EventHandler(this.graphics_Click);
+            this.graphics.BackColor = Color.Black;
+            this.graphics.ForeColor = Color.Green;
         }
     }
 }
