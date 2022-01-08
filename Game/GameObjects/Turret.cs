@@ -115,7 +115,7 @@ namespace Game
         private async void MakeBullets(Engine engine, GameObjects[] gameObjects) //Bullets need to be created in the engine class and added to the rendered object list
         {
             //Delay between spawned bullets
-            int ShootDelay = 250;
+            int ShootDelay = 1000;
             Player playerturret = engine.level.playerOne;
             
             //Try shooting 4 bullets in total

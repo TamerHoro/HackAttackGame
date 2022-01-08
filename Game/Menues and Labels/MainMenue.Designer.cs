@@ -139,7 +139,7 @@ namespace Game
             this.Load += new System.EventHandler(this.Form2_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
-            this.BackgroundImage = Image.FromFile(@"..\..\Resources\matrix.png");
+            this.BackgroundImage = Properties.Resources.matrix;
             
         }
     }
