@@ -2,7 +2,6 @@
 using System.Windows.Forms;
 using System.Drawing;
 
-
 namespace Game
 {
     public class DeathScreen: Form
@@ -24,7 +23,6 @@ namespace Game
             Controls.Add(Exit);
             Visible = false;
         }
-
         public void exitClick(object sender, EventArgs e)
         {
             exitClicked = true;

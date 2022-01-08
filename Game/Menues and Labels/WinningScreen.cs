@@ -61,5 +61,23 @@ namespace Game
             Exit.BackColor = Color.White;
             Exit.Click += new EventHandler(exitClick);
         }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // WinningScreen
+            // 
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Name = "WinningScreen";
+            this.Load += new System.EventHandler(this.WinningScreen_Load);
+            this.ResumeLayout(false);
+
+        }
+
+        private void WinningScreen_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

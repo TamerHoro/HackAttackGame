@@ -1,13 +1,5 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
 using Game.Menues_and_Labels;
 using Game.Engine_Releated;
 
@@ -45,8 +37,7 @@ namespace Game
         private void MainTimerEvent(object sender, EventArgs e)                     //Game Loop 20ms Timing
         {
             
-            count++;
-            MainTimerEvent MainTimeEvent = new MainTimerEvent();
+            count++;            
             Collision collision = new Collision(level.playerOne, level.objectArray,count, this, out winCondition);
             level.playerOne.Move();
             Watchdog.Turn(level.watchdogs, level.objectArray);
@@ -110,8 +101,7 @@ namespace Game
                 if (stage == 3)
                 {
                     Hide();
-                    winningScreen.Visible = true;
-                    
+                    winningScreen.Visible = true;                    
                 }
                 stage++;
                 level.playerOne.ammo = 5;

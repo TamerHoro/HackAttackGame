@@ -1,7 +1,4 @@
-﻿using System.Windows.Forms;
-using System.Drawing;
-
-namespace Game
+﻿namespace Game
 {
     public class StaticObject : GameObjects
     {

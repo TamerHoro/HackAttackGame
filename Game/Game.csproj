@@ -23,7 +23,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -149,16 +149,12 @@
     <Compile Include="Menues and Labels\MainMenue.Designer.cs">
       <DependentUpon>MainMenue.cs</DependentUpon>
     </Compile>
-    <Compile Include="Engine Releated\MainTImerEvent.cs" />
-    <Compile Include="Menues and Labels\Menue.cs" />
-    <Compile Include="MenueControl.cs" />
     <Compile Include="Menues and Labels\SoundIcon.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Player\Player.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="PlayerControl.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Engine Releated\Render.cs">

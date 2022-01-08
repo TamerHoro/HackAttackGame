@@ -1,19 +1,15 @@
 ﻿using Game.Engine_Releated;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Game
 {
     public class EscapeMenu : GroupBox
     {
-        new Button exit = new Button();
-        new Button restart = new Button();
-        new Button sound = new Button();
-        new Button graphics = new Button();        
+        Button exit = new Button();
+        Button restart = new Button();
+        Button sound = new Button();
+        Button graphics = new Button();        
 
         public bool menueopen = false;
         bool _exitClicked = false;

@@ -1,14 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
-using Game.Engine_Releated;
 
 namespace Game
 {
@@ -89,6 +82,7 @@ namespace Game
                     {
                         objectArray[k++] = new Wall(l, h, i, j);
                         if(stage==2) objectArray[k-1].Image = Properties.Resources.bluewall;
+                        if (stage == 3) objectArray[k - 1].Image = Properties.Resources.bluewall;
                     }
                     else if (maparray[i, j] == (int)Objects.Turret)
                     {
