@@ -1,6 +1,5 @@
 ﻿using Game.Engine_Releated;
 using System.Drawing;
-using System.Media;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -115,7 +114,7 @@ namespace Game
         private async void MakeBullets(Engine engine, GameObjects[] gameObjects) //Bullets need to be created in the engine class and added to the rendered object list
         {
             //Delay between spawned bullets
-            int ShootDelay = 1000;
+            int ShootDelay = 1000;              //Old 250
             Player playerturret = engine.level.playerOne;
             
             //Try shooting 4 bullets in total

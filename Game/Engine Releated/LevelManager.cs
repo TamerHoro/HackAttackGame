@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Game
+﻿namespace Game
 {
     static class LevelManager
     {
@@ -18,8 +12,5 @@ namespace Game
                 default: return new Render(0);
             } 
         }
-        
-        
-
     }
 }
