@@ -1,7 +1,5 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows.Forms;
-using System.Media;
 using Game.Engine_Releated;
 
 namespace Game
