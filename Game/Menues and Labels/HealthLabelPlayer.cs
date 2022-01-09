@@ -13,6 +13,7 @@ namespace Game
         //Health Label follows the player
         public void update(Player player)
         {
+            BringToFront();
             if (player.goDown)
             {
                 Location = new Point(player.Left + 4, player.Top - 15);

@@ -7,18 +7,17 @@ namespace Game
     {
         public AmmoLabel()
         {
-            Size = new Size(new Point(50, 16));
+            Size = new Size(new Point(50, 26));
             new Font("Arial", 16);
-            Text = "Ammo: 5";
-            Location = new Point(650, 3);
+            Location = new Point(660, 0);
             ForeColor = Color.White;
             BackColor = Color.Black;
         }
 
-        // Label shows the remaining Bullets
+        // Label shows the remaining bullets and reloads
         public void UpdateAmmo(Player player)
         {
-            Text = $"Ammo: {player.ammo}";
+            Text = $"Ammo: {player.ammo}     Reload:{player.reload}";
             BringToFront();
         }
     }

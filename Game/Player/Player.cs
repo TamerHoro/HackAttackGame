@@ -8,7 +8,8 @@ namespace Game
     {
         public bool goLeft, goRight, goUp, goDown, shoot;
         public int speed = 5;
-        public int ammo = 5;        
+        public int ammo = 5;
+        public int reload = 5;
         public string direction;
 
         public int Health
@@ -18,7 +19,7 @@ namespace Game
         }
 
         public Player()
-            : base(100, 70)
+            : base(40, 30)
         {
             this.maxHealth = 3;
             this.currentHealth = maxHealth;
@@ -123,7 +124,20 @@ namespace Game
         {
             this.currentHealth--;
             SFX.Play(SFX.Sound.Death);
-            this.Location = new Point(100, 100);
+            this.Location = new Point(40, 30);
+        }
+
+        // Reload function
+        public void Reload(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.E)
+            {
+                if (reload > 0)
+                {
+                    ammo = 5;
+                    reload--;
+                }     
+            }
         }
   
     }

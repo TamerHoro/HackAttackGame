@@ -55,11 +55,13 @@ namespace Game
                 this.ShootBullet(level.playerOne.direction);
                 count = 0;
             }
-            if (level.playerOne.ammo == 0)
+            if (level.playerOne.ammo == 0) // Spawn new Ammo
             {
                     ammo.Spwan(level.objectArray);
-
-                if (level.playerOne.Bounds.IntersectsWith(ammo.Bounds))
+            }
+            if (ammo.Visible == true)
+            {
+                if (level.playerOne.Bounds.IntersectsWith(ammo.Bounds)) // Player is able to pick up the ammo
                 {
                     level.playerOne.ammo = ammo.Bullets;
                     ammo.Visible = false;
@@ -131,7 +133,7 @@ namespace Game
             this.Controls.Clear();
             level = LevelManager.CreateLevel(stage);
             escapeMenu = new EscapeMenu();
-            InitializeComponent();
+            InitializeComponent(1);
             ammo.Visible = false;
             LoadRequiredObjects();
             for (int i = 0; i < level.enemies.Count; i++)

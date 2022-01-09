@@ -29,7 +29,7 @@ namespace Game
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        private void InitializeComponent(int i = 0)
         {
             this.DoubleBuffered = true;
             this.components = new System.ComponentModel.Container();
@@ -38,9 +38,12 @@ namespace Game
             // 
             // timer1
             // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 20;
-            this.timer1.Tick += new System.EventHandler(this.MainTimerEvent);
+            if (i == 0) // Prevents the game from running twice as fast after a restart
+            {
+                this.timer1.Enabled = true;
+                this.timer1.Interval = 20;
+                this.timer1.Tick += new System.EventHandler(this.MainTimerEvent);
+            }
             // 
             // Engine
             // 
@@ -58,6 +61,7 @@ namespace Game
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(level.playerOne.KeyIsUp);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(escapeMenu.KeyIsDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(escapeMenu.KeyIsUp);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(level.playerOne.Reload);
             ((System.ComponentModel.ISupportInitialize)(level.playerOne)).EndInit();
             this.ResumeLayout(false);
         }

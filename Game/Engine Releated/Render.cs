@@ -9,7 +9,7 @@ namespace Game
     {
         int stage = 0;
         int[,] maparray;
-        public GameObjects[] objectArray = new GameObjects[200];
+        public GameObjects[] objectArray = new GameObjects[500];
         public List<Watchdog> watchdogs = new List<Watchdog>();
         public List<Enemy> enemies = new List<Enemy>();
         List<Turret> turrets = new List<Turret>();

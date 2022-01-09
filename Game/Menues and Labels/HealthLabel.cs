@@ -18,7 +18,6 @@ namespace Game
             Text = $"{currenthealth}/{maxHealth}";
             ForeColor = Color.FromArgb(255, 255, 255);
             Location = new Point(interactable.Left + 4, interactable.Top + 15);
-            BringToFront();
             Size = new Size(new Point(23, 12));
             this.BackColor = Color.DimGray;
         }

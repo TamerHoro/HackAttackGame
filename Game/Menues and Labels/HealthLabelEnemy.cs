@@ -8,7 +8,6 @@ namespace Game
         public HealthLabelEnemy(Enemy enemy)
             : base(enemy)
         {
-            BringToFront();
             ForeColor = Color.White;
         }
 
@@ -17,6 +16,7 @@ namespace Game
         {
             for (int i = 0; i<enemies.Count; i++)
             {
+                healthLabels[i].BringToFront();
                 //Delete the Healthlabel if the Enemy is dead
                 if(enemies[i].currentHealth == 0)
                 {
@@ -36,7 +36,7 @@ namespace Game
                     }
                     else
                     {
-                        healthLabels[i].Location = new Point(newEnemy.Left + 10, newEnemy.Top -40);
+                        healthLabels[i].Location = new Point(newEnemy.Left + 10, newEnemy.Top - 10);
                     }
                 }
                 else
